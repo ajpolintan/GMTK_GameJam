@@ -14,7 +14,6 @@ func reset():
 	time = 0.0 
 	
 func test():
-	print(time)
 	var msec = fmod(time, 1) * 1000
 	var sec = fmod(time, 60)
 	var min = time / 60 
