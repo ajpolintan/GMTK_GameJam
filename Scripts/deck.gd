@@ -30,13 +30,20 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	print("Creating cards...")
+	#Creating Cards...
 	var position = 0;
 	for n in 3:
 		var card_num = rng.randi_range(0,1)
 		var card_scene = card_scenes[card_num]
 		var card = card_scene.instantiate()
 		spawn_point.add_child(card)
+		# how do i select a card and make sure that card has the same effect on the player
 		
 		if n != 0 : 
 			position += 180
 			card.position.x += position	
+
+func activate_doubleJump():
+	var player = $Player
+	player.doubleJumpMax = 2
+	

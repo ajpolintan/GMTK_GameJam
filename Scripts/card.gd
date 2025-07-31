@@ -1,5 +1,6 @@
 class_name Card extends Node2D
 
+signal selectedCard
 
 @export var card_name : String = "Card Name"
 @export var card_description : String = "Card Description"
@@ -38,5 +39,6 @@ func _on_area_2d_mouse_exited() -> void:
 	unhighlight()
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	emit_signal("selectedCard")
 	print(card_name)
 	pass # Replace with function body.
