@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://3x7le0snadrv"]
+[gd_scene load_steps=5 format=3 uid="uid://3x7le0snadrv"]
 
 [ext_resource type="PackedScene" uid="uid://ccpekc7ka85so" path="res://Scenes/Player.tscn" id="1_0a5le"]
-[ext_resource type="PackedScene" uid="uid://i7fysnw7rdmf" path="res://Scenes/hud.tscn" id="1_ouy5s"]
-[ext_resource type="PackedScene" uid="uid://eoqkwnbbbgy4" path="res://Scenes/deck.tscn" id="2_4p060"]
 [ext_resource type="PackedScene" uid="uid://c2sgp7mlthps3" path="res://Assets/sprites/Tilesets/tile_map_layer.tscn" id="3_h8lok"]
 
 [sub_resource type="GDScript" id="GDScript_b3jk6"]
@@ -40,10 +38,10 @@ distance = -1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_ouy5s")]
-metadata/_edit_use_anchors_ = true
-
-[node name="Deck" parent="CanvasLayer/HUD" instance=ExtResource("2_4p060")]
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "dasdasd"
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_0a5le")]
 script = SubResource("GDScript_b3jk6")

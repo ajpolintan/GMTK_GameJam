@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://bpv728o57queq"]
+[gd_scene load_steps=9 format=4 uid="uid://crefgxysa4h6r"]
 
 [ext_resource type="Texture2D" uid="uid://385c8sflnn4a" path="res://Assets/sprites/world_tileset.png" id="1_c44bd"]
 [ext_resource type="PackedScene" uid="uid://i7fysnw7rdmf" path="res://Scenes/hud.tscn" id="2_aodoe"]
 [ext_resource type="PackedScene" uid="uid://ccpekc7ka85so" path="res://Scenes/Player.tscn" id="3_cxq3c"]
-[ext_resource type="PackedScene" path="res://Scenes/chest.tscn" id="4_5yew3"]
+[ext_resource type="PackedScene" uid="uid://bp5uhneo3eyi3" path="res://Scenes/chest.tscn" id="4_5yew3"]
 [ext_resource type="PackedScene" uid="uid://c2sgp7mlthps3" path="res://Assets/sprites/Tilesets/tile_map_layer.tscn" id="5_4scti"]
 [ext_resource type="PackedScene" uid="uid://eoqkwnbbbgy4" path="res://Scenes/deck.tscn" id="6_e52wj"]
 
@@ -186,10 +186,10 @@ sources/0 = SubResource("TileSetAtlasSource_3j3uu")
 
 [node name="Deck" parent="." instance=ExtResource("6_e52wj")]
 z_index = -95
-offset_left = 112.0
-offset_top = -21.0
-offset_right = 112.0
-offset_bottom = -21.0
+offset_left = 327.0
+offset_top = -90.0
+offset_right = 327.0
+offset_bottom = -90.0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
@@ -199,15 +199,8 @@ tile_set = SubResource("TileSet_xj6dv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 455.0
-offset_top = 321.0
-offset_right = 589.0
-offset_bottom = 352.0
-mouse_filter = 2
-text = "saddssadsadsad"
-
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("2_aodoe")]
+visible = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_cxq3c")]
