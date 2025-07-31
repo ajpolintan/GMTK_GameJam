@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvy013bakyuao"]
+
+[ext_resource type="Texture2D" uid="uid://dalmmr3pk31dw" path="res://Assets/Card.png" id="1_a5qek"]
+
+[node name="Card" type="Node2D"]
+
+[node name="BaseCard" type="Sprite2D" parent="."]
+texture = ExtResource("1_a5qek")
+
+[node name="CardName" type="Node2D" parent="."]
+
+[node name="Name_Label" type="Label" parent="CardName"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "+1 Jump"
+
+[node name="CardImage" type="Sprite2D" parent="."]
+
+[node name="CardDescription" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
