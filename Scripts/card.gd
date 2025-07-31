@@ -21,9 +21,14 @@ func setCardValues(_name: String, _description: String):
 	description_label.set_text(_description)
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	pass
 
+func get_cardName() -> String:
+	var message = "hello"
+	return message
+	
 func unhighlight():
 	baseSprite.set_modulate(Color(1, 1, 1, 1))
 	

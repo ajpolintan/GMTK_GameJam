@@ -53,8 +53,6 @@ func _on_button_pressed() -> void:
 			card.position.x += position	
 	
 	
-
-
 func activate_doubleJump():
 	var player = $Player
 	player.doubleJumpMax = 2
@@ -63,11 +61,13 @@ func activate_doubleJump():
 
 func _on_option_pressed() -> void:
 	var first_card = spawn_point.get_child(0)
-	match first_card.name:
-		"JumpCard":
+	var name = first_card.get_node("Card").card_name
+	print(first_card.get_node("Card").card_name)
+	match name:
+		"Jump":
 			player.doubleJumpMax = 2
 			print("It is a JUMP CARD!")
-		"SpeedCard":
+		"Speed":
 			player.speedMult = 2
 			
 	for card in spawn_point.get_children():
@@ -77,18 +77,45 @@ func _on_option_pressed() -> void:
 	$CanvasLayer/Option2.visible = false
 	$CanvasLayer/Option3.visible = false
 
-	print(first_card.name)
 
 
 func _on_option_2_pressed() -> void:
 	var second_card = spawn_point.get_child(1)
-	print(second_card.name)
+	var name = second_card.get_node("Card").card_name
+	
+	match name:
+		"Jump":
+			player.doubleJumpMax = 2
+			print("It is a JUMP CARD!")
+		"Speed":
+			player.speedMult = 2
+			
+	for card in spawn_point.get_children():
+		card.queue_free()
+		
+	$CanvasLayer/Option.visible = false
+	$CanvasLayer/Option2.visible = false
+	$CanvasLayer/Option3.visible = false
 
 	pass # Replace with function body.
 
 
 func _on_option_3_pressed() -> void:
 	var third_card = spawn_point.get_child(2)
-	print(third_card.name)
+	var name = third_card.get_node("Card").card_name
+	
+	match name:
+		"Jump":
+			player.doubleJumpMax = 2
+			print("It is a JUMP CARD!")
+		"Speed":
+			player.speedMult = 2
+			
+	for card in spawn_point.get_children():
+		card.queue_free()
+		
+	$CanvasLayer/Option.visible = false
+	$CanvasLayer/Option2.visible = false
+	$CanvasLayer/Option3.visible = false
 
 	pass # Replace with function body.
