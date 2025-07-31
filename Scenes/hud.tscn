@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbw2k4m4t2drt"]
+[gd_scene load_steps=3 format=3 uid="uid://i7fysnw7rdmf"]
 
 [ext_resource type="Script" path="res://Scripts/timer.gd" id="1_48ign"]
 [ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_7ukqi"]
@@ -14,14 +14,13 @@ script = ExtResource("1_48ign")
 
 [node name="Countdown" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -68.0
+anchors_preset = -1
+anchor_left = 0.501
+anchor_right = 0.501
+offset_left = -69.152
 offset_top = 45.0
-offset_right = 31.0
+offset_right = 29.848
 offset_bottom = 68.0
 grow_horizontal = 2
 scale = Vector2(1.39198, 1.41825)
 theme_override_fonts/font = ExtResource("2_7ukqi")
-text = "a"
