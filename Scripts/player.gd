@@ -46,9 +46,18 @@ func _physics_process(delta: float) -> void:
 	if is_on_ceiling():
 		jumping = false
 		velocity.y = 20
-		
+	
+	#check if touching wall
+	var wall_left = test_move(global_transform, Vector2(-1, 0))
+	var wall_right = test_move(global_transform, Vector2(1, 0))
+	
+	#wallslide if touching wall while descending
 	if is_on_wall() && not is_on_floor() && (velocity.y > 0):
-		velocity.y = 80
+		velocity.y = 100
+		wallSlide = true
+	#continue wallslide even if not actively holding toward wall
+	elif wallSlide && (wall_left || wall_right) && (velocity.y > 0):
+		velocity.y = 100
 		wallSlide = true
 	else: wallSlide = false
 	
@@ -65,7 +74,8 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() && (direction * velocity.x < 0) && (abs(velocity.x) >= DASHSPEED - 12):
 		skid = true
 		skidDir = direction
-		
+	
+	#allow for faster turnaround even if not skidding speed
 	if (direction * velocity.x < 0) && (abs(velocity.x) < DASHSPEED - 12):
 		velocity.x = move_toward(velocity.x, (maxSpeed * direction), ACCEL)
 	
@@ -84,11 +94,12 @@ func _physics_process(delta: float) -> void:
 	if skid:
 		velocity.x = move_toward(velocity.x, 0, 7)
 	if skid && velocity.x == 0:
-		velocity.x = (DASHSPEED - 40) * skidDir
+		velocity.x = (DASHSPEED - 50) * skidDir
 		skid = false
-		
+	
+	#upon walljump, move in the opposite direction of the wall
 	if wallJump:
-		velocity.x = (DASHSPEED - 60) * -direction
+		velocity.x = (DASHSPEED - 60) * get_wall_normal().x
 	
 	#Handle Animations
 	
@@ -115,11 +126,11 @@ func _physics_process(delta: float) -> void:
 	if wallSlide:
 		animated_sprite.play("wallSlide")
 		if direction > 0: animated_sprite.flip_h = false
-		else: animated_sprite.flip_h = true
+		elif direction < 0: animated_sprite.flip_h = true
 		
 	if wallJump:
-		if direction > 0: animated_sprite.flip_h = true
-		else: animated_sprite.flip_h = false
+		if get_wall_normal().x > 0: animated_sprite.flip_h = false
+		else: animated_sprite.flip_h = true
 		wallJump = false
 
 	move_and_slide()
