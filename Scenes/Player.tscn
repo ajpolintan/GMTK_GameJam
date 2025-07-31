@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swgim"]
-size = Vector2(10, 16)
+size = Vector2(8, 14)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nwe68")
@@ -57,7 +57,7 @@ shape = SubResource("RectangleShape2D_swgim")
 
 [node name="jumpTimer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 0.15
+wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="jumpTimer" to="." method="_on_timer_timeout"]

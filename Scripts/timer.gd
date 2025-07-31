@@ -1,6 +1,6 @@
 extends Control
 
-var time = 5.0
+var time = 100.0
 var stopped = false 
 
 

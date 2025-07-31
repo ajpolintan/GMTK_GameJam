@@ -4,8 +4,8 @@ extends CharacterBody2D
 
 var jumping = false
 const SPEED = 120.0
-const JUMP_VELOCITY = -250.0
-const GRAVITY = 30.0
+const JUMP_VELOCITY = -180.0
+const GRAVITY = 18.0
 
 func _on_timer_timeout():
 	jumping = false
