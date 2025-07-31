@@ -21,3 +21,7 @@ func setCardValues(_name: String, _description: String):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_area_2d_mouse_entered() -> void:
+	pass # Replace with function body.
