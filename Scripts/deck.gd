@@ -6,6 +6,7 @@ extends Control
 
 @onready var spawn_point = $CanvasLayer/Spawn
 @onready var spawn_point2 = $CanvasLayer/Spawn2
+@onready var player = $Player
 
 #gain player scene
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
@@ -20,6 +21,10 @@ func _ready() -> void:
 	card_scenes = [jump_card_scene, speed_card_scene]
 	var card_num = rng.randi_range(0,1)
 	print(card_num)
+	$CanvasLayer/Option.visible = false
+	$CanvasLayer/Option2.visible = false
+	$CanvasLayer/Option3.visible = false
+
 	pass # Replace with function body.
 
 
@@ -30,6 +35,9 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	print("Creating cards...")
+	$CanvasLayer/Option.visible = true
+	$CanvasLayer/Option2.visible = true
+	$CanvasLayer/Option3.visible = true
 	#Creating Cards...
 	var position = 0;
 	for n in 3:
@@ -37,13 +45,77 @@ func _on_button_pressed() -> void:
 		var card_scene = card_scenes[card_num]
 		var card = card_scene.instantiate()
 		spawn_point.add_child(card)
+
 		# how do i select a card and make sure that card has the same effect on the player
 		
 		if n != 0 : 
 			position += 180
 			card.position.x += position	
-
+	
+	
 func activate_doubleJump():
 	var player = $Player
 	player.doubleJumpMax = 2
 	
+
+
+func _on_option_pressed() -> void:
+	var first_card = spawn_point.get_child(0)
+	var name = first_card.get_node("Card").card_name
+	print(first_card.get_node("Card").card_name)
+	match name:
+		"Jump":
+			player.doubleJumpMax = 2
+			print("It is a JUMP CARD!")
+		"Speed":
+			player.speedMult = 2
+			
+	for card in spawn_point.get_children():
+		card.queue_free()
+		
+	$CanvasLayer/Option.visible = false
+	$CanvasLayer/Option2.visible = false
+	$CanvasLayer/Option3.visible = false
+
+
+
+func _on_option_2_pressed() -> void:
+	var second_card = spawn_point.get_child(1)
+	var name = second_card.get_node("Card").card_name
+	
+	match name:
+		"Jump":
+			player.doubleJumpMax = 2
+			print("It is a JUMP CARD!")
+		"Speed":
+			player.speedMult = 2
+			
+	for card in spawn_point.get_children():
+		card.queue_free()
+		
+	$CanvasLayer/Option.visible = false
+	$CanvasLayer/Option2.visible = false
+	$CanvasLayer/Option3.visible = false
+
+	pass # Replace with function body.
+
+
+func _on_option_3_pressed() -> void:
+	var third_card = spawn_point.get_child(2)
+	var name = third_card.get_node("Card").card_name
+	
+	match name:
+		"Jump":
+			player.doubleJumpMax = 2
+			print("It is a JUMP CARD!")
+		"Speed":
+			player.speedMult = 2
+			
+	for card in spawn_point.get_children():
+		card.queue_free()
+		
+	$CanvasLayer/Option.visible = false
+	$CanvasLayer/Option2.visible = false
+	$CanvasLayer/Option3.visible = false
+
+	pass # Replace with function body.

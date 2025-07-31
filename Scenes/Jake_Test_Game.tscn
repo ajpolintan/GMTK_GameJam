@@ -196,9 +196,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Deck" parent="." instance=ExtResource("6_e52wj")]
 z_index = -95
 offset_left = 327.0
-offset_top = -90.0
+offset_top = -94.0
 offset_right = 327.0
-offset_bottom = -90.0
+offset_bottom = -94.0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
