@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 # call the card_scene
 @onready var jump_card_scene: PackedScene = preload("res://Scenes/Cards/JumpCard.tscn")
@@ -6,6 +6,9 @@ extends Node2D
 
 @onready var spawn_point = $CanvasLayer/Spawn
 @onready var spawn_point2 = $CanvasLayer/Spawn2
+
+#gain player scene
+@export var Player : PackedScene = preload("res://Scenes/Player.tscn")
 
 
 var card_scenes: Array = []
@@ -26,6 +29,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
+	print("Creating cards...")
 	var position = 0;
 	for n in 3:
 		var card_num = rng.randi_range(0,1)
