@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://brmlum8gddr1k"]
 
-[ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_qs6p7"]
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_u1kxf"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ybsos"]
+[ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_fohpp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_u1kxf")
+script = ExtResource("1_ybsos")
 
 [node name="Button Container" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -30,19 +30,19 @@ theme_override_constants/separation = 30
 [node name="Start" type="Button" parent="Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_qs6p7")
+theme_override_fonts/font = ExtResource("2_fohpp")
 text = "Start"
 
 [node name="Options" type="Button" parent="Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_qs6p7")
+theme_override_fonts/font = ExtResource("2_fohpp")
 text = "Options"
 
 [node name="Quit" type="Button" parent="Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("1_qs6p7")
+theme_override_fonts/font = ExtResource("2_fohpp")
 text = "Quit"
 
 [node name="Title Screen" type="Label" parent="."]
@@ -58,7 +58,7 @@ offset_right = 257.0
 offset_bottom = -196.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_qs6p7")
+theme_override_fonts/font = ExtResource("2_fohpp")
 theme_override_font_sizes/font_size = 61
 text = "GMTK GAME JAM"
 
