@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwx6akgr4qsmm"]
+
+[ext_resource type="PackedScene" uid="uid://bvy013bakyuao" path="res://Scenes/card.tscn" id="1_7bbjd"]
+[ext_resource type="Texture2D" uid="uid://dvbg3jb7sh6s4" path="res://Assets/sprites/Powerups/wings.png" id="2_sh8jb"]
+
+[node name="JumpCard" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource("1_7bbjd")]
+card_name = "Jump"
+card_description = "+ Extra Jump"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(338, 223)
+scale = Vector2(2.00135, 1.94444)
+texture = ExtResource("2_sh8jb")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://eoqkwnbbbgy4"]
+
+[ext_resource type="Script" path="res://Scripts/deck.gd" id="1_6dlcv"]
+
+[node name="Deck" type="Node2D"]
+script = ExtResource("1_6dlcv")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 489.0
+offset_top = 472.0
+offset_right = 637.0
+offset_bottom = 516.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Create_Card"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Spawn" type="Node2D" parent="CanvasLayer"]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
