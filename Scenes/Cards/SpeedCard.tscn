@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b842exltcfbju"]
+
+[ext_resource type="PackedScene" uid="uid://bvy013bakyuao" path="res://Scenes/card.tscn" id="1_gj77j"]
+
+[node name="SpeedCard" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Card" parent="." instance=ExtResource("1_gj77j")]
