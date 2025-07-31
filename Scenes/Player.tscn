@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccpekc7ka85so"]
 
 [ext_resource type="Texture2D" uid="uid://csxf6a62g5ykk" path="res://Assets/sprites/knight.png" id="1_c0wr1"]
-[ext_resource type="Script" path="res://Scripts/chara.gd" id="1_nwe68"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_nwe68"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rskyn"]
 atlas = ExtResource("1_c0wr1")
@@ -54,3 +54,10 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_swgim")
+
+[node name="jumpTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="jumpTimer" to="." method="_on_timer_timeout"]
