@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 var jumping = false
 var skid = false
+var wallSlide = false
+var wallJump = false
 var skidDir = 0
 const ACCEL = 5.0
 const SPEED = 100.0
@@ -15,9 +17,9 @@ const MAX_DOWN = 200
 #stop gaining upwards velocity when jump timer is out
 func _on_timer_timeout():
 	jumping = false
+	
 
 func _physics_process(delta: float) -> void:
-	
 	# Add the gravity.
 	#conditions: in the air, not in jumping state, not holding jump button
 	if not is_on_floor() && !jumping && not Input.is_action_pressed("jump"):
@@ -26,7 +28,8 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	#when pressed: set jumping to true (allows full hop) and start timer; full hop ends when timer runs out
-	if Input.is_action_just_pressed("jump") && is_on_floor():
+	if Input.is_action_just_pressed("jump") && (is_on_floor() || wallSlide):
+		if wallSlide: wallJump = true
 		jumping = true
 		timer.start()
 		velocity.y = JUMP_VELOCITY
@@ -43,6 +46,11 @@ func _physics_process(delta: float) -> void:
 	if is_on_ceiling():
 		jumping = false
 		velocity.y = 20
+		
+	if is_on_wall() && not is_on_floor() && (velocity.y > 0):
+		velocity.y = 80
+		wallSlide = true
+	else: wallSlide = false
 	
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move_left", "move_right")
@@ -57,7 +65,6 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() && (direction * velocity.x < 0) && (abs(velocity.x) >= DASHSPEED - 12):
 		skid = true
 		skidDir = direction
-		print ("skid!")
 		
 	if (direction * velocity.x < 0) && (abs(velocity.x) < DASHSPEED - 12):
 		velocity.x = move_toward(velocity.x, (maxSpeed * direction), ACCEL)
@@ -77,9 +84,11 @@ func _physics_process(delta: float) -> void:
 	if skid:
 		velocity.x = move_toward(velocity.x, 0, 7)
 	if skid && velocity.x == 0:
-		velocity.x = (maxSpeed - 40) * skidDir
+		velocity.x = (DASHSPEED - 40) * skidDir
 		skid = false
-	
+		
+	if wallJump:
+		velocity.x = (DASHSPEED - 60) * -direction
 	
 	#Handle Animations
 	
@@ -102,6 +111,16 @@ func _physics_process(delta: float) -> void:
 	
 	if skid:
 		animated_sprite.play("skid")
+		
+	if wallSlide:
+		animated_sprite.play("wallSlide")
+		if direction > 0: animated_sprite.flip_h = false
+		else: animated_sprite.flip_h = true
+		
+	if wallJump:
+		if direction > 0: animated_sprite.flip_h = true
+		else: animated_sprite.flip_h = false
+		wallJump = false
 
 	move_and_slide()
 	
