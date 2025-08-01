@@ -1,5 +1,7 @@
 extends CharacterBody2D
-@onready var timer: Timer = $jumpTimer
+@onready var jumpTimer: Timer = $jumpTimer
+@onready var dashTimer: Timer = $dashTimer
+@onready var dashCooldownTimer: Timer = $dashCooldownTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sfx_jump = $sfx_jump
 @onready var sfx_skid = $sfx_skid
@@ -13,9 +15,10 @@ var wallJump = false
 var wallTouch = false
 var skidDir = 0
 const ACCEL = 5.0
-const DECEL = 4.0
-const SPEED = 100.0
-const DASHSPEED = 200.0
+const DECEL = 6.0
+const SPEED = 80.0
+const RUNSPEED = 160.0
+const DASHSPEED = 240.0
 const JUMP_VELOCITY = -170.0
 const WALLSPEED = 100
 const GRAVITY = 20.0
@@ -25,10 +28,28 @@ const MAX_DOWN = 200
 var doubleJumpMax = 0
 var doubleJump = 0
 var speedMult = 1
+var dashUnlock = true
+var dashAvail = true
+var dashing = false
+var dashCooldown = true
+var dashDir = 0
+var groundDash = 0
+var jumpCancelDash = false
 
 #stop gaining upwards velocity when jump timer is out
 func _on_timer_timeout():
 	jumping = false
+	
+#dash duration
+func _on_dash_timer_timeout() -> void:
+	dashing = false
+	if !jumpCancelDash:
+		velocity.x = RUNSPEED * dashDir
+	else: jumpCancelDash = false
+	
+#dash cooldown
+func _on_dash_cooldown_timer_timeout() -> void:
+	dashCooldown = true
 
 func _on_stop():
 	is_stopped = true
@@ -44,9 +65,9 @@ func _physics_process(_delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	#check if touching wall
-	var wall_left = test_move(global_transform, Vector2(-1, 0))
-	var wall_right = test_move(global_transform, Vector2(1, 0))
-	if (wall_left || wall_right):
+	var wallLeft = test_move(global_transform, Vector2(-1, 0))
+	var wallRight = test_move(global_transform, Vector2(1, 0))
+	if (wallLeft || wallRight):
 		wallTouch = true
 	else: wallTouch = false
 	
@@ -67,21 +88,24 @@ func _physics_process(_delta: float) -> void:
 
 	# Handle jump.
 	#when pressed: set jumping to true (allows full hop) and start timer; full hop ends when timer runs out
-	if Input.is_action_just_pressed("jump") && (is_on_floor() || wallTouch || doubleJump > 0):
+	if Input.is_action_just_pressed("jump") && (is_on_floor() || wallTouch || doubleJump > 0 || (dashing && groundDash)):
 		#if the jump is triggered when in the air next to a wall, it's a walljump
 		if wallTouch && not is_on_floor(): 
 			wallJump = true
 			doubleJump = doubleJumpMax
+		
+		#if performing groundDash, make dash available again
+		elif groundDash && dashing: dashAvail = true
 			
 		#if the jump is triggered in the air without a wall, it's a doublejump
-		elif not is_on_floor(): 
+		elif not is_on_floor() && !dashing: 
 			doubleJump -= 1
 			if direction > 0: animated_sprite.flip_h = false
 			elif direction < 0: animated_sprite.flip_h = true
 		
 		#start full hop timer
 		jumping = true
-		timer.start()
+		jumpTimer.start()
 		sfx_jump.play()
 
 		velocity.y = JUMP_VELOCITY
@@ -107,28 +131,24 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = WALLSPEED
 		wallSlide = true
 	#continue wallslide even if not actively holding toward wall
-	elif wallSlide && (wall_left || wall_right) && (velocity.y > 0):
+	elif wallSlide && wallTouch && (velocity.y > 0):
 		velocity.y = WALLSPEED
 		wallSlide = true
 	else: wallSlide = false
-	
-	#reset doublejump
-	if is_on_floor():
-		doubleJump = doubleJumpMax
 	
 ###################################################################################################
 	#horizontal movement
 ###################################################################################################
 	
-	#set max speed, depending on if dash is held or if airborne
+	#set max speed, depending on if run is held or if airborne
 	var maxSpeed
-	if Input.is_action_pressed("dash"): maxSpeed = DASHSPEED * speedMult
+	if Input.is_action_pressed("run"): maxSpeed = RUNSPEED * speedMult
 	else: maxSpeed = SPEED * speedMult
 	if not is_on_floor() && (abs(velocity.x) > maxSpeed):
 		maxSpeed = abs(velocity.x)
 	
 	#skid if changing direction when running at max speed
-	if is_on_floor() && (direction * velocity.x < 0) && (abs(velocity.x) >= (DASHSPEED - 12) * speedMult):
+	if is_on_floor() && (direction * velocity.x < 0) && (abs(velocity.x) >= (RUNSPEED - 12) * speedMult):
 		animated_sprite.play("skid")
 		sfx_skid.play()
 		skid = true
@@ -136,7 +156,7 @@ func _physics_process(_delta: float) -> void:
 
 	
 	#allow for faster turnaround even if not skidding speed
-	if (direction * velocity.x < 0) && (abs(velocity.x) < (DASHSPEED - 12) * speedMult):
+	if (direction * velocity.x < 0) && (abs(velocity.x) < (RUNSPEED - 12) * speedMult):
 		velocity.x = move_toward(velocity.x, (maxSpeed * direction), ACCEL)
 	
 	# move in direction, up to max speed
@@ -155,18 +175,60 @@ func _physics_process(_delta: float) -> void:
 	if skid:
 		velocity.x = move_toward(velocity.x, 0, DECEL * speedMult)
 	if skid && velocity.x == 0:
-		velocity.x = ((DASHSPEED - 50) * speedMult) * skidDir
+		velocity.x = ((RUNSPEED - 50) * speedMult) * skidDir
 		skid = false
 	
 	#upon walljump, move in the opposite direction of the wall
 	if wallJump:
-		velocity.x = ((DASHSPEED - 70) * speedMult) * get_wall_normal().x
+		velocity.x = ((RUNSPEED - 70) * speedMult) * get_wall_normal().x
+		
+	if Input.is_action_just_pressed("dash") && dashCooldown && dashAvail:
+		dashTimer.start()
+		dashCooldownTimer.start()
+		dashing = true
+		dashCooldown = false
+		dashAvail = false
+		jumping = false
+		skid = false
+		if (is_on_floor()): groundDash = true
+		else: groundDash = false
+		if wallSlide:
+			dashDir = get_wall_normal().x
+		elif direction:
+			dashDir = direction
+		else:
+			if animated_sprite.flip_h == true:
+				dashDir = -1
+			else:
+				dashDir = 1
+
+	if dashing && !jumping:
+		print ("dash")
+		velocity.y = 0
+		velocity.x = (DASHSPEED * speedMult) * dashDir
+	elif dashing && jumping:
+		jumpCancelDash = true
+
+	#reset abilities
+	if is_on_floor() || wallSlide:
+		doubleJump = doubleJumpMax
+		dashAvail = true
+
+	move_and_slide()
 	
 ###################################################################################################
 	#Handle Animations
 ###################################################################################################
+
+	if Input.is_action_just_pressed("dash") && dashing:
+		animated_sprite.play("dash")
+		if dashDir > 0 || skid: animated_sprite.flip_h = false
+		elif dashDir < 0: animated_sprite.flip_h = true
+		return
+	if dashing && not is_on_wall() && !jumping:
+		return
 	
-	if (velocity.x != 0) && is_on_floor() && !skid: 
+	if is_on_floor() && !skid: 
 		if direction > 0 || skid: animated_sprite.flip_h = false
 		elif direction < 0: animated_sprite.flip_h = true
 		if abs(velocity.x) > SPEED:
@@ -192,5 +254,3 @@ func _physics_process(_delta: float) -> void:
 		if get_wall_normal().x > 0: animated_sprite.flip_h = false
 		else: animated_sprite.flip_h = true
 		wallJump = false
-
-	move_and_slide()
