@@ -55,8 +55,7 @@ func _on_cards() -> void:
 func activate_ability(ability_name: String) -> void:
 	match ability_name:
 		"Jump":
-			player.doubleJumpMax = 2
-			print("It is a JUMP CARD!")
+			player.doubleJumpMax += 1
 		"Speed":
 			player.speedMult += 0.2
 		"IncreaseTime":
