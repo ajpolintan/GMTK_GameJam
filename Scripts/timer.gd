@@ -3,6 +3,10 @@ extends Control
 var time = 100.0
 var stopped = false 
 
+func _on_stop():
+	stopped = true
+func _on_go():
+	stopped = false
 
 func _process(delta):
 	if stopped:

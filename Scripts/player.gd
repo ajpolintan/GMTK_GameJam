@@ -33,6 +33,9 @@ func _on_timer_timeout():
 func _on_stop():
 	is_stopped = true
 	velocity = Vector2.ZERO
+	animated_sprite.play("idle")
+func _on_go():
+	is_stopped = false
 	
 
 func _physics_process(_delta: float) -> void:
@@ -50,7 +53,6 @@ func _physics_process(_delta: float) -> void:
 	#check if stopped
 	if is_stopped:
 		velocity = Vector2.ZERO
-		is_stopped = false
 		return
 	
 ###################################################################################################
