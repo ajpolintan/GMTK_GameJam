@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cnjutd7dhg360" path="res://Assets/sprites/GMTK-Run-Sheet.png" id="4_x22j0"]
 [ext_resource type="Texture2D" uid="uid://csy6winhlofqv" path="res://Assets/GMTK-Skidd.png" id="5_kq23a"]
 [ext_resource type="Texture2D" uid="uid://ceftcum2ga1lc" path="res://Assets/gmtk_walk-Sheet.png" id="6_8rbfb"]
+[ext_resource type="Texture2D" uid="uid://b7r7ji55cjgnf" path="res://Assets/sprites/wall_jump.png" id="7_ep450"]
 [ext_resource type="AudioStream" uid="uid://dcrr8a87fdpdt" path="res://Assets/sounds/free_sound_jump(cabled_mess).wav" id="7_h7tu8"]
 [ext_resource type="AudioStream" uid="uid://dc7tgcm7wlea" path="res://Assets/sounds/skid__wakuwakuwakuwaku__sfxwalkground3.wav" id="8_7veep"]
 
@@ -88,10 +89,6 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1h1qf"]
 atlas = ExtResource("6_8rbfb")
 region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1cd8y"]
-atlas = ExtResource("5_kq23a")
-region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pbknh"]
 animations = [{
@@ -187,7 +184,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1cd8y")
+"texture": ExtResource("7_ep450")
 }],
 "loop": true,
 "name": &"wallSlide",
