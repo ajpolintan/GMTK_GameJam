@@ -188,7 +188,7 @@ tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA
 tile_set = SubResource("TileSet_b4tjx")
 
 [node name="chest" parent="." instance=ExtResource("2_mnkm3")]
-position = Vector2(320, -74)
+position = Vector2(560, -249)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 
@@ -200,7 +200,7 @@ motion_mirroring = Vector2(1300, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(197, -48)
-scale = Vector2(0.989527, 1.31034)
+scale = Vector2(1.02349, 1.35532)
 texture = ExtResource("4_noch3")
 
 [connection signal="chestGet" from="chest" to="." method="_on_chest_chest_get"]
