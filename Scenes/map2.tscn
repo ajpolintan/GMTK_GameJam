@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://riia6ruggf3i"]
+[gd_scene load_steps=9 format=4 uid="uid://riia6ruggf3i"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_wiicx"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_il3ap"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="3_msi8u"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="4_lvhim"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_jw3wr"]
+[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_7u0re"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 
@@ -40,3 +41,6 @@ position = Vector2(-32, -26)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(69, 74)
 shape = SubResource("WorldBoundaryShape2D_6vjev")
+
+[node name="Platform" parent="." instance=ExtResource("7_7u0re")]
+position = Vector2(298, -242)
