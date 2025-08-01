@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://riia6ruggf3i"]
+[gd_scene load_steps=11 format=4 uid="uid://riia6ruggf3i"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_wiicx"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_il3ap"]
@@ -9,6 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_7u0re"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
+
+[sub_resource type="Gradient" id="Gradient_6yynu"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.0936195, 0.756791, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cbs8n"]
+gradient = SubResource("Gradient_6yynu")
+width = 1024
+height = 389
+use_hdr = true
 
 [node name="level2" type="Node2D"]
 script = ExtResource("1_wiicx")
@@ -43,4 +52,10 @@ position = Vector2(69, 74)
 shape = SubResource("WorldBoundaryShape2D_6vjev")
 
 [node name="Platform" parent="." instance=ExtResource("7_7u0re")]
-position = Vector2(298, -242)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = -15
+position = Vector2(116, -186)
+scale = Vector2(1.2995, 1.43355)
+energy = 0.75
+texture = SubResource("GradientTexture2D_cbs8n")

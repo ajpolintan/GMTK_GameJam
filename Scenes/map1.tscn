@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://qi7eqpq6xs8n"]
+[gd_scene load_steps=12 format=4 uid="uid://qi7eqpq6xs8n"]
 
 [ext_resource type="Texture2D" uid="uid://385c8sflnn4a" path="res://Assets/sprites/world_tileset.png" id="1_dwptp"]
 [ext_resource type="Script" path="res://Scripts/map1.gd" id="1_yhhpa"]
@@ -184,6 +184,16 @@ sources/0 = SubResource("TileSetAtlasSource_bwwjc")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ny2k1"]
 
+[sub_resource type="Gradient" id="Gradient_g4xrg"]
+colors = PackedColorArray(0, 0, 0, 1, 0.832207, 0.462867, 1.34766e-06, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6spi7"]
+gradient = SubResource("Gradient_g4xrg")
+width = 1024
+height = 389
+use_hdr = true
+fill = 1
+
 [node name="level1" type="Node2D"]
 script = ExtResource("1_yhhpa")
 
@@ -215,5 +225,23 @@ position = Vector2(562, -248)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(87, 62)
 shape = SubResource("WorldBoundaryShape2D_ny2k1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = -15
+position = Vector2(179, -181)
+rotation = -0.669491
+scale = Vector2(-0.0671503, 3.40136)
+color = Color(0.733177, 0.671492, 0.914742, 1)
+energy = 0.7
+texture = SubResource("GradientTexture2D_6spi7")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+z_index = -15
+position = Vector2(505, -309)
+rotation = -0.669491
+scale = Vector2(-0.0790447, 4.10968)
+color = Color(0.733177, 0.671492, 0.914742, 1)
+energy = 0.7
+texture = SubResource("GradientTexture2D_6spi7")
 
 [connection signal="chestGet" from="chest" to="." method="_on_chest_chest_get"]
