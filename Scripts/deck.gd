@@ -5,7 +5,6 @@ extends Control
 @onready var speed_card_scene: PackedScene = preload("res://Scenes/Cards/SpeedCard.tscn")
 
 @onready var spawn_point = $CanvasLayer/Spawn
-@onready var spawn_point2 = $CanvasLayer/Spawn2
 @onready var player = $Player
 
 #gain player scene
@@ -28,10 +27,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_button_pressed() -> void:
 	print("Creating cards...")
@@ -39,7 +34,7 @@ func _on_button_pressed() -> void:
 	$CanvasLayer/Option2.visible = true
 	$CanvasLayer/Option3.visible = true
 	#Creating Cards...
-	var position = 0;
+	var card_position = 0;
 	for n in 3:
 		var card_num = rng.randi_range(0,1)
 		var card_scene = card_scenes[card_num]
@@ -49,17 +44,12 @@ func _on_button_pressed() -> void:
 		# how do i select a card and make sure that card has the same effect on the player
 		
 		if n != 0 : 
-			position += 180
-			card.position.x += position	
-	
-	
-func activate_doubleJump():
-	var player = $Player
-	player.doubleJumpMax = 2
-	
+			card_position += 180
+			card.position.x += card_position	
+		
 
-func activate_ability(name: String) -> void:
-	match name:
+func activate_ability(ability_name: String) -> void:
+	match ability_name:
 		"Jump":
 			player.doubleJumpMax = 2
 			print("It is a JUMP CARD!")
@@ -74,8 +64,8 @@ func hide_buttons() -> void:
 	
 func _on_option_pressed() -> void:
 	var first_card = spawn_point.get_child(0)
-	var name = first_card.get_node("Card").card_name
-	activate_ability(name)
+	var first_card_name = first_card.get_node("Card").card_name
+	activate_ability(first_card_name)
 			
 	for card in spawn_point.get_children():
 		card.queue_free()
@@ -87,9 +77,9 @@ func _on_option_pressed() -> void:
 
 func _on_option_2_pressed() -> void:
 	var second_card = spawn_point.get_child(1)
-	var name = second_card.get_node("Card").card_name
+	var second_card_name = second_card.get_node("Card").card_name
 	
-	activate_ability(name)
+	activate_ability(second_card_name)
 
 			
 	for card in spawn_point.get_children():
@@ -101,9 +91,9 @@ func _on_option_2_pressed() -> void:
 
 func _on_option_3_pressed() -> void:
 	var third_card = spawn_point.get_child(2)
-	var name = third_card.get_node("Card").card_name
+	var third_card_name = third_card.get_node("Card").card_name
 	
-	activate_ability(name)
+	activate_ability(third_card_name)
 
 			
 	for card in spawn_point.get_children():
