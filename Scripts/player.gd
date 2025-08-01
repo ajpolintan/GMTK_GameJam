@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var timer: Timer = $jumpTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sfx_jump = $sfx_jump
+@onready var sfx_skid = $sfx_skid
 
 #physics vars
 var jumping = false
@@ -116,8 +117,10 @@ func _physics_process(_delta: float) -> void:
 	#skid if changing direction when running at max speed
 	if is_on_floor() && (direction * velocity.x < 0) && (abs(velocity.x) >= (DASHSPEED - 12) * speedMult):
 		animated_sprite.play("skid")
+		sfx_skid.play()
 		skid = true
 		skidDir = direction
+
 	
 	#allow for faster turnaround even if not skidding speed
 	if (direction * velocity.x < 0) && (abs(velocity.x) < (DASHSPEED - 12) * speedMult):
