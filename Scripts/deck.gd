@@ -58,24 +58,30 @@ func activate_doubleJump():
 	player.doubleJumpMax = 2
 	
 
-
-func _on_option_pressed() -> void:
-	var first_card = spawn_point.get_child(0)
-	var name = first_card.get_node("Card").card_name
-	print(first_card.get_node("Card").card_name)
+func activate_ability(name: String) -> void:
 	match name:
 		"Jump":
 			player.doubleJumpMax = 2
 			print("It is a JUMP CARD!")
 		"Speed":
 			player.speedMult = 2
+	pass
+
+func hide_buttons() -> void:
+	$CanvasLayer/Option.visible = false
+	$CanvasLayer/Option2.visible = false
+	$CanvasLayer/Option3.visible = false
+	
+func _on_option_pressed() -> void:
+	var first_card = spawn_point.get_child(0)
+	var name = first_card.get_node("Card").card_name
+	activate_ability(name)
 			
 	for card in spawn_point.get_children():
 		card.queue_free()
 		
-	$CanvasLayer/Option.visible = false
-	$CanvasLayer/Option2.visible = false
-	$CanvasLayer/Option3.visible = false
+	hide_buttons()
+
 
 
 
@@ -83,39 +89,24 @@ func _on_option_2_pressed() -> void:
 	var second_card = spawn_point.get_child(1)
 	var name = second_card.get_node("Card").card_name
 	
-	match name:
-		"Jump":
-			player.doubleJumpMax = 2
-			print("It is a JUMP CARD!")
-		"Speed":
-			player.speedMult = 2
+	activate_ability(name)
+
 			
 	for card in spawn_point.get_children():
 		card.queue_free()
 		
-	$CanvasLayer/Option.visible = false
-	$CanvasLayer/Option2.visible = false
-	$CanvasLayer/Option3.visible = false
+	hide_buttons()
 
-	pass # Replace with function body.
 
 
 func _on_option_3_pressed() -> void:
 	var third_card = spawn_point.get_child(2)
 	var name = third_card.get_node("Card").card_name
 	
-	match name:
-		"Jump":
-			player.doubleJumpMax = 2
-			print("It is a JUMP CARD!")
-		"Speed":
-			player.speedMult = 2
+	activate_ability(name)
+
 			
 	for card in spawn_point.get_children():
 		card.queue_free()
 		
-	$CanvasLayer/Option.visible = false
-	$CanvasLayer/Option2.visible = false
-	$CanvasLayer/Option3.visible = false
-
-	pass # Replace with function body.
+	hide_buttons()
