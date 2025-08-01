@@ -28,8 +28,8 @@ const MAX_DOWN = 200
 var doubleJumpMax = 0
 var doubleJump = 0
 var speedMult = 1
-var dashUnlock = true
-var dashAvail = true
+var dashUnlock = false
+var dashAvail = false
 var dashing = false
 var dashCooldown = true
 var dashDir = 0
@@ -203,7 +203,6 @@ func _physics_process(_delta: float) -> void:
 				dashDir = 1
 
 	if dashing && !jumping:
-		print ("dash")
 		velocity.y = 0
 		velocity.x = (DASHSPEED * speedMult) * dashDir
 	elif dashing && jumping:
@@ -212,7 +211,7 @@ func _physics_process(_delta: float) -> void:
 	#reset abilities
 	if is_on_floor() || wallSlide:
 		doubleJump = doubleJumpMax
-		dashAvail = true
+		if dashUnlock: dashAvail = true
 
 	move_and_slide()
 	
