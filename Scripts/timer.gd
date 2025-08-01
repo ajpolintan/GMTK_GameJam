@@ -16,9 +16,9 @@ func reset():
 func test():
 	var msec = fmod(time, 1) * 1000
 	var sec = fmod(time, 60)
-	var min = time / 60 
+	var minute = time / 60 
 	var format_string = "%02d : %02d : %02d"
-	var actual_string = format_string % [min,sec, msec]
+	var actual_string = format_string % [minute, sec, msec]
 	$Countdown.text = actual_string
 	
 	if (time < 1) :

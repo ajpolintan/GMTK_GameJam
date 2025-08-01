@@ -3,10 +3,12 @@ extends Control
 # call the card_scene
 @onready var jump_card_scene: PackedScene = preload("res://Scenes/Cards/JumpCard.tscn")
 @onready var speed_card_scene: PackedScene = preload("res://Scenes/Cards/SpeedCard.tscn")
+@onready var time_increase_card_scene: PackedScene = preload("res://Scenes/Cards/TimeIncreaseCard.tscn")
+
 
 @onready var spawn_point = $CanvasLayer/Spawn
-@onready var spawn_point2 = $CanvasLayer/Spawn2
-
+@onready var player = $Player 
+@onready var HUD = $"../CanvasLayer/HUD" 
 #gain player scene
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
 
@@ -17,26 +19,89 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	card_scenes = [jump_card_scene, speed_card_scene]
-	var card_num = rng.randi_range(0,1)
+	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene]
+	var card_num = rng.randi_range(0,3)
 	print(card_num)
+	$CanvasLayer/Option.visible = false
+	$CanvasLayer/Option2.visible = false
+	$CanvasLayer/Option3.visible = false
+
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_button_pressed() -> void:
+	print(HUD.time)
 	print("Creating cards...")
-	var position = 0;
+	$CanvasLayer/Option.visible = true
+	$CanvasLayer/Option2.visible = true
+	$CanvasLayer/Option3.visible = true
+	#Creating Cards...
+	var card_position = 0;
 	for n in 3:
-		var card_num = rng.randi_range(0,1)
+		var card_num = rng.randi_range(0,2)
 		var card_scene = card_scenes[card_num]
 		var card = card_scene.instantiate()
 		spawn_point.add_child(card)
+
+		# how do i select a card and make sure that card has the same effect on the player
 		
 		if n != 0 : 
-			position += 180
-			card.position.x += position	
+			card_position += 180
+			card.position.x += card_position	
+		
+
+func activate_ability(ability_name: String) -> void:
+	match ability_name:
+		"Jump":
+			player.doubleJumpMax = 2
+			print("It is a JUMP CARD!")
+		"Speed":
+			player.speedMult = 2
+		"IncreaseTime":
+			HUD.time += 10
+	pass
+
+func hide_buttons() -> void:
+	$CanvasLayer/Option.visible = false
+	$CanvasLayer/Option2.visible = false
+	$CanvasLayer/Option3.visible = false
+	
+func _on_option_pressed() -> void:
+	var first_card = spawn_point.get_child(0)
+	var first_card_name = first_card.get_node("Card").card_name
+	activate_ability(first_card_name)
+			
+	for card in spawn_point.get_children():
+		card.queue_free()
+		
+	hide_buttons()
+
+
+
+
+func _on_option_2_pressed() -> void:
+	var second_card = spawn_point.get_child(1)
+	var second_card_name = second_card.get_node("Card").card_name
+	
+	activate_ability(second_card_name)
+
+			
+	for card in spawn_point.get_children():
+		card.queue_free()
+		
+	hide_buttons()
+
+
+
+func _on_option_3_pressed() -> void:
+	var third_card = spawn_point.get_child(2)
+	var third_card_name = third_card.get_node("Card").card_name
+	
+	activate_ability(third_card_name)
+
+			
+	for card in spawn_point.get_children():
+		card.queue_free()
+		
+	hide_buttons()

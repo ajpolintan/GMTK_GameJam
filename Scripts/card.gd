@@ -1,6 +1,5 @@
 class_name Card extends Node2D
 
-
 @export var card_name : String = "Card Name"
 @export var card_description : String = "Card Description"
 @export var card_image: Sprite2D
@@ -20,9 +19,12 @@ func setCardValues(_name: String, _description: String):
 	description_label.set_text(_description)
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
+
+func get_cardName() -> String:
+	var message = "hello"
+	return message
+	
 func unhighlight():
 	baseSprite.set_modulate(Color(1, 1, 1, 1))
 	
@@ -36,7 +38,3 @@ func _on_area_2d_mouse_entered() -> void:
 
 func _on_area_2d_mouse_exited() -> void:
 	unhighlight()
-
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	print(card_name)
-	pass # Replace with function body.

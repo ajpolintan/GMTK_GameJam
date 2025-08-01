@@ -1,6 +1,8 @@
 extends CharacterBody2D
 @onready var timer: Timer = $jumpTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sfx_jump = $sfx_jump
+@onready var sfx_skid = $sfx_skid
 
 #physics vars
 var jumping = false
@@ -67,6 +69,8 @@ func _physics_process(_delta: float) -> void:
 		#start full hop timer
 		jumping = true
 		timer.start()
+		sfx_jump.play()
+
 		velocity.y = JUMP_VELOCITY
 	
 	#contiuing to hold jump button causes upward velocity to remain constant (for full hop)
@@ -76,7 +80,7 @@ func _physics_process(_delta: float) -> void:
 	#when full hop timer runs out, slowly decrease velocity (as opposed to cutting it straight to downward)
 	elif Input.is_action_pressed("jump") && !jumping:
 		velocity.y = move_toward(velocity.y, MAX_DOWN, GRAVITY)
-	
+
 	#if jump stops being pressed early, end jump period
 	elif jumping: jumping = false
 	
@@ -113,8 +117,10 @@ func _physics_process(_delta: float) -> void:
 	#skid if changing direction when running at max speed
 	if is_on_floor() && (direction * velocity.x < 0) && (abs(velocity.x) >= (DASHSPEED - 12) * speedMult):
 		animated_sprite.play("skid")
+		sfx_skid.play()
 		skid = true
 		skidDir = direction
+
 	
 	#allow for faster turnaround even if not skidding speed
 	if (direction * velocity.x < 0) && (abs(velocity.x) < (DASHSPEED - 12) * speedMult):
