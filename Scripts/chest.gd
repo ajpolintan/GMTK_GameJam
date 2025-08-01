@@ -1,6 +1,5 @@
 extends Area2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var timer: Timer = $Timer
 var ready_to_open = false
 
 signal chestGet
