@@ -81,6 +81,7 @@ texture = ExtResource("2_tsahx")
 offset_right = 40.0
 offset_bottom = 40.0
 size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button Container/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Container/Options" to="." method="_on_options_pressed"]
