@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ccpekc7ka85so"]
+[gd_scene load_steps=40 format=3 uid="uid://ccpekc7ka85so"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nwe68"]
 [ext_resource type="Texture2D" uid="uid://b2bxsoc7lleth" path="res://Assets/sprites/gmtk_idle-Sheet.png" id="2_b8pf3"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b7r7ji55cjgnf" path="res://Assets/sprites/wall_jump.png" id="7_ep450"]
 [ext_resource type="AudioStream" uid="uid://dcrr8a87fdpdt" path="res://Assets/sounds/free_sound_jump(cabled_mess).wav" id="7_h7tu8"]
 [ext_resource type="AudioStream" uid="uid://dc7tgcm7wlea" path="res://Assets/sounds/skid__wakuwakuwakuwaku__sfxwalkground3.wav" id="8_7veep"]
+[ext_resource type="AudioStream" uid="uid://spg42w5aqkc7" path="res://Assets/sounds/hurt.wav" id="11_1oo81"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfifn"]
 atlas = ExtResource("3_gktnd")
@@ -146,7 +147,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dash",
-"speed": 18.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -266,11 +267,15 @@ wait_time = 0.25
 one_shot = true
 
 [node name="dashTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.3
 one_shot = true
 
 [node name="dashCooldownTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
+
+[node name="dashCancelTimer" type="Timer" parent="."]
+wait_time = 0.07
 one_shot = true
 
 [node name="sfx_jump" type="AudioStreamPlayer" parent="."]
@@ -281,6 +286,12 @@ volume_db = -12.0
 stream = ExtResource("8_7veep")
 volume_db = -12.0
 
+[node name="sfx_dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1oo81")
+volume_db = -20.0
+pitch_scale = 3.0
+
 [connection signal="timeout" from="jumpTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
+[connection signal="timeout" from="dashCancelTimer" to="." method="_on_dash_cancel_timer_timeout"]

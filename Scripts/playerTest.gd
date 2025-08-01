@@ -218,10 +218,9 @@ func _physics_process(_delta: float) -> void:
 		return
 		
 	#reset abilities
-	if is_on_floor() || wallSlide || wallJump:
+	if is_on_floor() || wallSlide:
 		doubleJump = doubleJumpMax
 		if dashUnlock: dashAvail = true
-		wallJump = false
 	
 ###################################################################################################
 	#vertical movement
@@ -300,7 +299,7 @@ func _physics_process(_delta: float) -> void:
 		if dashDir > 0 || skid: animated_sprite.flip_h = false
 		elif dashDir < 0: animated_sprite.flip_h = true
 		return
-	if dashing && not wallTouch && !jumping:
+	if dashing && not is_on_wall() && !jumping:
 		return
 	
 	if is_on_floor() && !skid: 
@@ -328,3 +327,4 @@ func _physics_process(_delta: float) -> void:
 	if wallJump:
 		if get_wall_normal().x > 0: animated_sprite.flip_h = false
 		else: animated_sprite.flip_h = true
+		wallJump = false
