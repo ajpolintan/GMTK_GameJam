@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ybsos"]
 [ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_fohpp"]
-[ext_resource type="Texture2D" uid="uid://3fmbs2tf4wfo" path="res://Art/gmtk_background.png" id="2_tsahx"]
+[ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="4_6j1u1"]
 [ext_resource type="AudioStream" uid="uid://bn8axyh40xb6t" path="res://Assets/sounds/select_705174__digimistic__game-menu-select-sound-2.wav" id="4_cbj0u"]
 
 [node name="MainMenu" type="Control"]
@@ -73,9 +73,9 @@ layer = -1
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
 z_index = -80
-position = Vector2(579, 328)
-scale = Vector2(4.704, 3.83721)
-texture = ExtResource("2_tsahx")
+position = Vector2(190, 205)
+scale = Vector2(1.48837, 1.21411)
+texture = ExtResource("4_6j1u1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Sprite2D"]
 offset_right = 40.0
