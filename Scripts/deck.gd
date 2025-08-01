@@ -3,10 +3,12 @@ extends Control
 # call the card_scene
 @onready var jump_card_scene: PackedScene = preload("res://Scenes/Cards/JumpCard.tscn")
 @onready var speed_card_scene: PackedScene = preload("res://Scenes/Cards/SpeedCard.tscn")
+@onready var time_increase_card_scene: PackedScene = preload("res://Scenes/Cards/TimeIncreaseCard.tscn")
+
 
 @onready var spawn_point = $CanvasLayer/Spawn
-@onready var player = $Player
-
+@onready var player = $Player 
+@onready var HUD = $"../CanvasLayer/HUD" 
 #gain player scene
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
 
@@ -17,8 +19,8 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	card_scenes = [jump_card_scene, speed_card_scene]
-	var card_num = rng.randi_range(0,1)
+	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene]
+	var card_num = rng.randi_range(0,3)
 	print(card_num)
 	$CanvasLayer/Option.visible = false
 	$CanvasLayer/Option2.visible = false
@@ -29,6 +31,7 @@ func _ready() -> void:
 
 
 func _on_button_pressed() -> void:
+	print(HUD.time)
 	print("Creating cards...")
 	$CanvasLayer/Option.visible = true
 	$CanvasLayer/Option2.visible = true
@@ -36,7 +39,7 @@ func _on_button_pressed() -> void:
 	#Creating Cards...
 	var card_position = 0;
 	for n in 3:
-		var card_num = rng.randi_range(0,1)
+		var card_num = rng.randi_range(0,2)
 		var card_scene = card_scenes[card_num]
 		var card = card_scene.instantiate()
 		spawn_point.add_child(card)
@@ -55,6 +58,8 @@ func activate_ability(ability_name: String) -> void:
 			print("It is a JUMP CARD!")
 		"Speed":
 			player.speedMult = 2
+		"IncreaseTime":
+			HUD.time += 10
 	pass
 
 func hide_buttons() -> void:

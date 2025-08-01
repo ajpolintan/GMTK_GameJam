@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxx15vu4nn1eo"]
+
+[ext_resource type="PackedScene" uid="uid://bvy013bakyuao" path="res://Scenes/card.tscn" id="1_p88oo"]
+[ext_resource type="Texture2D" uid="uid://c3xun5solwcli" path="res://Assets/sprites/Powerups/time.png" id="2_kcy2r"]
+
+[node name="IncreaseTime" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource("1_p88oo")]
+card_name = "IncreaseTime"
+card_description = "Add Time to the Countdown"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(167, 123)
+scale = Vector2(2.00135, 1.94444)
+texture = ExtResource("2_kcy2r")
