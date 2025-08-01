@@ -24,7 +24,7 @@ offset_top = 22.2582
 offset_right = 306.0
 offset_bottom = 71.2582
 theme_override_fonts/font = ExtResource("3_dytlp")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 22
 text = "+1 Jump"
 horizontal_alignment = 1
 autowrap_mode = 1
@@ -32,10 +32,10 @@ autowrap_mode = 1
 [node name="CardImage" type="Sprite2D" parent="."]
 
 [node name="CardDescription" type="Label" parent="."]
-offset_left = 96.0
-offset_top = 258.258
-offset_right = 230.0
-offset_bottom = 293.258
+offset_left = 47.0
+offset_top = 269.0
+offset_right = 272.0
+offset_bottom = 328.0
 theme_override_fonts/font = ExtResource("3_dytlp")
 text = "allows you to run"
 horizontal_alignment = 1
