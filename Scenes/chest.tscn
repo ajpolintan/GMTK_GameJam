@@ -31,27 +31,33 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ycy28")
 }, {
-"duration": 5.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2ae45")
 }],
 "loop": false,
-"name": &"default",
+"name": &"opening",
 "speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vqgb5"]
 size = Vector2(25, 17)
 
-[node name="Area2D" type="Area2D"]
+[node name="Chest" type="Area2D"]
 script = ExtResource("1_5n8ma")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nrdld")
-frame_progress = 0.341512
+animation = &"opening"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_vqgb5")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="chestGet" from="." to="." method="_on_chest_get"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

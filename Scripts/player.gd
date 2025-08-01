@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var sfx_skid = $sfx_skid
 
 #physics vars
+var is_stopped = false
 var jumping = false
 var skid = false
 var wallSlide = false
@@ -28,6 +29,10 @@ var speedMult = 1
 #stop gaining upwards velocity when jump timer is out
 func _on_timer_timeout():
 	jumping = false
+
+func _on_stop():
+	is_stopped = true
+	velocity = Vector2.ZERO
 	
 
 func _physics_process(_delta: float) -> void:
@@ -41,6 +46,12 @@ func _physics_process(_delta: float) -> void:
 	if (wall_left || wall_right):
 		wallTouch = true
 	else: wallTouch = false
+	
+	#check if stopped
+	if is_stopped:
+		velocity = Vector2.ZERO
+		is_stopped = false
+		return
 	
 ###################################################################################################
 	#vertical movement
