@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ccpekc7ka85so"]
+[gd_scene load_steps=31 format=3 uid="uid://ccpekc7ka85so"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nwe68"]
 [ext_resource type="Texture2D" uid="uid://b2bxsoc7lleth" path="res://Assets/sprites/gmtk_idle-Sheet.png" id="2_b8pf3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cnjutd7dhg360" path="res://Assets/sprites/GMTK-Run-Sheet.png" id="4_x22j0"]
 [ext_resource type="Texture2D" uid="uid://csy6winhlofqv" path="res://Assets/GMTK-Skidd.png" id="5_kq23a"]
 [ext_resource type="Texture2D" uid="uid://ceftcum2ga1lc" path="res://Assets/gmtk_walk-Sheet.png" id="6_8rbfb"]
+[ext_resource type="AudioStream" uid="uid://dcrr8a87fdpdt" path="res://Assets/sounds/free_sound_jump(cabled_mess).wav" id="7_h7tu8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfifn"]
 atlas = ExtResource("3_gktnd")
@@ -214,5 +215,9 @@ shape = SubResource("RectangleShape2D_swgim")
 process_callback = 0
 wait_time = 0.25
 one_shot = true
+
+[node name="sfx_jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_h7tu8")
+volume_db = -12.0
 
 [connection signal="timeout" from="jumpTimer" to="." method="_on_timer_timeout"]

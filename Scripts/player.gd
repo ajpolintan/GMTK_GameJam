@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var timer: Timer = $jumpTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sfx_jump = $sfx_jump
 
 #physics vars
 var jumping = false
@@ -67,6 +68,8 @@ func _physics_process(_delta: float) -> void:
 		#start full hop timer
 		jumping = true
 		timer.start()
+		sfx_jump.play()
+
 		velocity.y = JUMP_VELOCITY
 	
 	#contiuing to hold jump button causes upward velocity to remain constant (for full hop)
@@ -76,7 +79,7 @@ func _physics_process(_delta: float) -> void:
 	#when full hop timer runs out, slowly decrease velocity (as opposed to cutting it straight to downward)
 	elif Input.is_action_pressed("jump") && !jumping:
 		velocity.y = move_toward(velocity.y, MAX_DOWN, GRAVITY)
-	
+
 	#if jump stops being pressed early, end jump period
 	elif jumping: jumping = false
 	
