@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3xun5solwcli" path="res://Assets/sprites/Powerups/time.png" id="2_kcy2r"]
 
 [node name="IncreaseTime" type="Node2D"]
+position = Vector2(0, 15)
 
 [node name="Card" parent="." instance=ExtResource("1_p88oo")]
 card_name = "IncreaseTime"

@@ -29,6 +29,15 @@ text = "+1 Jump"
 horizontal_alignment = 1
 autowrap_mode = 1
 
+[node name="ColorRect" type="ColorRect" parent="CardName/NameLabel"]
+z_index = -1
+offset_left = 15.0
+offset_top = -14.2582
+offset_right = 55.0
+offset_bottom = 25.7418
+scale = Vector2(6.84175, 1.22764)
+color = Color(0.0862745, 0.0862745, 0.0862745, 0.588235)
+
 [node name="CardImage" type="Sprite2D" parent="."]
 
 [node name="CardDescription" type="Label" parent="."]
@@ -40,6 +49,15 @@ theme_override_fonts/font = ExtResource("3_dytlp")
 text = "allows you to run"
 horizontal_alignment = 1
 autowrap_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="CardDescription"]
+z_index = -1
+offset_left = -8.0
+offset_top = -12.0
+offset_right = 32.0
+offset_bottom = 28.0
+scale = Vector2(6.18402, 1.24174)
+color = Color(0.0862745, 0.0862745, 0.0862745, 0.588235)
 
 [node name="Area2D" type="Area2D" parent="."]
 

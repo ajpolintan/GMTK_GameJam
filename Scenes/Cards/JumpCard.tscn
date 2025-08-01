@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvbg3jb7sh6s4" path="res://Assets/sprites/Powerups/wings.png" id="2_sh8jb"]
 
 [node name="JumpCard" type="Node2D"]
+position = Vector2(0, 10)
 
 [node name="Card" parent="." instance=ExtResource("1_7bbjd")]
 card_name = "Jump"

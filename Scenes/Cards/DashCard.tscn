@@ -6,6 +6,7 @@
 [node name="JumpCard" type="Node2D"]
 
 [node name="Card" parent="." instance=ExtResource("1_n6pj7")]
+position = Vector2(1, 10)
 card_name = "Dash"
 card_description = "Grants Dash"
 

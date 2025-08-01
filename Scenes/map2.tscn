@@ -56,6 +56,6 @@ shape = SubResource("WorldBoundaryShape2D_6vjev")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = -15
 position = Vector2(116, -186)
-scale = Vector2(1.2995, 1.43355)
+scale = Vector2(1.28349, 1.38259)
 energy = 0.75
 texture = SubResource("GradientTexture2D_cbs8n")
