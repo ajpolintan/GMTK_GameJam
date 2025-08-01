@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_wiicx"]
 [ext_resource type="Texture2D" uid="uid://g7q02hg1sfx4" path="res://Art/clouds.png" id="2_bg28m"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_il3ap"]
-[ext_resource type="PackedScene" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="4_lvhim"]
+[ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="4_lvhim"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_jw3wr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwwjc"]

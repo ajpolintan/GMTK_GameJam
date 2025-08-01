@@ -1,7 +1,7 @@
 extends Area2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var ready_to_open = false
-
+@onready var chest_open = $chest_open
 signal chestGet
 
 func _ready():
@@ -11,5 +11,6 @@ func _ready():
 
 func _on_body_entered(_body: Node2D):
 	if ready_to_open:
+		chest_open.play()
 		animated_sprite.play("opening")
 		emit_signal("chestGet")

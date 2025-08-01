@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dem5fj41bow0v"]
+[gd_scene load_steps=10 format=3 uid="uid://dem5fj41bow0v"]
 
 [ext_resource type="Script" path="res://Scripts/chest.gd" id="1_5n8ma"]
 [ext_resource type="Texture2D" uid="uid://cg621abubdpax" path="res://Assets/sprites/chests.png" id="1_gj5wr"]
+[ext_resource type="AudioStream" uid="uid://c1fptlmul54re" path="res://Assets/sounds/chest_open__the_frisbee_of_peace__wooden-chest-lid-latches-close_02.wav" id="3_cf42q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5e5a"]
 atlas = ExtResource("1_gj5wr")
@@ -52,6 +53,10 @@ animation = &"opening"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_vqgb5")
+
+[node name="chest_open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cf42q")
+volume_db = -10.341
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="chestGet" from="." to="." method="_on_chest_get"]
