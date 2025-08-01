@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccpekc7ka85so" path="res://Scenes/Player.tscn" id="3_cxq3c"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="4_5yew3"]
 [ext_resource type="PackedScene" uid="uid://c2sgp7mlthps3" path="res://Assets/sprites/Tilesets/tile_map_layer.tscn" id="5_4scti"]
-[ext_resource type="PackedScene" path="res://Scenes/deck.tscn" id="6_e52wj"]
+[ext_resource type="PackedScene" uid="uid://b0x4gv752d4nf" path="res://Scenes/deck.tscn" id="6_e52wj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3j3uu"]
 texture = ExtResource("1_c44bd")

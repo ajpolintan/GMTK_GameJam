@@ -12,12 +12,6 @@ offset_right = -1.0
 offset_bottom = -1.0
 script = ExtResource("1_6dlcv")
 
-[node name="JumpCard" type="Button" parent="."]
-layout_mode = 1
-offset_right = 148.0
-offset_bottom = 44.0
-text = "Create_Card"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Spawn" type="Node2D" parent="CanvasLayer"]
@@ -45,7 +39,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_eyglp")
 text = "Select"
 
-[connection signal="pressed" from="JumpCard" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Option" to="." method="_on_option_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Option2" to="." method="_on_option_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Option3" to="." method="_on_option_3_pressed"]
