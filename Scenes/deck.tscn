@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://eoqkwnbbbgy4"]
+[gd_scene load_steps=3 format=3 uid="uid://eoqkwnbbbgy4"]
 
 [ext_resource type="Script" path="res://Scripts/deck.gd" id="1_6dlcv"]
+[ext_resource type="FontFile" uid="uid://rhfbsckxpx0e" path="res://Assets/fonts/PixelOperator8.ttf" id="2_eyglp"]
 
 [node name="Deck" type="Control"]
 layout_mode = 3
@@ -20,42 +21,31 @@ text = "Create_Card"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Spawn" type="Node2D" parent="CanvasLayer"]
-position = Vector2(201, 95)
+position = Vector2(116, 95)
 
-[node name="Option" type="Button" parent="CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 297.0
-offset_top = -243.0
-offset_right = 381.0
-offset_bottom = -159.0
-grow_vertical = 0
-text = "Option 1"
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 218.0
+offset_top = 441.0
+offset_right = 944.0
+offset_bottom = 481.0
+theme_override_constants/separation = 218
 
-[node name="Option2" type="Button" parent="CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 545.0
-offset_top = -246.0
-offset_right = 629.0
-offset_bottom = -162.0
-grow_vertical = 0
-text = "Option 2"
+[node name="Option" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eyglp")
+text = "Select"
 
-[node name="Option3" type="Button" parent="CanvasLayer"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 796.0
-offset_top = -249.0
-offset_right = 880.0
-offset_bottom = -165.0
-grow_vertical = 0
-text = "Option3"
+[node name="Option2" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eyglp")
+text = "Select"
+
+[node name="Option3" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_eyglp")
+text = "Select"
 
 [connection signal="pressed" from="JumpCard" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Option" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="CanvasLayer/Option2" to="." method="_on_option_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/Option3" to="." method="_on_option_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Option2" to="." method="_on_option_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/Option3" to="." method="_on_option_3_pressed"]
