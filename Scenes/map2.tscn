@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://riia6ruggf3i"]
+[gd_scene load_steps=8 format=4 uid="uid://riia6ruggf3i"]
 
 [ext_resource type="Texture2D" uid="uid://385c8sflnn4a" path="res://Assets/sprites/world_tileset.png" id="1_vcski"]
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_wiicx"]
+[ext_resource type="Texture2D" uid="uid://g7q02hg1sfx4" path="res://Art/clouds.png" id="2_bg28m"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_il3ap"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="4_lvhim"]
 
@@ -182,6 +183,17 @@ sources/0 = SubResource("TileSetAtlasSource_bwwjc")
 
 [node name="level2" type="Node2D"]
 script = ExtResource("1_wiicx")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1300, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(197, -48)
+scale = Vector2(0.989527, 1.31034)
+texture = ExtResource("2_bg28m")
 
 [node name="map2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD//wAAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAD+/wAAAAACAAAAAAD9/wAAAAACAAAAAAD9/wEAAAACAAEAAAD+/wEAAAACAAEAAAD//wEAAAACAAEAAAAAAAEAAAACAAEAAAABAAEAAAACAAEAAAACAAEAAAACAAEAAAACAAIAAAACAAEAAAACAAMAAAACAAEAAAABAAMAAAACAAEAAAAAAAMAAAACAAEAAAD//wMAAAACAAEAAAD+/wMAAAACAAEAAAD9/wMAAAACAAEAAAD9/wIAAAACAAEAAAD+/wIAAAACAAEAAAD//wIAAAACAAEAAAAAAAIAAAACAAEAAAABAAIAAAACAAEAAAADAAAAAAAJAAAAAAAEAAAAAAAKAAAAAAAFAAAAAAALAAAAAAAGAP7/AAAEAAEAAAAGAP//AAAEAAEAAAAGAAAAAAAEAAEAAAAGAAEAAAAEAAEAAAAGAAIAAAAEAAEAAAAGAAMAAAAEAAEAAAAHAAMAAAAEAAEAAAAIAAMAAAAEAAEAAAAIAAIAAAAEAAEAAAAIAAEAAAAEAAEAAAAIAAAAAAAEAAEAAAAIAP//AAAEAAEAAAAIAP7/AAAEAAEAAAAHAP7/AAAEAAEAAAAHAP//AAAEAAEAAAAHAAAAAAAEAAEAAAAHAAEAAAAEAAEAAAAHAAIAAAAEAAEAAAAGAP3/AAAEAAAAAAAHAP3/AAAEAAAAAAAIAP3/AAAEAAAAAAA=")

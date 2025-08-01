@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://qi7eqpq6xs8n"]
+[gd_scene load_steps=7 format=4 uid="uid://qi7eqpq6xs8n"]
 
 [ext_resource type="Texture2D" uid="uid://385c8sflnn4a" path="res://Assets/sprites/world_tileset.png" id="1_dwptp"]
 [ext_resource type="Script" path="res://Scripts/map1.gd" id="1_yhhpa"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_mnkm3"]
+[ext_resource type="Texture2D" uid="uid://g7q02hg1sfx4" path="res://Art/clouds.png" id="4_noch3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwwjc"]
 texture = ExtResource("1_dwptp")
@@ -190,5 +191,16 @@ tile_set = SubResource("TileSet_b4tjx")
 position = Vector2(320, -74)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1300, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(197, -48)
+scale = Vector2(0.989527, 1.31034)
+texture = ExtResource("4_noch3")
 
 [connection signal="chestGet" from="chest" to="." method="_on_chest_chest_get"]
