@@ -187,7 +187,7 @@ tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA
 tile_set = SubResource("TileSet_b4tjx")
 
 [node name="chest" parent="." instance=ExtResource("2_mnkm3")]
-position = Vector2(316, -74)
+position = Vector2(320, -74)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 
