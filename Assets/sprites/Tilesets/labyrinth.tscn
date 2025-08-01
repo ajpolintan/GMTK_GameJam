@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1rcwpnrutgie"]
+
+[ext_resource type="Texture2D" uid="uid://bjyakn02a2etp" path="res://Assets/sprites/labyrinth tiles.png" id="1_q4b63"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ksnrk"]
+texture = ExtResource("1_q4b63")
+1:2/size_in_atlas = Vector2i(9, 3)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-71.4178, -16.2635, 67.8822, -15.5564, 59.397, 7.77818, 48.7904, 16.9706, 32.5269, 10.6066, -4.24265, 16.2635, -53.033, 19.0919, -66.468, 2.82842)
+11:1/size_in_atlas = Vector2i(3, 8)
+11:1/0 = 0
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.435, -49.4975, 13.435, -48.7904, 14.1421, 65.7609, 0.707108, 53.7401, -14.8492, 64.3467)
+16:1/size_in_atlas = Vector2i(2, 4)
+16:1/0 = 0
+1:6/size_in_atlas = Vector2i(2, 3)
+1:6/0 = 0
+3:6/size_in_atlas = Vector2i(3, 3)
+3:6/0 = 0
+6:7/size_in_atlas = Vector2i(2, 2)
+6:7/0 = 0
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.59099, 5.48008, 4.41942, 0.530329, 4.24264, -3.35876, -3.35876, -4.77297, -10.0763, -2.2981, -8, 3.71231)
+8:7/size_in_atlas = Vector2i(3, 2)
+8:7/0 = 0
+8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.83363, 8, 8, 8, 9.54594, -1.06066, 8, -6.36396, -11.844, -5.83363, -11.6673, 7.07107)
+
+[sub_resource type="TileSet" id="TileSet_6fcob"]
+physics_layer_0/collision_layer = 1
+sources/3 = SubResource("TileSetAtlasSource_ksnrk")
+
+[node name="TileMapLayer" type="TileMapLayer"]
+tile_set = SubResource("TileSet_6fcob")

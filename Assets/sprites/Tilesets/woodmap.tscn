@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd3dq6fyy7a64"]
+[gd_scene load_steps=10 format=3 uid="uid://dd3dq6fyy7a64"]
 
 [ext_resource type="Texture2D" uid="uid://dfgwo1ukm4e4u" path="res://Assets/sprites/wall aesprite.png" id="1_8biya"]
 [ext_resource type="Texture2D" uid="uid://r20ldibkqwro" path="res://Assets/sprites/wood-tile-sheet.png" id="1_mn3gw"]
 [ext_resource type="Texture2D" uid="uid://nbibjtj3p6as" path="res://Assets/sprites/ground_tiless-export.png" id="2_x8hns"]
+[ext_resource type="Texture2D" uid="uid://cc6vc4o34f4p2" path="res://Assets/sprites/flowers.png" id="4_g8t22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5sqd"]
 texture = ExtResource("1_8biya")
@@ -103,11 +104,26 @@ texture = ExtResource("2_x8hns")
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
 7:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gllw2"]
+texture = ExtResource("4_g8t22")
+0:1/0 = 0
+1:1/0 = 0
+2:0/size_in_atlas = Vector2i(2, 2)
+2:0/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:0/size_in_atlas = Vector2i(2, 2)
+7:0/0 = 0
+9:1/size_in_atlas = Vector2i(2, 1)
+9:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_6fcob"]
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_3xhkj")
 sources/2 = SubResource("TileSetAtlasSource_l1fs2")
 sources/0 = SubResource("TileSetAtlasSource_t5sqd")
+sources/3 = SubResource("TileSetAtlasSource_gllw2")
 
 [node name="TileMapLayer" type="TileMapLayer"]
 tile_set = SubResource("TileSet_6fcob")
