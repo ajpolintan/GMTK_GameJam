@@ -169,7 +169,6 @@ func dash():
 		velocity.x = (DASHSPEED * speedMult) * dashDir
 	else:
 		if jumpCancellable:
-			print ("cancel")
 			jumpCancelDash = true
 			dashing = false
 			velocity.x = ((DASHSPEED + RUNSPEED) / 2) * dashDir

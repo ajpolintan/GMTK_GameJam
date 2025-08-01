@@ -1,12 +1,21 @@
 extends Control
 
 var time = 100.0
+var level = 0
 var stopped = false 
 
 func _on_stop():
 	stopped = true
 func _on_go():
 	stopped = false
+	addScore()
+
+func addScore():
+	level += 1
+	update_score_label()
+
+func update_score_label():
+	$Score.text = "Score: %d" % level
 
 func _process(delta):
 	if stopped:
