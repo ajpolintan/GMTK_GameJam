@@ -3,6 +3,8 @@ extends Control
 @onready var jump_card_scene: PackedScene = preload("res://Scenes/Cards/JumpCard.tscn")
 @onready var speed_card_scene: PackedScene = preload("res://Scenes/Cards/SpeedCard.tscn")
 @onready var time_increase_card_scene: PackedScene = preload("res://Scenes/Cards/TimeIncreaseCard.tscn")
+@onready var dash_card_scene: PackedScene = preload("res://Scenes/Cards/DashCard.tscn")
+
 
 @onready var spawn_point = $CanvasLayer/Spawn
 @onready var player = $Player 
@@ -18,8 +20,8 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene]
-	var card_num = rng.randi_range(0,3)
+	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene, dash_card_scene]
+	var card_num = rng.randi_range(0,card_scenes.size())
 	print(card_num)
 	hide_buttons()
 
@@ -38,7 +40,7 @@ func _on_cards() -> void:
 	#Creating Cards...
 	var card_position = 0;
 	for n in 3:
-		var card_num = rng.randi_range(0,2)
+		var card_num = rng.randi_range(0,card_scenes.size() - 1)
 		var card_scene = card_scenes[card_num]
 		var card = card_scene.instantiate()
 		spawn_point.add_child(card)
@@ -59,7 +61,7 @@ func activate_ability(ability_name: String) -> void:
 			player.speedMult = 2
 		"IncreaseTime":
 			HUD.time += 10
-	
+			
 	emit_signal("selected")
 
 func hide_buttons() -> void:

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ujue6qp6p7s1"]
+
+[ext_resource type="PackedScene" uid="uid://bvy013bakyuao" path="res://Scenes/card.tscn" id="1_n6pj7"]
+[ext_resource type="Texture2D" uid="uid://cxuyaysvp1xe2" path="res://Assets/sprites/Powerups/dash_icon.png" id="2_353mg"]
+
+[node name="JumpCard" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource("1_n6pj7")]
+card_name = "Dash"
+card_description = "Grants Dash"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(167, 123)
+scale = Vector2(2.00135, 1.94444)
+texture = ExtResource("2_353mg")
