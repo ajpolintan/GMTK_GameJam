@@ -17,3 +17,4 @@ func _on_try_again_pressed() -> void:
 
 func _on_exit_to_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Main_Menu.tscn")
+	get_tree().reload_current_scene()
