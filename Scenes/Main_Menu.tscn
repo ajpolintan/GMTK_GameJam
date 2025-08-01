@@ -64,15 +64,23 @@ theme_override_fonts/font = ExtResource("2_fohpp")
 theme_override_font_sizes/font_size = 61
 text = "GMTK GAME JAM"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -80
-position = Vector2(571.5, 328)
-scale = Vector2(4.588, 3.83721)
-texture = ExtResource("2_tsahx")
-
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_cbj0u")
 volume_db = -20.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+z_index = -80
+position = Vector2(580, 328)
+scale = Vector2(4.704, 3.83721)
+texture = ExtResource("2_tsahx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Sprite2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
 
 [connection signal="pressed" from="Button Container/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button Container/Options" to="." method="_on_options_pressed"]
