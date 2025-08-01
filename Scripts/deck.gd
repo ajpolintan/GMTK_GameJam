@@ -22,9 +22,7 @@ func _ready() -> void:
 	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene]
 	var card_num = rng.randi_range(0,3)
 	print(card_num)
-	$CanvasLayer/Option.visible = false
-	$CanvasLayer/Option2.visible = false
-	$CanvasLayer/Option3.visible = false
+	hide_buttons()
 
 	pass # Replace with function body.
 
@@ -33,9 +31,10 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	print(HUD.time)
 	print("Creating cards...")
-	$CanvasLayer/Option.visible = true
-	$CanvasLayer/Option2.visible = true
-	$CanvasLayer/Option3.visible = true
+	$CanvasLayer/HBoxContainer/Option.visible = true
+	$CanvasLayer/HBoxContainer/Option2.visible = true
+	$CanvasLayer/HBoxContainer/Option3.visible = true
+
 	#Creating Cards...
 	var card_position = 0;
 	for n in 3:
@@ -47,7 +46,7 @@ func _on_button_pressed() -> void:
 		# how do i select a card and make sure that card has the same effect on the player
 		
 		if n != 0 : 
-			card_position += 180
+			card_position += 300
 			card.position.x += card_position	
 		
 
@@ -63,9 +62,9 @@ func activate_ability(ability_name: String) -> void:
 	pass
 
 func hide_buttons() -> void:
-	$CanvasLayer/Option.visible = false
-	$CanvasLayer/Option2.visible = false
-	$CanvasLayer/Option3.visible = false
+	$CanvasLayer/HBoxContainer/Option.visible = false
+	$CanvasLayer/HBoxContainer/Option2.visible = false
+	$CanvasLayer/HBoxContainer/Option3.visible = false
 	
 func _on_option_pressed() -> void:
 	var first_card = spawn_point.get_child(0)
