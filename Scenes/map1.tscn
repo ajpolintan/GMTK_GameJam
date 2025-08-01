@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://385c8sflnn4a" path="res://Assets/sprites/world_tileset.png" id="1_dwptp"]
 [ext_resource type="Script" path="res://Scripts/map1.gd" id="1_yhhpa"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_mnkm3"]
-[ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="4_w0a3l"]
+[ext_resource type="PackedScene" path="res://Scenes/killzone.tscn" id="4_w0a3l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwwjc"]
 texture = ExtResource("1_dwptp")
@@ -190,7 +190,7 @@ tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA
 tile_set = SubResource("TileSet_b4tjx")
 
 [node name="chest" parent="." instance=ExtResource("2_mnkm3")]
-position = Vector2(296, -250)
+position = Vector2(562, -248)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 
