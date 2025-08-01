@@ -27,9 +27,9 @@ const GRAVITY = 20.0
 const MAX_DOWN = 200
 
 #powerups
-var doubleJumpMax = 0
+var doubleJumpMax = 1
 var doubleJump = 0
-var speedMult = 1
+var speedMult = 1.5
 var dashUnlock = true
 var dashAvail = false
 var dashing = false
@@ -82,7 +82,7 @@ func jumpCheck(dir):
 		jump()
 		
 	#if the jump is triggered in the air without a wall, it's a doublejump
-	elif !dashing && doubleJump > 0: 
+	elif doubleJump > 0: 
 		doubleJump -= 1
 		if dir > 0: 
 			animated_sprite.flip_h = false
@@ -171,7 +171,7 @@ func dash():
 		if jumpCancellable:
 			jumpCancelDash = true
 			dashing = false
-			velocity.x = ((DASHSPEED + RUNSPEED) / 2) * dashDir
+			velocity.x = ((DASHSPEED + RUNSPEED) * speedMult / 2) * dashDir
 		else:
 			dashing = false
 			dashCancel = true
