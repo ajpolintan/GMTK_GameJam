@@ -58,10 +58,13 @@ func activate_ability(ability_name: String) -> void:
 			player.doubleJumpMax = 2
 			print("It is a JUMP CARD!")
 		"Speed":
-			player.speedMult = 2
+			player.speedMult += 0.2
 		"IncreaseTime":
 			HUD.time += 10
-			
+		"Dash":
+			player.dashUnlock = true
+			card_scenes.erase(dash_card_scene)
+
 	emit_signal("selected")
 
 func hide_buttons() -> void:
