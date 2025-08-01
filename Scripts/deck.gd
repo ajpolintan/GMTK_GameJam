@@ -1,10 +1,8 @@
 extends Control
-
 # call the card_scene
 @onready var jump_card_scene: PackedScene = preload("res://Scenes/Cards/JumpCard.tscn")
 @onready var speed_card_scene: PackedScene = preload("res://Scenes/Cards/SpeedCard.tscn")
 @onready var time_increase_card_scene: PackedScene = preload("res://Scenes/Cards/TimeIncreaseCard.tscn")
-
 
 @onready var spawn_point = $CanvasLayer/Spawn
 @onready var player = $Player 
@@ -12,6 +10,7 @@ extends Control
 #gain player scene
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
 
+signal selected
 
 var card_scenes: Array = []
 #Random Number Generator
@@ -30,7 +29,8 @@ func _ready() -> void:
 
 
 
-func _on_button_pressed() -> void:
+func _on_cards() -> void:
+	await get_tree().create_timer(1).timeout
 	print(HUD.time)
 	print("Creating cards...")
 	$CanvasLayer/Option.visible = true
@@ -60,7 +60,8 @@ func activate_ability(ability_name: String) -> void:
 			player.speedMult = 2
 		"IncreaseTime":
 			HUD.time += 10
-	pass
+	
+	emit_signal("selected")
 
 func hide_buttons() -> void:
 	$CanvasLayer/Option.visible = false
