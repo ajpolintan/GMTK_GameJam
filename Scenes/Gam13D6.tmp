@@ -19,5 +19,3 @@ position = Vector2(0, -8)
 zoom = Vector2(3, 3)
 limit_bottom = 48
 position_smoothing_enabled = true
-
-[connection signal="stop" from="." to="." method="_on_stop"]
