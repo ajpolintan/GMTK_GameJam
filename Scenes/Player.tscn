@@ -177,7 +177,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4cvvq")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_aoiun")
 }, {
 "duration": 1.0,
@@ -191,7 +191,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"doubleJump",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -222,7 +222,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jumpAnim",
-"speed": 8.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -298,8 +298,9 @@ z_as_relative = false
 position = Vector2(0.5, -11.5)
 scale = Vector2(0.71875, 0.71875)
 sprite_frames = SubResource("SpriteFrames_pbknh")
-animation = &"doubleJump"
+animation = &"dash"
 autoplay = "idle"
+frame_progress = 0.193078
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
