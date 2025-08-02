@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bxx6b3xdjdwie"]
+[gd_scene load_steps=10 format=4 uid="uid://bxx6b3xdjdwie"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_ljrne"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_a0hqc"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c4ltj8hlmjbpx" path="res://Art/forest.png" id="4_ba07b"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_th6v3"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_3gcad"]
-[ext_resource type="PackedScene" uid="uid://bfjwdaf41vdvp" path="res://Scenes/Obstacles/Horizontal_Platform.tscn" id="7_xe32s"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 
@@ -40,7 +39,7 @@ scale = Vector2(1.33614, 1.49671)
 texture = ExtResource("4_ba07b")
 
 [node name="chest" parent="." instance=ExtResource("5_th6v3")]
-position = Vector2(265, -354)
+position = Vector2(116, -54)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(-32, -26)
@@ -57,5 +56,3 @@ position = Vector2(116, -186)
 scale = Vector2(1.28349, 1.38259)
 energy = 0.75
 texture = SubResource("GradientTexture2D_cbs8n")
-
-[node name="Platform" parent="." instance=ExtResource("7_xe32s")]

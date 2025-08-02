@@ -15,7 +15,9 @@ extends Control
 @onready var dash_icon = $"../CanvasLayer/HUD/Dash" 
 @onready var glide_icon = $"../CanvasLayer/HUD/Glide" 
 @onready var jump_icon = $"../CanvasLayer/HUD/Jump" 
+@onready var speed_icon = $"../CanvasLayer/HUD/Speed" 
 @onready var boots_icon = $"../CanvasLayer/HUD/Boots" 
+@onready var jump_boost_icon = $"../CanvasLayer/HUD/JumpBoost" 
 
 #gain player scene
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
@@ -28,11 +30,11 @@ var rng = RandomNumberGenerator.new()
 
 #USED FOR DISPLAY ICONS
 var icons_created = false
-var icon_position = 28
+var icon_position = 0
 
 var jump_count = 0
+var speed_count = 0
 var jump_boost_count = 0
-var dash_count = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,6 +46,9 @@ func _ready() -> void:
 	glide_icon.visible = false
 	jump_icon.visible = false
 	boots_icon.visible = false
+	speed_icon.visible = false
+	jump_boost_icon.visible = false
+
 	print(card_num)
 	hide_buttons()
 
@@ -75,7 +80,7 @@ func _on_cards() -> void:
 		
 
 func activate_ability(ability_name: String) -> void:
-	print(player.glideUnlock)
+	var icon_position_offset = 32
 	match ability_name:
 		"Jump":
 			player.doubleJumpMax += 1
@@ -85,14 +90,24 @@ func activate_ability(ability_name: String) -> void:
 			
 			#but what if it is greater than 1. you would just increment the count no?
 			if (icons_created and jump_count == 1):
-				icon_position += 40
+				icon_position += icon_position_offset
 				jump_icon.position.x += icon_position
-				jump_icon.get_node("JumpCount").position.x = jump_icon.position.x - 120
+
 			jump_icon.visible = true
 			icons_created = true
 			
 		"Speed":
 			player.speedMult += 0.2
+			
+			speed_count += 1
+			speed_icon.get_node("SpeedCount").text = str(speed_count)
+			if (icons_created and speed_count == 1):
+				icon_position += icon_position_offset
+				speed_icon.position.x += icon_position
+				
+			speed_icon.visible = true
+			icons_created = true
+
 		"IncreaseTime":
 			HUD.time += 10
 		"Dash":
@@ -100,8 +115,8 @@ func activate_ability(ability_name: String) -> void:
 			dash_icon.visible = true
 			
 			if (icons_created):
-				icon_position += 28
-				dash_icon.position.x += icon_position
+				icon_position += icon_position_offset
+				dash_icon.position.x += icon_position - 7
 
 			icons_created = true
 
@@ -109,12 +124,22 @@ func activate_ability(ability_name: String) -> void:
 		"JumpBoost":
 			print("Increased Jump!")
 			player.jumpMult += 0.1
+			
+
+			jump_boost_count += 1
+			jump_boost_icon.get_node("JumpBoostCount").text = str(jump_boost_count)
+			if (icons_created and jump_boost_count == 1):
+				icon_position += icon_position_offset
+				jump_boost_icon.position.x += icon_position
+				
+			jump_boost_icon.visible = true
+			icons_created = true
 		"Glide":
 			player.glideUnlock = true
 			glide_icon.visible = true
 			
 			if (icons_created):
-				icon_position += 28
+				icon_position += icon_position_offset
 				glide_icon.position.x += icon_position
 			icons_created = true
 				
@@ -125,7 +150,7 @@ func activate_ability(ability_name: String) -> void:
 			boots_icon.visible = true
 			
 			if (icons_created):
-				icon_position += 28
+				icon_position += icon_position_offset
 				boots_icon.position.x += icon_position
 			
 			icons_created = true
