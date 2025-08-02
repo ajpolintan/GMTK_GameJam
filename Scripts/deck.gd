@@ -58,6 +58,7 @@ func _on_cards() -> void:
 		
 
 func activate_ability(ability_name: String) -> void:
+	print(player.glideUnlock)
 	match ability_name:
 		"Jump":
 			player.doubleJumpMax += 1
@@ -68,11 +69,17 @@ func activate_ability(ability_name: String) -> void:
 		"Dash":
 			player.dashUnlock = true
 			dash_icon.visible = true
+			card_scenes.erase(dash_card_scene)
 		"JumpBoost":
 			print("Increased Jump!")
 			player.jumpMult += 0.1
+		"Glide":
+			player.glideUnlock = true
+			print(player.glideUnlock)
+
+			card_scenes.erase(glide_card_scene)
+
 			#remove the dash card
-			card_scenes.erase(dash_card_scene)
 
 	emit_signal("selected")
 

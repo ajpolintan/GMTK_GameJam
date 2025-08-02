@@ -11,6 +11,6 @@ card_name = "Jump"
 card_description = "+ Extra Jump"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(170, 114)
+position = Vector2(168, 115)
 scale = Vector2(5.61661, 5.1216)
 texture = ExtResource("2_sh8jb")
