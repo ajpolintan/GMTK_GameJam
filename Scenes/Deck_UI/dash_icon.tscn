@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://1mdme7mdla7b"]
+
+[node name="DashIcon" type="Node2D"]
+
+[node name="DashUI" type="Sprite2D" parent="."]

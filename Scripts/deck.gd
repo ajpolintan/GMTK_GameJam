@@ -9,6 +9,8 @@ extends Control
 @onready var spawn_point = $CanvasLayer/Spawn
 @onready var player = $Player 
 @onready var HUD = $"../CanvasLayer/HUD" 
+@onready var dash_icon = $"../CanvasLayer/HUD/Dash" 
+
 #gain player scene
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
 
@@ -22,6 +24,7 @@ var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene, dash_card_scene]
 	var card_num = rng.randi_range(0,card_scenes.size())
+	dash_icon.visible = false
 	print(card_num)
 	hide_buttons()
 
@@ -62,6 +65,9 @@ func activate_ability(ability_name: String) -> void:
 			HUD.time += 10
 		"Dash":
 			player.dashUnlock = true
+			dash_icon.visible = true
+
+			#remove the dash card
 			card_scenes.erase(dash_card_scene)
 
 	emit_signal("selected")
