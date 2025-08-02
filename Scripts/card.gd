@@ -25,16 +25,3 @@ func get_cardName() -> String:
 	var message = "hello"
 	return message
 	
-func unhighlight():
-	baseSprite.set_modulate(Color(1, 1, 1, 1))
-	
-func highlight():
-	baseSprite.set_modulate(Color(0.5, 1, 1 , 0.8))
-		
-	
-func _on_area_2d_mouse_entered() -> void:
-	highlight() # Replace with function body.
-
-
-func _on_area_2d_mouse_exited() -> void:
-	unhighlight()
