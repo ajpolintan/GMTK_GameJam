@@ -42,6 +42,8 @@ func _on_level_finished():
 func _on_deck_selected() -> void:
 	var level_amount = 6
 	
+	hud.time += 5
+	
 	match level:
 		2:
 			load_level("res://Scenes/map2.tscn")
