@@ -13,6 +13,7 @@ extends CharacterBody2D
 
 #physics vars
 var is_stopped = false
+var isDead = false
 var lockAnim = false
 var jumpLock = false
 var jumping = false
@@ -267,10 +268,12 @@ func hitDeath():
 	death()
 		
 func death():
-	is_stopped = true
-	sfx_death.play()
-	animated_sprite.play("death")
-	deathTimer.start()
+	if !isDead:
+		isDead = true
+		is_stopped = true
+		sfx_death.play()
+		animated_sprite.play("death")
+		deathTimer.start()
 	
 func _on_death_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
