@@ -8,6 +8,5 @@ func _ready():
 
 
 func _on_body_entered(body: Node2D):
-	if ready_to_kill:
-		if body.name == "Player":
-			body.hitSpike()
+	if body.name == "Player" && ready_to_kill:
+		body.hitSpike()

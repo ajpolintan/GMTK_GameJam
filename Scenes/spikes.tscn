@@ -9,7 +9,8 @@ size = Vector2(34, 13.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tjee"]
 size = Vector2(32, 12)
 
-[node name="Chest" type="Area2D"]
+[node name="Spike" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_ftatu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
