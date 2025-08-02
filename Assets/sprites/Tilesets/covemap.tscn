@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://boroqs22tby8s"]
+
+[ext_resource type="Texture2D" uid="uid://ce4wnm7s1qc5x" path="res://Assets/sprites/stone-tiles.png" id="1_7e3g5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tw3wt"]
+texture = ExtResource("1_7e3g5")
+1:0/0 = 0
+3:0/0 = 0
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5, 8, -6.875, 8, 1.75, 8, 8, -8, 8, -8, -0.5)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.75, 8, -6.875, 8, 1.75, 8, 8, -8, 8, -8, -0.5)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.75, 8, -6.875, 8, -5.625, 8, 1.75, 8, 8, -8, 8, -8, -0.5)
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -7, 6.75, -6.75, 6.875, 2, 4.625, 3.625, -3.625, 3.625, -8, -0.5)
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, -8, 8, -8, 8, 8, -6.5, 8)
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, -8, 8, -8, 8, 8, -6.5, 8)
+2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, -8, 8, -8, 8, 8, -6.5, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3.875, 2.625, -6.75, 8, -6.875, 8, 8, -8, 8)
+6:5/0 = 0
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.875, 2.625, -6.75, 8, -1.375, 8, 8, -8, 8)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, -8, 8, -8, 6.875, 6.625, 0.375, 3.5, -6.5, 8)
+
+[sub_resource type="TileSet" id="TileSet_6fcob"]
+physics_layer_0/collision_layer = 1
+sources/6 = SubResource("TileSetAtlasSource_tw3wt")
+
+[node name="TileMapLayer" type="TileMapLayer"]
+scale = Vector2(0.998081, 1.05263)
+tile_set = SubResource("TileSet_6fcob")
