@@ -61,8 +61,8 @@ scale = Vector2(1.28349, 1.38259)
 energy = 0.75
 texture = SubResource("GradientTexture2D_cbs8n")
 
-[node name="spike1" parent="." groups=["spikes"] instance=ExtResource("8_vf3hl")]
+[node name="spike1" parent="." instance=ExtResource("8_vf3hl")]
 position = Vector2(-161, -22)
 
-[node name="spike2" parent="." groups=["spikes"] instance=ExtResource("8_vf3hl")]
+[node name="spike2" parent="." instance=ExtResource("8_vf3hl")]
 position = Vector2(-128, -22)

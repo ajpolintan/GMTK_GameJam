@@ -45,6 +45,7 @@ var jumpCancellable = false
 var dashCancel = false
 var glideUnlock = false
 var gliding = false
+var spikeBoots = false
 
 func _on_stop():
 	is_stopped = true
@@ -216,6 +217,14 @@ func _on_dash_cooldown_timer_timeout() -> void:
 func _on_dash_cancel_timer_timeout() -> void:
 	jumpCancellable = false
 	
+	
+func launchRight():
+	print ("woahhhh")
+
+func hitSpike():
+	if !spikeBoots:
+		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+
 ###################################################################################################
 #Animations
 ###################################################################################################
