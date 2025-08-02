@@ -56,10 +56,22 @@ position = Vector2(69, 74)
 shape = SubResource("WorldBoundaryShape2D_6vjev")
 
 [node name="V_Platform" parent="." instance=ExtResource("7_yd7g3")]
+position = Vector2(388, -243)
 
 [node name="Timer" type="Timer" parent="V_Platform"]
 
 [node name="Moving-platforms" type="Sprite2D" parent="V_Platform"]
+z_index = -1
+position = Vector2(35, 0)
+texture = ExtResource("8_hwi1t")
+region_enabled = true
+region_rect = Rect2(77.6024, 41.7254, 56.0832, 12.4266)
+
+[node name="V_Platform2" parent="." instance=ExtResource("7_yd7g3")]
+
+[node name="Timer" type="Timer" parent="V_Platform2"]
+
+[node name="Moving-platforms" type="Sprite2D" parent="V_Platform2"]
 z_index = -1
 position = Vector2(34, -1)
 texture = ExtResource("8_hwi1t")
@@ -98,3 +110,4 @@ position = Vector2(633, -320)
 position = Vector2(664, -320)
 
 [connection signal="timeout" from="V_Platform/Timer" to="V_Platform" method="_on_timer_timeout"]
+[connection signal="timeout" from="V_Platform2/Timer" to="V_Platform2" method="_on_timer_timeout"]

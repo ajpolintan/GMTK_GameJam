@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://Scripts/HorizontalPlatform.gd" id="1_h5jot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wavn2"]
-size = Vector2(51, 6)
+size = Vector2(49.3052, 6.48423)
 
 [node name="HPlatform" type="AnimatableBody2D"]
 position = Vector2(298, -242)
 script = ExtResource("1_h5jot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(34, 0)
-scale = Vector2(1, 1.49026)
+position = Vector2(34.9611, -2.41934)
+scale = Vector2(1.1342, 1.3631)
 shape = SubResource("RectangleShape2D_wavn2")
 one_way_collision = true
