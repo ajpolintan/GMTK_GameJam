@@ -1,15 +1,16 @@
-[gd_scene load_steps=14 format=4 uid="uid://degcuik7e2bb3"]
+[gd_scene load_steps=15 format=4 uid="uid://degcuik7e2bb3"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_ny1fj"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_8yjs5"]
-[ext_resource type="PackedScene" uid="uid://d1rcwpnrutgie" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_6h66a"]
+[ext_resource type="PackedScene" uid="uid://dkkvkj2gihcae" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_6h66a"]
 [ext_resource type="Texture2D" uid="uid://cgmiy3ytteka" path="res://Art/labyrinth3.png" id="4_8yibe"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_mdwbo"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_aojhl"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="7_yd7g3"]
 [ext_resource type="Texture2D" uid="uid://bnc3pgb86ume7" path="res://Assets/sprites/moving-platforms.png" id="8_hwi1t"]
-[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="8_m7i3m"]
+[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="8_m7i3m"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="9_jk536"]
+[ext_resource type="PackedScene" uid="uid://c6p0e8ikw2d8q" path="res://Scenes/PlatformHorizontal.tscn" id="11_8cj3l"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 distance = 216.0
@@ -32,7 +33,7 @@ tile_map_data = PackedByteArray("AAAOAPr/AwACAAAAAAAUAPr/AwACAAAAAAA=")
 
 [node name="Labyrinth" parent="." instance=ExtResource("3_6h66a")]
 position = Vector2(0, -529)
-tile_map_data = PackedByteArray("AAAFAOz/AwABAAIAAAAOAOz/AwAIAAcAAAAUAPD/AwAIAAcAAAARAPD/AwAIAAcAAAASAPD/AwAIAAcAAAATAPD/AwAIAAcAAAAgAO//AwALAAEAAAAgAPL/AwAQAAEAAAAhAO//AwALAAEAAAAhAPL/AwAQAAEAAAAiAO//AwALAAEAAAAiAPL/AwAQAAEAAAAjAO//AwALAAEAAAAjAPL/AwAQAAEAAAAhAOz/AwABAAYAAAAhAPP/AwAQAAEAAAAjAPT/AwAQAAEAAAAkAO//AwALAAEAAAAkAPL/AwAQAAEAAAAwAPr/AwABAAIAAAAaAPX/AwAIAAcAAAAXAOr/AwAIAAcAAAAiAOT/AwALAAEAAAAjAOL/AwABAAYAAAApAO3/AwAIAAcAAAAYAPr/AwABAAYAAAAYAPv/AwABAAIAAAAoAPr/AwAIAAcAAAA=")
+tile_map_data = PackedByteArray("AAAFAOz/AwABAAIAAAAgAO//AwALAAEAAAAgAPL/AwALAAEAAAAhAO//AwALAAEAAAAhAPL/AwAQAAEAAAAiAO//AwALAAEAAAAiAPL/AwAQAAEAAAAjAO//AwALAAEAAAAjAPL/AwAQAAEAAAAhAOz/AwABAAYAAAAhAPP/AwAQAAEAAAAjAPT/AwAQAAEAAAAkAO//AwALAAEAAAAkAPL/AwAQAAEAAAAwAPr/AwABAAIAAAAXAOr/AwAIAAcAAAAiAOT/AwALAAEAAAAjAOL/AwABAAYAAAApAO3/AwAIAAcAAAAYAPr/AwABAAYAAAAYAPv/AwABAAIAAAAoAPr/AwAIAAcAAAAcAPX/AwABAAIAAAAZAPX/AwABAAIAAAATAPX/AwABAAIAAAANAPX/AwABAAIAAAALAOz/AwABAAIAAAANAOz/AwABAAIAAAAbAPD/AwAIAAcAAAAcAPD/AwAIAAcAAAAdAPD/AwAIAAcAAAAVAPH/AwAGAAcAAAALAPv/AwAIAAcAAAAMAPv/AwAIAAcAAAANAPv/AwAIAAcAAAARAPz/AwAGAAcAAAAsAPD/AwAIAAcAAAApAPT/AwAIAAcAAAA=")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
@@ -63,7 +64,7 @@ position = Vector2(137, 77)
 shape = SubResource("WorldBoundaryShape2D_6vjev")
 
 [node name="V_Platform" parent="." instance=ExtResource("7_yd7g3")]
-position = Vector2(508, -588)
+position = Vector2(510, -615)
 
 [node name="Timer" type="Timer" parent="V_Platform"]
 
@@ -75,7 +76,7 @@ region_enabled = true
 region_rect = Rect2(77.6024, 41.7254, 56.0832, 12.4266)
 
 [node name="V_Platform2" parent="." instance=ExtResource("7_yd7g3")]
-position = Vector2(1465, -620)
+position = Vector2(69, -720)
 
 [node name="Timer" type="Timer" parent="V_Platform2"]
 
@@ -130,5 +131,51 @@ offset_bottom = -1231.0
 scale = Vector2(86.4284, -10.8466)
 color = Color(0.862745, 0.882353, 0.94902, 1)
 
+[node name="LabyrinthHPlatform2" parent="." instance=ExtResource("11_8cj3l")]
+position = Vector2(155, -760)
+
+[node name="Timer" type="Timer" parent="LabyrinthHPlatform2"]
+
+[node name="Moving-platforms" type="Sprite2D" parent="LabyrinthHPlatform2"]
+z_index = 1
+position = Vector2(34, -1)
+texture = ExtResource("8_hwi1t")
+region_enabled = true
+region_rect = Rect2(9.35034, 41.9753, 57.043, 12.2848)
+
+[node name="Spike3" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(389, -721)
+
+[node name="Spike4" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(421, -721)
+
+[node name="Spike5" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(454, -721)
+
+[node name="Spike6" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(487, -721)
+
+[node name="Spike7" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(325, -721)
+
+[node name="Spike8" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(357, -721)
+
+[node name="Spike9" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(260, -721)
+
+[node name="Spike10" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(293, -721)
+
+[node name="Spike11" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(196, -721)
+
+[node name="Spike12" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(228, -721)
+
+[node name="Spike13" parent="." instance=ExtResource("9_jk536")]
+position = Vector2(164, -721)
+
 [connection signal="timeout" from="V_Platform/Timer" to="V_Platform" method="_on_timer_timeout"]
 [connection signal="timeout" from="V_Platform2/Timer" to="V_Platform2" method="_on_timer_timeout"]
+[connection signal="timeout" from="LabyrinthHPlatform2/Timer" to="LabyrinthHPlatform2" method="_on_timer_timeout"]
