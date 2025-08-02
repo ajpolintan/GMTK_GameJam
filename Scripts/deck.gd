@@ -15,6 +15,7 @@ extends Control
 @onready var dash_icon = $"../CanvasLayer/HUD/Dash" 
 @onready var glide_icon = $"../CanvasLayer/HUD/Glide" 
 @onready var jump_icon = $"../CanvasLayer/HUD/Jump" 
+@onready var boots_icon = $"../CanvasLayer/HUD/Boots" 
 
 #gain player scene
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
@@ -42,6 +43,7 @@ func _ready() -> void:
 	dash_icon.visible = false
 	glide_icon.visible = false
 	jump_icon.visible = false
+	boots_icon.visible = false
 	print(card_num)
 	hide_buttons()
 
@@ -120,6 +122,14 @@ func activate_ability(ability_name: String) -> void:
 		"SafetyBoots":
 			print("Safety Boots!")
 			player.spikeBoots = true
+			boots_icon.visible = true
+			
+			if (icons_created):
+				icon_position += 28
+				boots_icon.position.x += icon_position
+			
+			icons_created = true
+			
 			card_scenes.erase(safety_boots_card_scene)
 
 

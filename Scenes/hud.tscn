@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://i7fysnw7rdmf"]
+[gd_scene load_steps=8 format=3 uid="uid://i7fysnw7rdmf"]
 
 [ext_resource type="Script" path="res://Scripts/timer.gd" id="1_48ign"]
 [ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_7ukqi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxuyaysvp1xe2" path="res://Assets/sprites/Powerups/dash_icon.png" id="4_vs2j0"]
 [ext_resource type="Texture2D" uid="uid://c435slwitttwu" path="res://Assets/sprites/Powerups/glide-icon.png" id="5_3qit2"]
 [ext_resource type="Texture2D" uid="uid://dvbg3jb7sh6s4" path="res://Assets/sprites/Powerups/wings.png" id="6_tk7j5"]
+[ext_resource type="Texture2D" uid="uid://djcfw2cmjmi6j" path="res://Assets/jump_boost.png" id="7_edc01"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -81,6 +82,10 @@ texture = ExtResource("4_vs2j0")
 [node name="Glide" type="Sprite2D" parent="."]
 position = Vector2(29, 57)
 texture = ExtResource("5_3qit2")
+
+[node name="Boots" type="Sprite2D" parent="."]
+position = Vector2(31, 63)
+texture = ExtResource("7_edc01")
 
 [node name="Jump" type="Sprite2D" parent="."]
 position = Vector2(30, 54)
