@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://riia6ruggf3i"]
+[gd_scene load_steps=17 format=4 uid="uid://riia6ruggf3i"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_wiicx"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_il3ap"]
-[ext_resource type="PackedScene" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_bt27w"]
+[ext_resource type="PackedScene" uid="uid://d1rcwpnrutgie" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_bt27w"]
 [ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="3_msi8u"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="4_lvhim"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_jw3wr"]
@@ -10,8 +10,9 @@
 [ext_resource type="Script" path="res://Scripts/verticalPlatform.gd" id="8_gc2a5"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="8_vf3hl"]
 [ext_resource type="Texture2D" uid="uid://dnvmk6vfglrgq" path="res://Assets/sprites/world_gmtk_tileset-Sheet-Sheet.png" id="9_ardbf"]
-[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="9_b5lul"]
+[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="9_b5lul"]
 [ext_resource type="PackedScene" uid="uid://c6p0e8ikw2d8q" path="res://Scenes/PlatformHorizontal.tscn" id="12_vi0kt"]
+[ext_resource type="Texture2D" uid="uid://bnc3pgb86ume7" path="res://Assets/sprites/moving-platforms.png" id="13_la0c8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 
@@ -58,7 +59,7 @@ shape = SubResource("WorldBoundaryShape2D_6vjev")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = -15
-position = Vector2(116, -186)
+position = Vector2(114, -179)
 scale = Vector2(1.28349, 1.38259)
 energy = 0.75
 texture = SubResource("GradientTexture2D_cbs8n")
@@ -86,6 +87,14 @@ region_rect = Rect2(66.2029, 61.5325, 62.2829, 10.5648)
 [node name="HPlatform" parent="." instance=ExtResource("12_vi0kt")]
 position = Vector2(-230, -40)
 
+[node name="Moving-platforms" type="Sprite2D" parent="HPlatform"]
+z_index = 1
+position = Vector2(35, 0)
+scale = Vector2(0.999998, 0.688141)
+texture = ExtResource("13_la0c8")
+region_enabled = true
+region_rect = Rect2(77.6497, 41.3804, 54.8605, 12.5891)
+
 [node name="Timer" type="Timer" parent="HPlatform"]
 
 [node name="Sprite2DPlatH" type="Sprite2D" parent="HPlatform"]
@@ -94,5 +103,25 @@ texture = ExtResource("9_ardbf")
 region_enabled = true
 region_rect = Rect2(66.2029, 61.5325, 62.2829, 10.5648)
 
+[node name="LabyrinthPlatform2" parent="." instance=ExtResource("12_vi0kt")]
+position = Vector2(-333, -40)
+
+[node name="Moving-platforms2" type="Sprite2D" parent="LabyrinthPlatform2"]
+z_index = 1
+position = Vector2(34, 0)
+scale = Vector2(0.999998, 0.688141)
+texture = ExtResource("13_la0c8")
+region_enabled = true
+region_rect = Rect2(9.87736, 42.039, 56.6332, 12.7834)
+
+[node name="Timer" type="Timer" parent="LabyrinthPlatform2"]
+
+[node name="Sprite2DPlatH" type="Sprite2D" parent="LabyrinthPlatform2"]
+position = Vector2(35, 0)
+texture = ExtResource("9_ardbf")
+region_enabled = true
+region_rect = Rect2(66.2029, 61.5325, 62.2829, 10.5648)
+
 [connection signal="timeout" from="Platform/Timer" to="Platform" method="_on_timer_timeout"]
 [connection signal="timeout" from="HPlatform/Timer" to="HPlatform" method="_on_timer_timeout"]
+[connection signal="timeout" from="LabyrinthPlatform2/Timer" to="LabyrinthPlatform2" method="_on_timer_timeout"]

@@ -34,13 +34,14 @@ func _on_timer_timeout() -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wavn2"]
-size = Vector2(51, 6)
+size = Vector2(51.4597, 7.60458)
 
 [node name="VPlatform" type="AnimatableBody2D"]
 position = Vector2(298, -242)
 script = SubResource("GDScript_xbdom")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(34, 0)
+position = Vector2(34.2479, -0.5)
+scale = Vector2(1.0786, 1.4465)
 shape = SubResource("RectangleShape2D_wavn2")
 one_way_collision = true

@@ -1,13 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://degcuik7e2bb3"]
+[gd_scene load_steps=14 format=4 uid="uid://degcuik7e2bb3"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_ny1fj"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_8yjs5"]
-[ext_resource type="PackedScene" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_6h66a"]
+[ext_resource type="PackedScene" uid="uid://d1rcwpnrutgie" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_6h66a"]
 [ext_resource type="Texture2D" uid="uid://cgmiy3ytteka" path="res://Art/labyrinth3.png" id="4_8yibe"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_mdwbo"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_aojhl"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="7_yd7g3"]
-[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="8_m7i3m"]
+[ext_resource type="Texture2D" uid="uid://bnc3pgb86ume7" path="res://Assets/sprites/moving-platforms.png" id="8_hwi1t"]
+[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="8_m7i3m"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="9_jk536"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
@@ -21,7 +22,7 @@ height = 389
 use_hdr = true
 fill_from = Vector2(0, 0.338105)
 
-[node name="level2" type="Node2D"]
+[node name="level3" type="Node2D"]
 script = ExtResource("1_ny1fj")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("2_8yjs5")]
@@ -57,6 +58,13 @@ shape = SubResource("WorldBoundaryShape2D_6vjev")
 [node name="V_Platform" parent="." instance=ExtResource("7_yd7g3")]
 
 [node name="Timer" type="Timer" parent="V_Platform"]
+
+[node name="Moving-platforms" type="Sprite2D" parent="V_Platform"]
+z_index = -1
+position = Vector2(34, -1)
+texture = ExtResource("8_hwi1t")
+region_enabled = true
+region_rect = Rect2(9.35034, 41.9753, 57.043, 12.2848)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false

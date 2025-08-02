@@ -11,5 +11,6 @@ script = ExtResource("1_h5jot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(34, 0)
+scale = Vector2(1, 1.49026)
 shape = SubResource("RectangleShape2D_wavn2")
 one_way_collision = true
