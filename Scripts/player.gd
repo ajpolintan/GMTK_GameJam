@@ -30,11 +30,11 @@ const GLIDEVELOCITY = 50
 const MAX_DOWN = 200
 
 #powerups
-var doubleJumpMax = 1
+var doubleJumpMax = 0
 var doubleJump = 0
 var speedMult = 1
 var jumpMult = 1
-var dashUnlock = true
+var dashUnlock = false
 var dashAvail = false
 var dashing = false
 var dashCooldown = true
@@ -43,7 +43,7 @@ var groundDash = 0
 var jumpCancelDash = false
 var jumpCancellable = false
 var dashCancel = false
-var glideUnlock = true
+var glideUnlock = false
 var gliding = false
 
 func _on_stop():
