@@ -18,6 +18,8 @@ func _ready():
 	
 	load_level("res://Scenes/map1.tscn")
 
+func _on_hud_time_up() -> void:
+	player.death()
 
 func load_level(path: String):
 	if curLevel:

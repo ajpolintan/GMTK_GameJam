@@ -3,6 +3,7 @@ extends Control
 var time = 30
 var level = 0
 var stopped = false 
+signal timeUp
 
 func _on_stop():
 	stopped = true
@@ -35,6 +36,6 @@ func test():
 	$Countdown.text = actual_string
 	
 	if (time <= 0) :
-		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+		emit_signal("timeUp")
 
 	

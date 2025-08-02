@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ccpekc7ka85so"]
+[gd_scene load_steps=67 format=3 uid="uid://ccpekc7ka85so"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nwe68"]
 [ext_resource type="Texture2D" uid="uid://b2bxsoc7lleth" path="res://Assets/sprites/gmtk_idle-Sheet.png" id="2_b8pf3"]
@@ -9,11 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://blmrysii0d47w" path="res://Assets/sprites/double_jump.png" id="4_yo5xs"]
 [ext_resource type="Texture2D" uid="uid://2wv7a2063fvr" path="res://Assets/sprites/Glide-Sheet.png" id="5_bnse3"]
 [ext_resource type="Texture2D" uid="uid://csy6winhlofqv" path="res://Assets/GMTK-Skidd.png" id="5_kq23a"]
+[ext_resource type="Texture2D" uid="uid://hl442ujywr8j" path="res://Assets/sprites/gmtk_death_anim.png" id="5_ty5vi"]
 [ext_resource type="Texture2D" uid="uid://ceftcum2ga1lc" path="res://Assets/gmtk_walk-Sheet.png" id="6_8rbfb"]
 [ext_resource type="Texture2D" uid="uid://b7r7ji55cjgnf" path="res://Assets/sprites/wall_jump.png" id="7_ep450"]
 [ext_resource type="AudioStream" uid="uid://dcrr8a87fdpdt" path="res://Assets/sounds/free_sound_jump(cabled_mess).wav" id="7_h7tu8"]
 [ext_resource type="AudioStream" uid="uid://dc7tgcm7wlea" path="res://Assets/sounds/skid__wakuwakuwakuwaku__sfxwalkground3.wav" id="8_7veep"]
 [ext_resource type="AudioStream" uid="uid://spg42w5aqkc7" path="res://Assets/sounds/hurt.wav" id="11_1oo81"]
+[ext_resource type="AudioStream" uid="uid://cij2sq1vmx8wf" path="res://Assets/sounds/explosion.wav" id="16_tn4xq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfifn"]
 atlas = ExtResource("3_gktnd")
@@ -70,6 +72,34 @@ region = Rect2(94, 0, 47, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_53a4b"]
 atlas = ExtResource("3_dtjqf")
 region = Rect2(188, 0, 47, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbf4v"]
+atlas = ExtResource("5_ty5vi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsksx"]
+atlas = ExtResource("5_ty5vi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yi1kb"]
+atlas = ExtResource("5_ty5vi")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n30sw"]
+atlas = ExtResource("5_ty5vi")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwwki"]
+atlas = ExtResource("5_ty5vi")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cwt7"]
+atlas = ExtResource("5_ty5vi")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8unbk"]
+atlas = ExtResource("5_ty5vi")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_umm06"]
 atlas = ExtResource("4_yo5xs")
@@ -240,6 +270,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mbf4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsksx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yi1kb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n30sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwwki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cwt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8unbk")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_umm06")
 }, {
 "duration": 1.0,
@@ -381,9 +437,8 @@ z_as_relative = false
 position = Vector2(0.5, -11.5)
 scale = Vector2(0.71875, 0.71875)
 sprite_frames = SubResource("SpriteFrames_pbknh")
-animation = &"boostDash"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.250948
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
@@ -409,6 +464,8 @@ one_shot = true
 [node name="boostTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="deathTimer" type="Timer" parent="."]
+
 [node name="sfx_jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_h7tu8")
 volume_db = -12.0
@@ -422,8 +479,14 @@ stream = ExtResource("11_1oo81")
 volume_db = -20.0
 pitch_scale = 3.0
 
+[node name="sfx_death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_tn4xq")
+volume_db = -14.214
+pitch_scale = 2.0
+
 [connection signal="timeout" from="jumpTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="dashCancelTimer" to="." method="_on_dash_cancel_timer_timeout"]
 [connection signal="timeout" from="boostTimer" to="." method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="deathTimer" to="." method="_on_death_timer_timeout"]
