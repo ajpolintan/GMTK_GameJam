@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://riia6ruggf3i"]
+[gd_scene load_steps=16 format=4 uid="uid://riia6ruggf3i"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_wiicx"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_il3ap"]
@@ -6,10 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="3_msi8u"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="4_lvhim"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_jw3wr"]
-[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_7u0re"]
+[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="7_7u0re"]
 [ext_resource type="Script" path="res://Scripts/verticalPlatform.gd" id="8_gc2a5"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="8_vf3hl"]
+[ext_resource type="Texture2D" uid="uid://dnvmk6vfglrgq" path="res://Assets/sprites/world_gmtk_tileset-Sheet-Sheet.png" id="9_ardbf"]
 [ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="9_b5lul"]
+[ext_resource type="PackedScene" uid="uid://c6p0e8ikw2d8q" path="res://Scenes/PlatformHorizontal.tscn" id="12_vi0kt"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 
@@ -54,11 +56,6 @@ position = Vector2(-32, -26)
 position = Vector2(69, 74)
 shape = SubResource("WorldBoundaryShape2D_6vjev")
 
-[node name="Platform" parent="." instance=ExtResource("7_7u0re")]
-script = ExtResource("8_gc2a5")
-
-[node name="Timer" type="Timer" parent="Platform"]
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = -15
 position = Vector2(116, -186)
@@ -75,4 +72,27 @@ position = Vector2(-128, -22)
 [node name="Lamp Post" parent="." instance=ExtResource("9_b5lul")]
 position = Vector2(-5, -1)
 
+[node name="Platform" parent="." instance=ExtResource("7_7u0re")]
+script = ExtResource("8_gc2a5")
+
+[node name="Timer" type="Timer" parent="Platform"]
+
+[node name="Sprite2DPlat" type="Sprite2D" parent="Platform"]
+position = Vector2(35, 0)
+texture = ExtResource("9_ardbf")
+region_enabled = true
+region_rect = Rect2(66.2029, 61.5325, 62.2829, 10.5648)
+
+[node name="HPlatform" parent="." instance=ExtResource("12_vi0kt")]
+position = Vector2(-230, -40)
+
+[node name="Timer" type="Timer" parent="HPlatform"]
+
+[node name="Sprite2DPlatH" type="Sprite2D" parent="HPlatform"]
+position = Vector2(35, 0)
+texture = ExtResource("9_ardbf")
+region_enabled = true
+region_rect = Rect2(66.2029, 61.5325, 62.2829, 10.5648)
+
 [connection signal="timeout" from="Platform/Timer" to="Platform" method="_on_timer_timeout"]
+[connection signal="timeout" from="HPlatform/Timer" to="HPlatform" method="_on_timer_timeout"]

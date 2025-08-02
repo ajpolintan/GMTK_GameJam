@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgmiy3ytteka" path="res://Art/labyrinth3.png" id="4_8yibe"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_mdwbo"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_aojhl"]
-[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_yd7g3"]
+[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="7_yd7g3"]
 [ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="8_m7i3m"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="9_jk536"]
 
