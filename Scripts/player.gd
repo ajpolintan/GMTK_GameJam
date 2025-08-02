@@ -32,6 +32,7 @@ const MAX_DOWN = 200
 var doubleJumpMax = 1
 var doubleJump = 0
 var speedMult = 1
+var jumpMult = 1
 var dashUnlock = true
 var dashAvail = false
 var dashing = false
@@ -61,7 +62,7 @@ func jumpProc(dir):
 		
 	#full hop
 	elif  jumping:
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * jumpMult
 		
 	#when full hop timer runs out, slowly decrease velocity (as opposed to cutting it straight to downward)
 	elif !jumping:
@@ -99,7 +100,7 @@ func jump():
 	jumping = true
 	jumpTimer.start()
 	sfx_jump.play()
-	velocity.y = JUMP_VELOCITY
+	velocity.y = JUMP_VELOCITY * jumpMult
 	jumpAnim()
 	
 #stop gaining upwards velocity when jump timer is out
