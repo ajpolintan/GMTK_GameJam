@@ -75,7 +75,7 @@ region_enabled = true
 region_rect = Rect2(77.6024, 41.7254, 56.0832, 12.4266)
 
 [node name="V_Platform2" parent="." instance=ExtResource("7_yd7g3")]
-position = Vector2(883, -558)
+position = Vector2(1465, -620)
 
 [node name="Timer" type="Timer" parent="V_Platform2"]
 
