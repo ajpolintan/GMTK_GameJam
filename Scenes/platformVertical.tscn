@@ -1,6 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm4l7dxxxfvfv"]
-
-[ext_resource type="Texture2D" uid="uid://dnvmk6vfglrgq" path="res://Assets/sprites/world_gmtk_tileset-Sheet-Sheet.png" id="1_k4qdp"]
+[gd_scene load_steps=3 format=3 uid="uid://dm4l7dxxxfvfv"]
 
 [sub_resource type="GDScript" id="GDScript_xbdom"]
 script/source = "extends AnimatableBody2D
@@ -41,12 +39,6 @@ size = Vector2(51, 6)
 [node name="VPlatform" type="AnimatableBody2D"]
 position = Vector2(298, -242)
 script = SubResource("GDScript_xbdom")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(35, 0)
-texture = ExtResource("1_k4qdp")
-region_enabled = true
-region_rect = Rect2(66.2029, 61.5325, 62.2829, 10.5648)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(34, 0)

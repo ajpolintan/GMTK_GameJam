@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://g7q02hg1sfx4" path="res://Art/clouds.png" id="4_5b3vg"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_c4ewv"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_yp35i"]
-[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_1e68j"]
+[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="7_1e68j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 
@@ -53,9 +53,13 @@ shape = SubResource("WorldBoundaryShape2D_6vjev")
 
 [node name="Platform" parent="." instance=ExtResource("7_1e68j")]
 
+[node name="Timer" type="Timer" parent="Platform"]
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = -15
 position = Vector2(116, -186)
 scale = Vector2(1.28349, 1.38259)
 energy = 0.75
 texture = SubResource("GradientTexture2D_cbs8n")
+
+[connection signal="timeout" from="Platform/Timer" to="Platform" method="_on_timer_timeout"]
