@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8ncu3dmlty5h"]
+
+[ext_resource type="PackedScene" uid="uid://bvy013bakyuao" path="res://Scenes/card.tscn" id="1_gcg55"]
+[ext_resource type="Texture2D" uid="uid://c435slwitttwu" path="res://Assets/sprites/Powerups/glide-icon.png" id="2_wmjeq"]
+
+[node name="JumpCard" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource("1_gcg55")]
+position = Vector2(1, 10)
+card_name = "Glide"
+card_description = "Grants Glide Ability"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(167, 167)
+scale = Vector2(5.24135, 5.09231)
+texture = ExtResource("2_wmjeq")
