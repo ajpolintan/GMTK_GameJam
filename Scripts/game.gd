@@ -29,6 +29,9 @@ func load_level(path: String):
 	var spawnPoint = curLevel.get_node("PlayerSpawn")
 	player.global_position = spawnPoint.global_position
 	emit_signal("go")
+	
+	for spike in curLevel.get_tree().get_nodes_in_group("spikes"):
+		deck.spikeWalk.connect(Callable(spike, "_on_spike_walk_selected"))
 
 	if curLevel.has_signal("level_finished"):
 		curLevel.level_finished.connect(Callable(self, "_on_level_finished"))
