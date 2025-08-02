@@ -4,9 +4,11 @@ extends Node2D
 @onready var hud: Control = $CanvasLayer/HUD
 var curLevel: Node
 var level = 1
+var spikeWalk = false
 signal stop
 signal go
 signal cards
+signal spikeBoots
 
 func _ready():
 	stop.connect(Callable(player, "_on_stop"))
@@ -14,6 +16,7 @@ func _ready():
 	go.connect(Callable(player, "_on_go"))
 	go.connect(Callable(hud, "_on_go"))
 	cards.connect(Callable(deck, "_on_cards"))
+	spikeWalk = false
 	
 	load_level("res://Scenes/map1.tscn")
 
@@ -30,8 +33,10 @@ func load_level(path: String):
 	player.global_position = spawnPoint.global_position
 	emit_signal("go")
 	
-	for spike in curLevel.get_tree().get_nodes_in_group("spikes"):
-		deck.spikeWalk.connect(Callable(spike, "_on_spike_walk_selected"))
+	if spikeWalk:
+		for spike in curLevel.get_tree().get_nodes_in_group("spikes"):
+			spikeBoots.connect(Callable(spike, "_on_spike_walk_selected"))
+			emit_signal("spikeBoots")
 
 	if curLevel.has_signal("level_finished"):
 		curLevel.level_finished.connect(Callable(self, "_on_level_finished"))
@@ -60,3 +65,7 @@ func _on_deck_selected() -> void:
 	if level > level_amount:
 		level = 1
 		load_level("res://Scenes/map1.tscn")
+
+
+func _on_deck_spike_walk() -> void:
+	spikeWalk = true

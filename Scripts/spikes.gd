@@ -9,6 +9,7 @@ func _ready():
 	
 func _on_spike_walk_selected():
 	spikeWalk = true
+	print("wazzaah")
 
 func _on_body_entered(_body: Node2D):
 	if ready_to_kill && !spikeWalk:
