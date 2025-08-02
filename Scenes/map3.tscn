@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_ny1fj"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_8yjs5"]
-[ext_resource type="PackedScene" uid="uid://d1rcwpnrutgie" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_6h66a"]
+[ext_resource type="PackedScene" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_6h66a"]
 [ext_resource type="Texture2D" uid="uid://cgmiy3ytteka" path="res://Art/labyrinth3.png" id="4_8yibe"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_mdwbo"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_aojhl"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_yd7g3"]
-[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="8_m7i3m"]
+[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="8_m7i3m"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="9_jk536"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
@@ -56,9 +56,10 @@ shape = SubResource("WorldBoundaryShape2D_6vjev")
 
 [node name="V_Platform" parent="." instance=ExtResource("7_yd7g3")]
 
-[node name="V_Platform2" parent="." instance=ExtResource("7_yd7g3")]
+[node name="Timer" type="Timer" parent="V_Platform"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 z_index = -15
 position = Vector2(395, -124)
 rotation = -0.517864
@@ -87,3 +88,5 @@ position = Vector2(633, -320)
 
 [node name="Spike3" parent="." instance=ExtResource("9_jk536")]
 position = Vector2(664, -320)
+
+[connection signal="timeout" from="V_Platform/Timer" to="V_Platform" method="_on_timer_timeout"]
