@@ -4,10 +4,12 @@ extends CharacterBody2D
 @onready var dashCooldownTimer: Timer = $dashCooldownTimer
 @onready var dashCancelTimer: Timer = $dashCancelTimer
 @onready var boostTimer: Timer = $boostTimer
+@onready var deathTimer: Timer = $deathTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sfx_jump = $sfx_jump
 @onready var sfx_skid = $sfx_skid
 @onready var sfx_dash = $sfx_dash
+@onready var sfx_death = $sfx_death
 
 #physics vars
 var is_stopped = false
@@ -220,7 +222,10 @@ func _on_dash_cooldown_timer_timeout() -> void:
 func _on_dash_cancel_timer_timeout() -> void:
 	jumpCancellable = false
 	
-	
+###################################################################################################
+#Interactables
+###################################################################################################
+
 func launchRight():
 	if (is_on_floor() && !boostDashing):
 		boostTimer.start()
@@ -256,7 +261,19 @@ func _on_boost_timer_timeout() -> void:
 
 func hitSpike():
 	if !spikeBoots:
-		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+		death()
+		
+func hitDeath():
+	death()
+		
+func death():
+	is_stopped = true
+	sfx_death.play()
+	animated_sprite.play("death")
+	deathTimer.start()
+	
+func _on_death_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 ###################################################################################################
 #Animations

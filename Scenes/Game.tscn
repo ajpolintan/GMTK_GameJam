@@ -33,4 +33,5 @@ limit_bottom = 48
 position_smoothing_enabled = true
 
 [connection signal="stop" from="." to="." method="_on_stop"]
+[connection signal="timeUp" from="CanvasLayer/HUD" to="." method="_on_hud_time_up"]
 [connection signal="selected" from="Deck" to="." method="_on_deck_selected"]
