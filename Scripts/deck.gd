@@ -20,7 +20,6 @@ extends Control
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
 
 signal selected
-signal spikeWalk
 
 var card_scenes: Array = []
 #Random Number Generator
@@ -120,7 +119,7 @@ func activate_ability(ability_name: String) -> void:
 			card_scenes.erase(glide_card_scene)
 		"SafetyBoots":
 			print("Safety Boots!")
-			emit_signal("spikeWalk")
+			player.spikeBoots = true
 			card_scenes.erase(safety_boots_card_scene)
 
 

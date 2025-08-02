@@ -34,4 +34,3 @@ position_smoothing_enabled = true
 
 [connection signal="stop" from="." to="." method="_on_stop"]
 [connection signal="selected" from="Deck" to="." method="_on_deck_selected"]
-[connection signal="spikeWalk" from="Deck" to="." method="_on_deck_spike_walk"]
