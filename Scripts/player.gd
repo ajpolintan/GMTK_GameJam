@@ -319,19 +319,18 @@ func _physics_process(_delta: float) -> void:
 	#turnaround
 	if (direction * velocity.x < 0) && !dashing:
 		turnAroundProc(direction)
-	
 	if skid && !dashing:
 		skidProc(direction)
-	
-	#upon walljump, move in the opposite direction of the wall
-	if wallJump:
-		velocity.x = ((RUNSPEED - 50) * speedMult) * get_wall_normal().x
 		
 	if Input.is_action_just_pressed("dash") && dashCooldown && dashAvail:
 		startDash(direction)
 		
 	if dashing:
 		dash()
+	
+	#upon walljump, move in the opposite direction of the wall
+	if wallJump:
+		velocity.x = ((RUNSPEED - 50) * speedMult) * get_wall_normal().x
 
 	move_and_slide()
 	
