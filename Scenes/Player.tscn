@@ -1,9 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://ccpekc7ka85so"]
+[gd_scene load_steps=58 format=3 uid="uid://ccpekc7ka85so"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nwe68"]
 [ext_resource type="Texture2D" uid="uid://b2bxsoc7lleth" path="res://Assets/sprites/gmtk_idle-Sheet.png" id="2_b8pf3"]
 [ext_resource type="Texture2D" uid="uid://blbwjvf68nwck" path="res://Assets/sprites/dash-2-Sheet.png" id="3_dtjqf"]
 [ext_resource type="Texture2D" uid="uid://bfqudib8auw" path="res://Assets/sprites/gmtk jump-Sheet.png" id="3_gktnd"]
+[ext_resource type="Texture2D" uid="uid://c30i5cx2keelc" path="res://Assets/sprites/gmtk boost-Sheet.png" id="4_q0r28"]
 [ext_resource type="Texture2D" uid="uid://cnjutd7dhg360" path="res://Assets/sprites/GMTK-Run-Sheet.png" id="4_x22j0"]
 [ext_resource type="Texture2D" uid="uid://blmrysii0d47w" path="res://Assets/sprites/double_jump.png" id="4_yo5xs"]
 [ext_resource type="Texture2D" uid="uid://2wv7a2063fvr" path="res://Assets/sprites/Glide-Sheet.png" id="5_bnse3"]
@@ -17,6 +18,46 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfifn"]
 atlas = ExtResource("3_gktnd")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqtda"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqsuk"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwlmg"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqqid"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqyl7"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25xwm"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us8jf"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cheyo"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2au1"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf75l"]
+atlas = ExtResource("4_q0r28")
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_257ql"]
 atlas = ExtResource("3_dtjqf")
@@ -147,6 +188,41 @@ animations = [{
 "loop": true,
 "name": &"airborne",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqtda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqsuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwlmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqqid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqyl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25xwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us8jf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cheyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2au1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf75l")
+}],
+"loop": true,
+"name": &"boostDash",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.5,
@@ -296,6 +372,7 @@ size = Vector2(12, 18)
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 z_as_relative = false
+collision_mask = 3
 script = ExtResource("1_nwe68")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -304,8 +381,9 @@ z_as_relative = false
 position = Vector2(0.5, -11.5)
 scale = Vector2(0.71875, 0.71875)
 sprite_frames = SubResource("SpriteFrames_pbknh")
-animation = &"glide"
+animation = &"boostDash"
 autoplay = "idle"
+frame_progress = 0.250948
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
@@ -328,6 +406,9 @@ one_shot = true
 wait_time = 0.07
 one_shot = true
 
+[node name="boostTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="sfx_jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_h7tu8")
 volume_db = -12.0
@@ -345,3 +426,4 @@ pitch_scale = 3.0
 [connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="dashCancelTimer" to="." method="_on_dash_cancel_timer_timeout"]
+[connection signal="timeout" from="boostTimer" to="." method="_on_boost_timer_timeout"]

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var dashTimer: Timer = $dashTimer
 @onready var dashCooldownTimer: Timer = $dashCooldownTimer
 @onready var dashCancelTimer: Timer = $dashCancelTimer
+@onready var boostTimer: Timer = $boostTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sfx_jump = $sfx_jump
 @onready var sfx_skid = $sfx_skid
@@ -23,6 +24,7 @@ const DECEL = 3.0
 const SPEED = 80.0
 const RUNSPEED = 160.0
 const DASHSPEED = 250.0
+const BOOSTSPEED = 400.0
 const JUMP_VELOCITY = -170.0
 const WALLSPEED = 100
 const GRAVITY = 20.0
@@ -37,6 +39,7 @@ var jumpMult = 1
 var dashUnlock = false
 var dashAvail = false
 var dashing = false
+var boostDashing = false
 var dashCooldown = true
 var dashDir = 0
 var groundDash = 0
@@ -123,7 +126,7 @@ func _on_timer_timeout():
 
 func turnAroundProc(dir):
 	#skid if changing direction when running at max speed	
-	if is_on_floor() && (abs(velocity.x) >= (RUNSPEED - 15) * speedMult):
+	if is_on_floor() && !boostDashing && (abs(velocity.x) >= (RUNSPEED - 15) * speedMult):
 		sfx_skid.play()
 		skid = true
 		skidDir = dir
@@ -219,7 +222,37 @@ func _on_dash_cancel_timer_timeout() -> void:
 	
 	
 func launchRight():
-	print ("woahhhh")
+	if (is_on_floor() && !boostDashing):
+		boostTimer.start()
+		dashCooldownTimer.start()
+		dashCancelTimer.start()
+		sfx_dash.play()
+		boostDashing = true
+		dashCooldown = false
+		dashAvail = false
+		dashCancel = false
+		jumping = false
+		skid = false
+		endSkid()
+		#store whether dash was started on ground
+		if (is_on_floor()): groundDash = true
+		else: groundDash = false
+		dashDir = 1
+		boostAnim()
+		
+func boostDash():
+	if !jumping:
+		velocity.y = 0
+		velocity.x = (BOOSTSPEED * speedMult) * dashDir
+	else:
+		boostDashing = false
+		endDash()
+		
+func _on_boost_timer_timeout() -> void:
+	boostDashing = false
+	groundDash = false
+	dashCancel = false
+	endDash()
 
 func hitSpike():
 	if !spikeBoots:
@@ -252,6 +285,11 @@ func dashAnim():
 	if dashDir > 0 || skid: animated_sprite.flip_h = false
 	elif dashDir < 0: animated_sprite.flip_h = true
 	animated_sprite.play("dash")
+func boostAnim():
+	lockAnim = true
+	if dashDir > 0 || skid: animated_sprite.flip_h = false
+	elif dashDir < 0: animated_sprite.flip_h = true
+	animated_sprite.play("boostDash")
 func endDash():
 	lockAnim = false
 	
@@ -349,8 +387,8 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("dash") && dashCooldown && dashAvail:
 		startDash(direction)
 		
-	if dashing:
-		dash()
+	if dashing: dash()
+	if boostDashing: boostDash()
 	
 	#upon walljump, move in the opposite direction of the wall
 	if wallJump:
