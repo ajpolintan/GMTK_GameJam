@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://degcuik7e2bb3"]
+[gd_scene load_steps=12 format=4 uid="uid://degcuik7e2bb3"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_ny1fj"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_8yjs5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_mdwbo"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_aojhl"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_yd7g3"]
+[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="8_m7i3m"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 
@@ -17,6 +18,7 @@ gradient = SubResource("Gradient_6yynu")
 width = 1024
 height = 389
 use_hdr = true
+fill_from = Vector2(0, 0.338105)
 
 [node name="level2" type="Node2D"]
 script = ExtResource("1_ny1fj")
@@ -57,8 +59,21 @@ shape = SubResource("WorldBoundaryShape2D_6vjev")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = -15
-position = Vector2(310, -229)
-scale = Vector2(0.354076, 1.74271)
-color = Color(1, 0.771786, 0.165409, 1)
-energy = 1.36
+position = Vector2(395, -124)
+rotation = -0.517864
+scale = Vector2(0.20808, 4.37029)
+color = Color(0.913292, 0.4817, 0.950642, 1)
+energy = 1.12
 texture = SubResource("GradientTexture2D_cbs8n")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+z_index = -15
+position = Vector2(784, -284)
+rotation = -0.517864
+scale = Vector2(0.20808, 4.37029)
+color = Color(0.913292, 0.4817, 0.950642, 1)
+energy = 1.12
+texture = SubResource("GradientTexture2D_cbs8n")
+
+[node name="Lamp Post" parent="." instance=ExtResource("8_m7i3m")]
+position = Vector2(32, 23)

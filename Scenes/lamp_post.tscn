@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://0v8p00jc85a5" path="res://lamp.png" id="1_g65wa"]
 
 [sub_resource type="Gradient" id="Gradient_fx4u0"]
-offsets = PackedFloat32Array(0.331169, 0.863636)
+offsets = PackedFloat32Array(0.331169, 0.62987)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_x12yv"]
@@ -22,6 +22,7 @@ region_rect = Rect2(14.1692, 12.95, 18.9302, 84.05)
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(1, -29)
-scale = Vector2(2.51288, 2.70088)
-color = Color(0.980825, 0.953886, 0, 1)
+scale = Vector2(2.51288, 3.38088)
+color = Color(0.999972, 0.159098, 0.322929, 1)
+energy = 1.05
 texture = SubResource("GradientTexture2D_x12yv")
