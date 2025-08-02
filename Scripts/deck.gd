@@ -12,6 +12,7 @@ extends Control
 @onready var player = $Player 
 @onready var HUD = $"../CanvasLayer/HUD" 
 @onready var dash_icon = $"../CanvasLayer/HUD/Dash" 
+@onready var glide_icon = $"../CanvasLayer/HUD/Glide" 
 
 #gain player scene
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
@@ -22,11 +23,16 @@ var card_scenes: Array = []
 #Random Number Generator
 var rng = RandomNumberGenerator.new()
 
+#USED FOR DISPLAY ICONS
+var icons_created = false
+var icon_position = 28
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene, dash_card_scene, jump_boost_card_scene, glide_card_scene]
 	var card_num = rng.randi_range(0,card_scenes.size())
 	dash_icon.visible = false
+	glide_icon.visible = false
 	print(card_num)
 	hide_buttons()
 
@@ -69,14 +75,29 @@ func activate_ability(ability_name: String) -> void:
 		"Dash":
 			player.dashUnlock = true
 			dash_icon.visible = true
+			
+			
+			if (icons_created):
+				icon_position += 40
+				dash_icon.position.x += icon_position
+
+			icons_created = true
+
 			card_scenes.erase(dash_card_scene)
 		"JumpBoost":
 			print("Increased Jump!")
 			player.jumpMult += 0.1
 		"Glide":
 			player.glideUnlock = true
-			print(player.glideUnlock)
+			glide_icon.visible = true
+			
+			if (icons_created):
+				icon_position += 40
+				glide_icon.position.x += icon_position
+			
+			icons_created = true
 
+				
 			card_scenes.erase(glide_card_scene)
 
 			#remove the dash card
