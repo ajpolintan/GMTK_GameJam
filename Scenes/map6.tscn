@@ -26,15 +26,18 @@ fill_from = Vector2(0, 0.338105)
 script = ExtResource("1_p208o")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("2_yvyop")]
+position = Vector2(0, -88.6963)
 tile_map_data = PackedByteArray("AAAOAPr/AwACAAAAAAAUAPr/AwACAAAAAAA5AOr/AwACAAAAAAA+AOX/AwACAAAAAAA+APT/AwABAAEAAAA=")
 
 [node name="Labyrinth" parent="." instance=ExtResource("3_hidw2")]
+position = Vector2(0, -88.6963)
 tile_map_data = PackedByteArray("AAARAPv/AwABAAYAAAARAPz/AwABAAIAAAA+AOj/AwALAAEAAAA+APf/AwALAAEAAAAUAPL/AwAIAAcAAAAbAPv/AwAIAAcAAAAOAPb/AwAIAAcAAAAmAAkAAwALAAEAAAAmAAwAAwAQAAEAAAAnAAkAAwALAAEAAAAnAAwAAwAQAAEAAAAoAAkAAwALAAEAAAAoAAwAAwAQAAEAAAApAAkAAwALAAEAAAApAAwAAwAQAAEAAAAnAAYAAwABAAYAAAAnAA0AAwAQAAEAAAApAA4AAwAQAAEAAAAqAAkAAwALAAEAAAAqAAwAAwAQAAEAAAACAOr/AwABAAIAAAALAOP/AwAIAAcAAAATAOH/AwAIAAcAAAAiAOL/AwALAAEAAAAjAOD/AwABAAYAAAArAOT/AwABAAIAAAAuAOP/AwABAAYAAAA0AOT/AwAGAAcAAAA5AO7/AwALAAEAAAAlAPH/AwALAAEAAAAlAOv/AwALAAEAAAAlAPX/AwALAAEAAAArAAcAAwABAAYAAAA+APb/AwABAAYAAAAqAOP/AwADAAYAAAA+AOX/AwADAAYAAAAJAOz/AwAIAAcAAAANAO3/AwAIAAcAAAAOAO3/AwAIAAcAAAAPAO3/AwAIAAcAAAA2AAgAAwABAAIAAAA6AAcAAwABAAYAAAAcAN7/AwAIAAcAAAAIAPf/AwABAAYAAAAIAPj/AwAIAAcAAAA0APv/AwAIAAcAAAAqAOr/AwAIAAcAAAAzAPP/AwAIAAcAAAA+APT/AwAQAAEAAAAoAOH/AwAQAAEAAAA=")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -88.6963)
 motion_mirroring = Vector2(1700, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -46,19 +49,20 @@ region_enabled = true
 region_rect = Rect2(8.00437, 0, 1298, 797)
 
 [node name="chest" parent="." instance=ExtResource("5_ici71")]
-position = Vector2(866, 111)
+position = Vector2(866, 22.3037)
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(37, -367)
+position = Vector2(37, -455.696)
 
 [node name="Area2D" parent="." instance=ExtResource("6_wm26w")]
+position = Vector2(0, -88.6963)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(69, 74)
+position = Vector2(103, 345)
 shape = SubResource("WorldBoundaryShape2D_6vjev")
 
 [node name="V_Platform" parent="." instance=ExtResource("7_mla0e")]
-position = Vector2(477, 9)
+position = Vector2(477, -79.6963)
 
 [node name="Timer" type="Timer" parent="V_Platform"]
 
@@ -70,7 +74,7 @@ region_enabled = true
 region_rect = Rect2(77.6024, 41.7254, 56.0832, 12.4266)
 
 [node name="V_Platform2" parent="." instance=ExtResource("7_mla0e")]
-position = Vector2(603, 8)
+position = Vector2(603, -80.6963)
 
 [node name="Timer" type="Timer" parent="V_Platform2"]
 
@@ -82,7 +86,7 @@ region_enabled = true
 region_rect = Rect2(77.6024, 41.7254, 56.0832, 12.4266)
 
 [node name="V_Platform3" parent="." instance=ExtResource("7_mla0e")]
-position = Vector2(728, 8)
+position = Vector2(728, -80.6963)
 
 [node name="Timer" type="Timer" parent="V_Platform3"]
 
@@ -105,7 +109,7 @@ texture = SubResource("GradientTexture2D_cbs8n")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 z_index = -15
-position = Vector2(784, -284)
+position = Vector2(784, -372.696)
 rotation = -0.517864
 scale = Vector2(0.20808, 4.37029)
 color = Color(0.913292, 0.4817, 0.950642, 1)
@@ -113,13 +117,13 @@ energy = 1.12
 texture = SubResource("GradientTexture2D_cbs8n")
 
 [node name="Lamp Post" parent="." instance=ExtResource("9_gevip")]
-position = Vector2(70, -345)
+position = Vector2(70, -433.696)
 
 [node name="Spike" parent="." instance=ExtResource("10_suas1")]
-position = Vector2(617, 94)
+position = Vector2(617, 5.30371)
 
 [node name="Spike2" parent="." instance=ExtResource("10_suas1")]
-position = Vector2(670, 94)
+position = Vector2(670, 5.30371)
 
 [connection signal="timeout" from="V_Platform/Timer" to="V_Platform" method="_on_timer_timeout"]
 [connection signal="timeout" from="V_Platform2/Timer" to="V_Platform2" method="_on_timer_timeout"]
