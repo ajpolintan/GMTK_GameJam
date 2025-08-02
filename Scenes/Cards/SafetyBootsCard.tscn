@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy3o4osj6men"]
+
+[ext_resource type="PackedScene" uid="uid://bvy013bakyuao" path="res://Scenes/card.tscn" id="1_vx3em"]
+[ext_resource type="Texture2D" uid="uid://djcfw2cmjmi6j" path="res://Assets/jump_boost.png" id="2_qxkmo"]
+
+[node name="JumpBoost" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource("1_vx3em")]
+position = Vector2(1, 10)
+card_name = "SafetyBoots"
+card_description = "Walk on Spikes"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(177, 165)
+scale = Vector2(5.53962, 5.73934)
+texture = ExtResource("2_qxkmo")

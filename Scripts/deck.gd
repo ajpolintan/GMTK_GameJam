@@ -6,6 +6,7 @@ extends Control
 @onready var dash_card_scene: PackedScene = preload("res://Scenes/Cards/DashCard.tscn")
 @onready var jump_boost_card_scene: PackedScene = preload("res://Scenes/Cards/JumpBoost.tscn")
 @onready var glide_card_scene: PackedScene = preload("res://Scenes/Cards/GlideCard.tscn")
+@onready var safety_boots_card_scene: PackedScene = preload("res://Scenes/Cards/SafetyBootsCard.tscn")
 
 
 @onready var spawn_point = $CanvasLayer/Spawn
@@ -35,7 +36,9 @@ var dash_count = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene, dash_card_scene, jump_boost_card_scene, glide_card_scene]
+	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene,
+	dash_card_scene, jump_boost_card_scene, glide_card_scene,safety_boots_card_scene]
+	
 	var card_num = rng.randi_range(0,card_scenes.size())
 	dash_icon.visible = false
 	glide_icon.visible = false
@@ -84,11 +87,6 @@ func activate_ability(ability_name: String) -> void:
 				icon_position += 40
 				jump_icon.position.x += icon_position
 				jump_icon.get_node("JumpCount").position.x = jump_icon.position.x - 120
-			
-
-
-	
-		
 			jump_icon.visible = true
 			icons_created = true
 			
@@ -99,7 +97,6 @@ func activate_ability(ability_name: String) -> void:
 		"Dash":
 			player.dashUnlock = true
 			dash_icon.visible = true
-			
 			
 			if (icons_created):
 				icon_position += 28
@@ -121,11 +118,13 @@ func activate_ability(ability_name: String) -> void:
 			icons_created = true
 				
 			card_scenes.erase(glide_card_scene)
+		"SafetyBoots":
+			print("Safety Boots!")
+			emit_signal("spikeWalk")
+			card_scenes.erase(safety_boots_card_scene)
 
-			#remove the dash card
 
 	emit_signal("selected")
-	emit_signal("spikeWalk")
 
 func hide_buttons() -> void:
 	$CanvasLayer/HBoxContainer/Option.visible = false
