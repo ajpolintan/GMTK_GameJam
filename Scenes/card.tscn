@@ -31,6 +31,7 @@ autowrap_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="CardName/NameLabel"]
 z_index = -1
+layout_mode = 0
 offset_left = 15.0
 offset_top = -14.2582
 offset_right = 55.0
@@ -52,6 +53,7 @@ autowrap_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="CardDescription"]
 z_index = -1
+layout_mode = 0
 offset_left = -8.0
 offset_top = -12.0
 offset_right = 32.0
