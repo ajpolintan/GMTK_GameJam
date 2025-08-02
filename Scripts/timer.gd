@@ -37,5 +37,8 @@ func test():
 	
 	if (time <= 0) :
 		emit_signal("timeUp")
+		stopped = true
+		reset()
+		$Countdown.text = "00 : 00 : 000"
 
 	
