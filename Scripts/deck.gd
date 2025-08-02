@@ -4,6 +4,7 @@ extends Control
 @onready var speed_card_scene: PackedScene = preload("res://Scenes/Cards/SpeedCard.tscn")
 @onready var time_increase_card_scene: PackedScene = preload("res://Scenes/Cards/TimeIncreaseCard.tscn")
 @onready var dash_card_scene: PackedScene = preload("res://Scenes/Cards/DashCard.tscn")
+@onready var jump_boost_card_scene: PackedScene = preload("res://Scenes/Cards/JumpBoost.tscn")
 
 
 @onready var spawn_point = $CanvasLayer/Spawn
@@ -22,7 +23,7 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene, dash_card_scene]
+	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene, dash_card_scene, jump_boost_card_scene]
 	var card_num = rng.randi_range(0,card_scenes.size())
 	dash_icon.visible = false
 	print(card_num)
