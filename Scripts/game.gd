@@ -17,6 +17,7 @@ func _ready():
 	
 	load_level("res://Scenes/map1.tscn")
 
+
 func load_level(path: String):
 	if curLevel:
 		curLevel.queue_free()

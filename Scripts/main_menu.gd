@@ -11,6 +11,7 @@ func _ready() -> void:
 func _on_start_pressed() -> void:
 	print("Start pressed")
 	sfx_select.play()
+	Global.score = 0
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	pass # Replace with function body.
 
