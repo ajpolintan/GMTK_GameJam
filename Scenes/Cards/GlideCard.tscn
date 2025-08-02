@@ -8,7 +8,7 @@
 [node name="Card" parent="." instance=ExtResource("1_gcg55")]
 position = Vector2(1, 10)
 card_name = "Glide"
-card_description = "Grants Glide Ability"
+card_description = "Glide  (Hold Jump)"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(167, 167)

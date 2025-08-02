@@ -15,4 +15,4 @@ texture = ExtResource("1_edf3m")
 [node name="Card" parent="." instance=ExtResource("1_gj77j")]
 position = Vector2(-8, 8)
 card_name = "Speed"
-card_description = "Increase Speed by 5"
+card_description = "Increase Speed"

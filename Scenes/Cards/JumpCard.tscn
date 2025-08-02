@@ -8,7 +8,7 @@ position = Vector2(0, 10)
 
 [node name="Card" parent="." instance=ExtResource("1_7bbjd")]
 card_name = "Jump"
-card_description = "+ Extra Jump"
+card_description = "+ 1 Jump (space)"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(168, 115)
