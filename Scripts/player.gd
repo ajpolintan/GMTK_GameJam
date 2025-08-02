@@ -10,6 +10,8 @@ extends CharacterBody2D
 
 #physics vars
 var is_stopped = false
+var lockAnim = false
+var jumpLock = false
 var jumping = false
 var skid = false
 var wallSlide = false
@@ -29,7 +31,7 @@ const MAX_DOWN = 200
 #powerups
 var doubleJumpMax = 1
 var doubleJump = 0
-var speedMult = 1.5
+var speedMult = 1
 var dashUnlock = true
 var dashAvail = false
 var dashing = false
@@ -77,7 +79,7 @@ func jumpCheck(dir):
 		doubleJump = doubleJumpMax
 		jump()
 	
-	#if performing groundDash, make dash available again
+	#if performing groundDash, make jump available
 	elif groundDash && dashing:
 		jump()
 		
@@ -88,6 +90,7 @@ func jumpCheck(dir):
 			animated_sprite.flip_h = false
 		elif dir < 0: 
 			animated_sprite.flip_h = true
+		doubleAnim()
 		jump()
 #end jumpCheck
 
@@ -97,10 +100,12 @@ func jump():
 	jumpTimer.start()
 	sfx_jump.play()
 	velocity.y = JUMP_VELOCITY
+	jumpAnim()
 	
 #stop gaining upwards velocity when jump timer is out
 func _on_timer_timeout():
 	jumping = false
+	endJump()
 	
 ###################################################################################################
 #Skid
@@ -109,18 +114,19 @@ func _on_timer_timeout():
 func turnAroundProc(dir):
 	#skid if changing direction when running at max speed	
 	if is_on_floor() && (abs(velocity.x) >= (RUNSPEED - 15) * speedMult):
-		animated_sprite.play("skid")
 		sfx_skid.play()
 		skid = true
 		skidDir = dir
+		skidAnim()
 	#allow for faster turnaround even if not skidding speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, ACCEL * 2)
 
 func skidProc(dir):
 	#end skid state early if airborne or cancelling skid
-	if not is_on_floor() || dir != skidDir: 
+	if not is_on_floor() || dir != skidDir || dashing: 
 		skid = false
+		endSkid()
 		return
 		
 	#when skidding, slow down to a stop then gain speed in other direction
@@ -128,6 +134,7 @@ func skidProc(dir):
 	if skid && velocity.x == 0:
 		velocity.x = ((RUNSPEED - 50) * speedMult) * skidDir
 		skid = false
+		endSkid()
 ###################################################################################################
 #dash
 ###################################################################################################
@@ -148,6 +155,7 @@ func startDash(dir):
 		dashCancel = false
 		jumping = false
 		skid = false
+		endSkid()
 		#store whether dash was started on ground
 		if (is_on_floor()): groundDash = true
 		else: groundDash = false
@@ -162,6 +170,7 @@ func startDash(dir):
 				dashDir = -1
 			else:
 				dashDir = 1
+		dashAnim()
 
 func dash():
 	if !jumping:
@@ -176,17 +185,19 @@ func dash():
 			dashing = false
 			dashCancel = true
 			velocity.x = RUNSPEED * dashDir
+		endDash()
 
 #dash duration
 func _on_dash_timer_timeout() -> void:
 	dashing = false
 	groundDash = false
-	if !jumpCancelDash:
+	if !jumpCancelDash && (abs(velocity.x) > RUNSPEED):
 		if Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right") || dashCancel:
 			velocity.x = RUNSPEED * dashDir
 		else: velocity.x = 0
 	else: jumpCancelDash = false
 	dashCancel = false
+	endDash()
 	
 #dash cooldown
 func _on_dash_cooldown_timer_timeout() -> void:
@@ -197,7 +208,39 @@ func _on_dash_cancel_timer_timeout() -> void:
 	jumpCancellable = false
 	
 ###################################################################################################
+#Animations
 ###################################################################################################
+
+func skidAnim():
+	lockAnim = true
+	if skidDir > 0: animated_sprite.flip_h = true
+	else: animated_sprite.flip_h = false
+	animated_sprite.play("skid")
+func endSkid():
+	lockAnim = false
+	
+func jumpAnim():
+	if !jumpLock:
+		jumpLock = true
+		animated_sprite.play("jumpAnim")	
+func doubleAnim():
+	jumpLock = true
+	print("double")
+	animated_sprite.play("doubleJump")
+func endJump():
+	jumpLock = false
+	
+func dashAnim():
+	lockAnim = true
+	if dashDir > 0 || skid: animated_sprite.flip_h = false
+	elif dashDir < 0: animated_sprite.flip_h = true
+	animated_sprite.play("dash")
+func endDash():
+	lockAnim = false
+	
+##################################################################################################
+#Physics
+##################################################################################################
 
 func _physics_process(_delta: float) -> void:
 	
@@ -230,6 +273,7 @@ func _physics_process(_delta: float) -> void:
 	if not is_on_floor() && !jumping && not Input.is_action_pressed("jump"):
 		if velocity.y < 0: velocity.y = 20
 		else: velocity.y = move_toward(velocity.y, MAX_DOWN, GRAVITY)
+		endJump()
 	
 	#Handle jump
 	if Input.is_action_pressed("jump"):
@@ -272,10 +316,10 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, DECEL)
 	
 	#turnaround
-	if (direction * velocity.x < 0):
+	if (direction * velocity.x < 0) && !dashing:
 		turnAroundProc(direction)
 	
-	if skid:
+	if skid && !dashing:
 		skidProc(direction)
 	
 	#upon walljump, move in the opposite direction of the wall
@@ -294,36 +338,25 @@ func _physics_process(_delta: float) -> void:
 	#Handle Animations
 ###################################################################################################
 
-	if Input.is_action_just_pressed("dash") && dashing:
-		animated_sprite.play("dash")
-		if dashDir > 0 || skid: animated_sprite.flip_h = false
-		elif dashDir < 0: animated_sprite.flip_h = true
-		return
-	if dashing && not wallTouch && !jumping:
-		return
-	
-	if is_on_floor() && !skid: 
-		if direction > 0 || skid: animated_sprite.flip_h = false
-		elif direction < 0: animated_sprite.flip_h = true
-		if abs(velocity.x) > SPEED:
-			animated_sprite.play("run")
-		else:
-			animated_sprite.play("walk")
-	
-	if velocity.x == 0 && !direction && is_on_floor():
-		animated_sprite.play("idle")
+	if !lockAnim:
+		if is_on_floor():
+			if direction > 0: animated_sprite.flip_h = false
+			elif direction < 0: animated_sprite.flip_h = true
+			if (velocity.x == 0):
+				animated_sprite.play("idle")
+			elif (abs(velocity.x) < SPEED):
+				animated_sprite.play("walk")
+			else:
+				animated_sprite.play("run")
+			
+		elif !jumpLock:
+			animated_sprite.play("airborne")
+			
+		if wallSlide:
+			animated_sprite.play("wallSlide")
+			if direction > 0: animated_sprite.flip_h = false
+			elif direction < 0: animated_sprite.flip_h = true
 		
-	if velocity.y >= 0 && not is_on_floor():
-		animated_sprite.play("airborne")
-		
-	if velocity.y < 0:
-		animated_sprite.play("jumpAnim")
-		
-	if wallSlide:
-		animated_sprite.play("wallSlide")
-		if direction > 0: animated_sprite.flip_h = false
-		elif direction < 0: animated_sprite.flip_h = true
-		
-	if wallJump:
-		if get_wall_normal().x > 0: animated_sprite.flip_h = false
-		else: animated_sprite.flip_h = true
+		if wallJump:
+			if get_wall_normal().x > 0: animated_sprite.flip_h = false
+			else: animated_sprite.flip_h = true
