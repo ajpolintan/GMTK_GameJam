@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=4 uid="uid://beh2nmchepfit"]
+
+[ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_su1dx"]
+[ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_45fxd"]
+[ext_resource type="PackedScene" uid="uid://d1rcwpnrutgie" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_6kdtr"]
+[ext_resource type="Texture2D" uid="uid://bneamnkeg54l6" path="res://Art/labyrinth2.png" id="4_km0b7"]
+[ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_iub26"]
+[ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_2h2gf"]
+[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_ylmnm"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
+
+[sub_resource type="Gradient" id="Gradient_6yynu"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0.624922, 0.93602, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cbs8n"]
+gradient = SubResource("Gradient_6yynu")
+width = 1024
+height = 389
+use_hdr = true
+
+[node name="level2" type="Node2D"]
+script = ExtResource("1_su1dx")
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_45fxd")]
+tile_map_data = PackedByteArray("AAD5/wIAAQAAAAAAAAD6/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD5/wEAAQAAAAAAAAD6/wEAAQAAAAAAAAD7/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAD5/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAD8/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD+/wIAAQAAAAAAAAD//wIAAQAAAAAAAAAAAAIAAQAAAAAAAAD//wMAAQAAAAAAAAD8/wEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAAAAAMAAQAAAAAAAAACAAMAAQAAAAAAAAACAAIAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAQAPv/AQACAAAAAAAAAP3/AQACAAAAAAD5/wAAAgAAAAAAAAD6/wAAAgAAAAAAAAD7/wAAAgAAAAAAAAD8/wAAAgAAAAAAAAD9/wAAAgAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAD5////AgABAAAAAAD6////AgABAAAAAAD7////AgABAAAAAAD8////AgABAAAAAAD9////AgABAAAAAAD+////AgABAAAAAAD/////AgABAAAAAAAAAP//AgABAAAAAAABAP//AgABAAAAAAACAP//AgABAAAAAAAGAP7/AgAAAAAAAAAHAP7/AgAAAAAAAAAIAP7/AgAAAAAAAAAIAP//AgAAAAAAAAAIAAAAAgAAAAAAAAAIAAEAAgAAAAAAAAAIAAIAAgAAAAAAAAAIAAMAAgAAAAAAAAAHAAIAAgAAAAAAAAAHAAEAAgAAAAAAAAAHAAAAAgAAAAAAAAAHAP//AgAAAAAAAAAGAP//AgAAAAAAAAAGAAAAAgAAAAAAAAAGAAEAAgAAAAAAAAAHAAMAAgAAAAAAAAAGAAQAAgAAAAAAAAAGAAMAAgAAAAAAAAAGAAIAAgAAAAAAAAAGAP3/AgABAAAAAAAHAP3/AgABAAAAAAAIAP3/AgABAAAAAAAHAAQAAgAAAAAAAAAIAAQAAgAAAAAAAAALAP7/AQACAAAAAAAVAPr/AQACAAAAAAATAP3/AQACAAAAAAAZAPn/AQACAAAAAAAZAP3/AQACAAAAAAAWAPT/AAACAAQAAAAWAPX/AAACAAUAAAAWAPb/AAACAAUAAAAWAPf/AAACAAUAAAAWAPj/AAACAAYAAAAWAPn/AAACAAcAAAAcAPD/AAACAAQAAAAcAPH/AAACAAUAAAAcAPL/AAACAAUAAAAcAPP/AAACAAYAAAAcAPT/AAACAAcAAAD6//7/AwAAAAEAAAD9//7/AwAJAAEAAAABAP7/AwAJAAEAAAAHAPz/AwAJAAEAAAAWAPP/AwACAAAAAAAcAO//AwACAAAAAAA=")
+
+[node name="Labyrinth" parent="." instance=ExtResource("3_6kdtr")]
+tile_map_data = PackedByteArray("AAACAPf/AwAGAAcAAAAHAPb/AwAGAAcAAAD///L/AwALAAEAAAD//+7/AwAQAAEAAAAAAPP/AwABAAYAAAAAAPD/AwABAAYAAAADAPT/AwAGAAcAAAAFAPr/AwAGAAcAAAAHAOz/AwAGAAcAAAAEAO7/AwAIAAcAAAACAOn/AwAGAAcAAAAIAOf/AwAGAAcAAAAQAOv/AwABAAIAAAAYAO3/AwAGAAcAAAA=")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1701, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(352.5, -285.627)
+scale = Vector2(1.33614, 1.49671)
+texture = ExtResource("4_km0b7")
+
+[node name="chest" parent="." instance=ExtResource("5_iub26")]
+position = Vector2(265, -354)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(-32, -26)
+
+[node name="Area2D" parent="." instance=ExtResource("6_2h2gf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(69, 74)
+shape = SubResource("WorldBoundaryShape2D_6vjev")
+
+[node name="Platform" parent="." instance=ExtResource("7_ylmnm")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = -15
+position = Vector2(116, -186)
+scale = Vector2(1.28349, 1.38259)
+energy = 0.75
+texture = SubResource("GradientTexture2D_cbs8n")
