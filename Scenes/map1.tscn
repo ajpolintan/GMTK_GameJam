@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://qi7eqpq6xs8n"]
+[gd_scene load_steps=12 format=4 uid="uid://qi7eqpq6xs8n"]
 
 [ext_resource type="Script" path="res://Scripts/map1.gd" id="1_yhhpa"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_enrtu"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="4_w0a3l"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="7_w5r2l"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_x60i8"]
+[ext_resource type="PackedScene" uid="uid://dach0e37245sw" path="res://Scenes/BoosterRight.tscn" id="8_rm3sf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ny2k1"]
 
@@ -40,6 +41,9 @@ texture = ExtResource("2_sf3rc")
 [node name="chest" parent="." instance=ExtResource("2_mnkm3")]
 position = Vector2(280, -249)
 
+[node name="Booster" parent="." instance=ExtResource("8_rm3sf")]
+position = Vector2(488, -216)
+
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 
 [node name="Killzone" parent="." instance=ExtResource("4_w0a3l")]
@@ -69,10 +73,10 @@ texture = SubResource("GradientTexture2D_6spi7")
 
 [node name="Platform" parent="." instance=ExtResource("7_x60i8")]
 
-[node name="Spike1" parent="." groups=["Spikes"] instance=ExtResource("7_w5r2l")]
+[node name="Spike1" parent="." instance=ExtResource("7_w5r2l")]
 position = Vector2(-96, -6)
 
-[node name="Spike2" parent="." groups=["Spikes"] instance=ExtResource("7_w5r2l")]
+[node name="Spike2" parent="." instance=ExtResource("7_w5r2l")]
 position = Vector2(-65, -6)
 
 [connection signal="chestGet" from="chest" to="." method="_on_chest_chest_get"]
