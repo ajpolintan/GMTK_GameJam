@@ -11,6 +11,6 @@ card_name = "Dash"
 card_description = "Grants Dash"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(167, 123)
-scale = Vector2(2.00135, 1.94444)
+position = Vector2(139, 156)
+scale = Vector2(5.30658, 5.20622)
 texture = ExtResource("2_353mg")

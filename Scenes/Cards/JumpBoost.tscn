@@ -11,6 +11,6 @@ card_name = "JumpBoost"
 card_description = "Increase Jump Height"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(167, 136)
-scale = Vector2(2.00135, 1.94444)
+position = Vector2(166, 165)
+scale = Vector2(5.53962, 5.73934)
 texture = ExtResource("2_5t7ic")

@@ -11,6 +11,6 @@ card_name = "IncreaseTime"
 card_description = "Add Time to the Countdown"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(167, 123)
-scale = Vector2(2.00135, 1.94444)
+position = Vector2(163, 141)
+scale = Vector2(5.02811, 4.88513)
 texture = ExtResource("2_kcy2r")
