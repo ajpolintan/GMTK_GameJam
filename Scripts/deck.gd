@@ -13,6 +13,7 @@ extends Control
 @onready var HUD = $"../CanvasLayer/HUD" 
 @onready var dash_icon = $"../CanvasLayer/HUD/Dash" 
 @onready var glide_icon = $"../CanvasLayer/HUD/Glide" 
+@onready var jump_icon = $"../CanvasLayer/HUD/Jump" 
 
 #gain player scene
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
@@ -27,12 +28,17 @@ var rng = RandomNumberGenerator.new()
 var icons_created = false
 var icon_position = 28
 
+var jump_count = 0
+var jump_boost_count = 0
+var dash_count = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	card_scenes = [jump_card_scene, speed_card_scene, time_increase_card_scene, dash_card_scene, jump_boost_card_scene, glide_card_scene]
 	var card_num = rng.randi_range(0,card_scenes.size())
 	dash_icon.visible = false
 	glide_icon.visible = false
+	jump_icon.visible = false
 	print(card_num)
 	hide_buttons()
 
@@ -68,6 +74,23 @@ func activate_ability(ability_name: String) -> void:
 	match ability_name:
 		"Jump":
 			player.doubleJumpMax += 1
+			
+			jump_count += 1
+			jump_icon.get_node("JumpCount").text = str(jump_count)
+			
+			#but what if it is greater than 1. you would just increment the count no?
+			if (icons_created and jump_count == 1):
+				icon_position += 40
+				jump_icon.position.x += icon_position
+				jump_icon.get_node("JumpCount").position.x = jump_icon.position.x - 120
+			
+
+
+	
+		
+			jump_icon.visible = true
+			icons_created = true
+			
 		"Speed":
 			player.speedMult += 0.2
 		"IncreaseTime":
@@ -78,7 +101,7 @@ func activate_ability(ability_name: String) -> void:
 			
 			
 			if (icons_created):
-				icon_position += 40
+				icon_position += 28
 				dash_icon.position.x += icon_position
 
 			icons_created = true
@@ -92,11 +115,9 @@ func activate_ability(ability_name: String) -> void:
 			glide_icon.visible = true
 			
 			if (icons_created):
-				icon_position += 40
+				icon_position += 28
 				glide_icon.position.x += icon_position
-			
 			icons_created = true
-
 				
 			card_scenes.erase(glide_card_scene)
 
