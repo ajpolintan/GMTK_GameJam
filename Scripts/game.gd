@@ -39,8 +39,21 @@ func _on_level_finished():
 	emit_signal("cards")
 
 func _on_deck_selected() -> void:
-	if level == 2:
-		load_level("res://Scenes/map2.tscn")
-	if level > 2:
+	var level_amount = 6
+	
+	match level:
+		2:
+			load_level("res://Scenes/map2.tscn")
+		3:
+			load_level("res://Scenes/map3.tscn")
+		4:
+			load_level("res://Scenes/map4.tscn")
+		5:
+			load_level("res://Scenes/map5.tscn")
+		6:
+			load_level("res://Scenes/map6.tscn")
+	
+			
+	if level > level_amount:
 		level = 1
 		load_level("res://Scenes/map1.tscn")
