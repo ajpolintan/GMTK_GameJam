@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://qi7eqpq6xs8n"]
+[gd_scene load_steps=13 format=4 uid="uid://qi7eqpq6xs8n"]
 
 [ext_resource type="Texture2D" uid="uid://385c8sflnn4a" path="res://Assets/sprites/world_tileset.png" id="1_dwptp"]
 [ext_resource type="Script" path="res://Scripts/map1.gd" id="1_yhhpa"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_mnkm3"]
 [ext_resource type="Texture2D" uid="uid://cw5rbxcfocnoo" path="res://Art/forest2.png" id="2_sf3rc"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="4_w0a3l"]
+[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/Obstacles/Verticle_Platform.tscn" id="7_x60i8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwwjc"]
 texture = ExtResource("1_dwptp")
@@ -243,5 +244,7 @@ scale = Vector2(-0.0790447, 4.10968)
 color = Color(0.733177, 0.671492, 0.914742, 1)
 energy = 0.7
 texture = SubResource("GradientTexture2D_6spi7")
+
+[node name="Platform" parent="." instance=ExtResource("7_x60i8")]
 
 [connection signal="chestGet" from="chest" to="." method="_on_chest_chest_get"]

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ltj8hlmjbpx" path="res://Art/forest.png" id="4_ba07b"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_th6v3"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_3gcad"]
-[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_nd7nl"]
+[ext_resource type="PackedScene" uid="uid://bfjwdaf41vdvp" path="res://Scenes/Obstacles/Horizontal_Platform.tscn" id="7_xe32s"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 
@@ -51,11 +51,11 @@ position = Vector2(-32, -26)
 position = Vector2(69, 74)
 shape = SubResource("WorldBoundaryShape2D_6vjev")
 
-[node name="Platform" parent="." instance=ExtResource("7_nd7nl")]
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = -15
 position = Vector2(116, -186)
 scale = Vector2(1.28349, 1.38259)
 energy = 0.75
 texture = SubResource("GradientTexture2D_cbs8n")
+
+[node name="Platform" parent="." instance=ExtResource("7_xe32s")]

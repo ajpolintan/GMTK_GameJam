@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb76sj5s132gw"]
+
+[ext_resource type="PackedScene" uid="uid://bvy013bakyuao" path="res://Scenes/card.tscn" id="1_1aspg"]
+[ext_resource type="Texture2D" uid="uid://cnltglbc7f1oe" path="res://Assets/sprites/Powerups/jump_boost.png" id="2_5t7ic"]
+
+[node name="JumpBoost" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource("1_1aspg")]
+position = Vector2(1, 10)
+card_name = "JumpBoost"
+card_description = "Increase Jump Height"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(167, 136)
+scale = Vector2(2.00135, 1.94444)
+texture = ExtResource("2_5t7ic")
