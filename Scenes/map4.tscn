@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_ljrne"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_a0hqc"]
-[ext_resource type="PackedScene" uid="uid://d1rcwpnrutgie" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_hwtof"]
+[ext_resource type="PackedScene" uid="uid://dkkvkj2gihcae" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_hwtof"]
 [ext_resource type="Texture2D" uid="uid://c4ltj8hlmjbpx" path="res://Art/forest.png" id="4_ba07b"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_th6v3"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_3gcad"]

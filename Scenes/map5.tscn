@@ -1,15 +1,15 @@
-[gd_scene load_steps=18 format=4 uid="uid://dnx8w76hvvtgw"]
+[gd_scene load_steps=18 format=4 uid="uid://beh2nmchepfit"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_su1dx"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_45fxd"]
-[ext_resource type="PackedScene" uid="uid://boroqs22tby8s" path="res://Assets/sprites/Tilesets/covemap.tscn" id="2_eup0e"]
-[ext_resource type="PackedScene" uid="uid://d1rcwpnrutgie" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_6kdtr"]
+[ext_resource type="PackedScene" uid="uid://cxcjoiprgunid" path="res://Assets/sprites/Tilesets/covemap.tscn" id="2_eup0e"]
+[ext_resource type="PackedScene" uid="uid://dkkvkj2gihcae" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_6kdtr"]
 [ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="4_ebxfl"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_iub26"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_2h2gf"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="7_ck5fu"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="7_ylmnm"]
-[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="8_3qri0"]
+[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="8_3qri0"]
 [ext_resource type="Script" path="res://Scripts/verticalPlatform.gd" id="10_smp7b"]
 [ext_resource type="Texture2D" uid="uid://dnvmk6vfglrgq" path="res://Assets/sprites/world_gmtk_tileset-Sheet-Sheet.png" id="11_uu15i"]
 [ext_resource type="PackedScene" uid="uid://c6p0e8ikw2d8q" path="res://Scenes/PlatformHorizontal.tscn" id="12_siqt2"]
@@ -94,12 +94,6 @@ position = Vector2(-230, -40)
 
 [node name="Timer" type="Timer" parent="WoodHPlatform"]
 
-[node name="Sprite2DPlatH" type="Sprite2D" parent="WoodHPlatform"]
-position = Vector2(35, 0)
-texture = ExtResource("11_uu15i")
-region_enabled = true
-region_rect = Rect2(66.2029, 61.5325, 62.2829, 10.5648)
-
 [node name="Moving-platforms" type="Sprite2D" parent="WoodHPlatform"]
 z_index = 1
 position = Vector2(35, 0)
@@ -111,12 +105,6 @@ region_rect = Rect2(76.7236, 40.8959, 57.872, 15.0294)
 position = Vector2(-333, -40)
 
 [node name="Timer" type="Timer" parent="LabyrinthHPlatform2"]
-
-[node name="Sprite2DPlatH" type="Sprite2D" parent="LabyrinthHPlatform2"]
-position = Vector2(35, 0)
-texture = ExtResource("11_uu15i")
-region_enabled = true
-region_rect = Rect2(66.2029, 61.5325, 62.2829, 10.5648)
 
 [node name="Moving-platforms" type="Sprite2D" parent="LabyrinthHPlatform2"]
 z_index = 1
