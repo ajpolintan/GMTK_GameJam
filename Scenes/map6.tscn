@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_rd5ow"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_avwe7"]
-[ext_resource type="PackedScene" uid="uid://d1rcwpnrutgie" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_t5awq"]
+[ext_resource type="PackedScene" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_t5awq"]
 [ext_resource type="Texture2D" uid="uid://g7q02hg1sfx4" path="res://Art/clouds.png" id="4_5b3vg"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_c4ewv"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_yp35i"]
-[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/Obstacles/Verticle_Platform.tscn" id="7_1e68j"]
+[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_1e68j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 
