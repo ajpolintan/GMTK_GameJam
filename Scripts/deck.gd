@@ -67,7 +67,9 @@ func activate_ability(ability_name: String) -> void:
 		"Dash":
 			player.dashUnlock = true
 			dash_icon.visible = true
-
+		"JumpBoost":
+			print("Increased Jump!")
+			player.jumpMult += 0.1
 			#remove the dash card
 			card_scenes.erase(dash_card_scene)
 
