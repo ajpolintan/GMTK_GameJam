@@ -26,6 +26,7 @@ const DASHSPEED = 250.0
 const JUMP_VELOCITY = -170.0
 const WALLSPEED = 100
 const GRAVITY = 20.0
+const GLIDEVELOCITY = 50
 const MAX_DOWN = 200
 
 #powerups
@@ -42,6 +43,8 @@ var groundDash = 0
 var jumpCancelDash = false
 var jumpCancellable = false
 var dashCancel = false
+var glideUnlock = true
+var gliding = false
 
 func _on_stop():
 	is_stopped = true
@@ -67,6 +70,11 @@ func jumpProc(dir):
 	#when full hop timer runs out, slowly decrease velocity (as opposed to cutting it straight to downward)
 	elif !jumping:
 		velocity.y = move_toward(velocity.y, MAX_DOWN, GRAVITY)
+		
+	if velocity.y > 0 && glideUnlock:
+		velocity.y = GLIDEVELOCITY
+		glideAnim()
+	if velocity.y <= 0 && glideUnlock: glideEnd()
 #end jumpProc
 
 
@@ -226,7 +234,6 @@ func jumpAnim():
 		animated_sprite.play("jumpAnim")	
 func doubleAnim():
 	jumpLock = true
-	print("double")
 	animated_sprite.play("doubleJump")
 func endJump():
 	jumpLock = false
@@ -239,6 +246,11 @@ func dashAnim():
 func endDash():
 	lockAnim = false
 	
+func glideAnim():
+	gliding = true
+	animated_sprite.play("glide")
+func glideEnd():
+	gliding = false
 ##################################################################################################
 #Physics
 ##################################################################################################
@@ -272,7 +284,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# Add the gravity.
 	if not is_on_floor() && !jumping && not Input.is_action_pressed("jump"):
-		if velocity.y < 0: velocity.y = 20
+		if velocity.y < 0: velocity.y = 0
 		else: velocity.y = move_toward(velocity.y, MAX_DOWN, GRAVITY)
 		endJump()
 	
@@ -280,7 +292,10 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("jump"):
 		jumpProc(direction)
 	#if jump stops being pressed early, end jump period
-	elif jumping: jumping = false
+	else:
+		if gliding: glideEnd()
+		if jumping: jumping = false
+	
 	
 	#cut jump early if hitting ceiling
 	if is_on_ceiling() && jumping:
@@ -349,7 +364,7 @@ func _physics_process(_delta: float) -> void:
 			else:
 				animated_sprite.play("run")
 			
-		elif !jumpLock:
+		elif !jumpLock && !gliding:
 			animated_sprite.play("airborne")
 			
 		if wallSlide:
