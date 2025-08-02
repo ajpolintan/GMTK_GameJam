@@ -18,6 +18,7 @@ extends Control
 @export var Player : PackedScene = preload("res://Scenes/Player.tscn")
 
 signal selected
+signal spikeWalk
 
 var card_scenes: Array = []
 #Random Number Generator
@@ -103,6 +104,7 @@ func activate_ability(ability_name: String) -> void:
 			#remove the dash card
 
 	emit_signal("selected")
+	emit_signal("spikeWalk")
 
 func hide_buttons() -> void:
 	$CanvasLayer/HBoxContainer/Option.visible = false

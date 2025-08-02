@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://riia6ruggf3i"]
+[gd_scene load_steps=12 format=4 uid="uid://riia6ruggf3i"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_wiicx"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="2_il3ap"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="4_lvhim"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_jw3wr"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platform.tscn" id="7_7u0re"]
+[ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="8_vf3hl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
 
@@ -59,3 +60,9 @@ position = Vector2(116, -186)
 scale = Vector2(1.28349, 1.38259)
 energy = 0.75
 texture = SubResource("GradientTexture2D_cbs8n")
+
+[node name="spike1" parent="." groups=["spikes"] instance=ExtResource("8_vf3hl")]
+position = Vector2(-161, -22)
+
+[node name="spike2" parent="." groups=["spikes"] instance=ExtResource("8_vf3hl")]
+position = Vector2(-128, -22)
