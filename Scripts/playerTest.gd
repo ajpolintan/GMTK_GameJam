@@ -32,6 +32,7 @@ const MAX_DOWN = 200
 var doubleJumpMax = 1
 var doubleJump = 0
 var speedMult = 1
+var jumpMult = 1
 var dashUnlock = true
 var dashAvail = false
 var dashing = false
@@ -61,7 +62,7 @@ func jumpProc(dir):
 		
 	#full hop
 	elif  jumping:
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * jumpMult
 		
 	#when full hop timer runs out, slowly decrease velocity (as opposed to cutting it straight to downward)
 	elif !jumping:
@@ -99,7 +100,7 @@ func jump():
 	jumping = true
 	jumpTimer.start()
 	sfx_jump.play()
-	velocity.y = JUMP_VELOCITY
+	velocity.y = JUMP_VELOCITY * jumpMult
 	jumpAnim()
 	
 #stop gaining upwards velocity when jump timer is out
@@ -318,19 +319,18 @@ func _physics_process(_delta: float) -> void:
 	#turnaround
 	if (direction * velocity.x < 0) && !dashing:
 		turnAroundProc(direction)
-	
 	if skid && !dashing:
 		skidProc(direction)
-	
-	#upon walljump, move in the opposite direction of the wall
-	if wallJump:
-		velocity.x = ((RUNSPEED - 50) * speedMult) * get_wall_normal().x
 		
 	if Input.is_action_just_pressed("dash") && dashCooldown && dashAvail:
 		startDash(direction)
 		
 	if dashing:
 		dash()
+	
+	#upon walljump, move in the opposite direction of the wall
+	if wallJump:
+		velocity.x = ((RUNSPEED - 50) * speedMult) * get_wall_normal().x
 
 	move_and_slide()
 	

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://i7fysnw7rdmf" path="res://Scenes/hud.tscn" id="2_wktqb"]
 [ext_resource type="PackedScene" uid="uid://b0x4gv752d4nf" path="res://Scenes/deck.tscn" id="3_nl6in"]
 [ext_resource type="PackedScene" uid="uid://ccpekc7ka85so" path="res://Scenes/Player.tscn" id="4_krjak"]
-[ext_resource type="Script" path="res://playerTest.gd" id="5_ve288"]
+[ext_resource type="Script" path="res://Scripts/playerTest.gd" id="5_ve288"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_p6tfk")
