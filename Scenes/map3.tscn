@@ -109,12 +109,6 @@ texture = SubResource("GradientTexture2D_cbs8n")
 [node name="Lamp Post" parent="." instance=ExtResource("8_m7i3m")]
 position = Vector2(115, -839)
 
-[node name="Spike" parent="." instance=ExtResource("9_jk536")]
-position = Vector2(527, -849)
-
-[node name="Spike2" parent="." instance=ExtResource("9_jk536")]
-position = Vector2(572, -849)
-
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -506.0
 offset_top = 340.0
@@ -143,37 +137,45 @@ texture = ExtResource("8_hwi1t")
 region_enabled = true
 region_rect = Rect2(9.35034, 41.9753, 57.043, 12.2848)
 
-[node name="Spike3" parent="." instance=ExtResource("9_jk536")]
+[node name="Spikes" type="Node" parent="."]
+
+[node name="Spike" parent="Spikes" instance=ExtResource("9_jk536")]
+position = Vector2(527, -849)
+
+[node name="Spike2" parent="Spikes" instance=ExtResource("9_jk536")]
+position = Vector2(572, -849)
+
+[node name="Spike3" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(389, -721)
 
-[node name="Spike4" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike4" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(421, -721)
 
-[node name="Spike5" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike5" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(454, -721)
 
-[node name="Spike6" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike6" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(487, -721)
 
-[node name="Spike7" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike7" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(325, -721)
 
-[node name="Spike8" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike8" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(357, -721)
 
-[node name="Spike9" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike9" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(260, -721)
 
-[node name="Spike10" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike10" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(293, -721)
 
-[node name="Spike11" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike11" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(196, -721)
 
-[node name="Spike12" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike12" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(228, -721)
 
-[node name="Spike13" parent="." instance=ExtResource("9_jk536")]
+[node name="Spike13" parent="Spikes" instance=ExtResource("9_jk536")]
 position = Vector2(164, -721)
 
 [connection signal="timeout" from="V_Platform/Timer" to="V_Platform" method="_on_timer_timeout"]
