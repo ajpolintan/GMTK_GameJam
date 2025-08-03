@@ -50,7 +50,7 @@ func _on_deck_selected() -> void:
 	if level >= 7:
 		hud.time += 15
 	else: 
-		hud.time +- 10
+		hud.time += 10
 	
 	match level:
 		2:
