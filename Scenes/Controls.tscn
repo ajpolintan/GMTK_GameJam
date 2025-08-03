@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bn8axyh40xb6t" path="res://Assets/sounds/select_705174__digimistic__game-menu-select-sound-2.wav" id="4_u35p5"]
 [ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="5_t2tta"]
 [ext_resource type="Texture2D" uid="uid://b4bkej1x4vp6t" path="res://Assets/dash-Sheet.png" id="6_hlqp5"]
-[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="7_qm8g3"]
+[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="7_qm8g3"]
 [ext_resource type="FontFile" uid="uid://rhfbsckxpx0e" path="res://Assets/fonts/PixelOperator8.ttf" id="8_5vbbm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n36v4"]
@@ -111,7 +111,8 @@ Run - Ctrl / Left Click
 Jump - Space
 Dash - Shift / Right Click
 Glide - Hold Space
-"
+
+Win at 25th level!"
 
 [node name="ColorRect" type="ColorRect" parent="Label"]
 z_index = -85
