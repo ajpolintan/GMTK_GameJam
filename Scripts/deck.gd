@@ -85,8 +85,16 @@ func activate_ability(ability_name: String) -> void:
 		"Jump":
 			player.doubleJumpMax += 1
 			
+			var maxDoubleJumps = 2 
+			if (player.doubleJumpMax == maxDoubleJumps) :
+				card_scenes.erase(jump_card_scene)
+
+			
 			jump_count += 1
-			jump_icon.get_node("JumpCount").text = str(jump_count)
+			if (jump_count == maxDoubleJumps):
+				jump_icon.get_node("JumpCount").text = "max"
+			else:
+				jump_icon.get_node("JumpCount").text = str(jump_count)
 			
 			#but what if it is greater than 1. you would just increment the count no?
 			if (icons_created and jump_count == 1):
