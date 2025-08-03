@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://beh2nmchepfit"]
+[gd_scene load_steps=13 format=4 uid="uid://bxx6b3xdjdwie"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_ljrne"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_a0hqc"]
