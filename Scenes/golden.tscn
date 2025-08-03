@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck775kdudfwsb"]
+
+[ext_resource type="Texture2D" uid="uid://d1pgeun47icyf" path="res://Assets/sprites/gmtk_idle-3.png" id="1_6j7dm"]
+
+[node name="Golden" type="Node2D"]
+
+[node name="GmtkIdle-3" type="Sprite2D" parent="."]
+modulate = Color(0.956237, 0.881029, 0, 1)
+self_modulate = Color(1, 0.616411, 0.93846, 1)
+position = Vector2(3029, 1060)
+scale = Vector2(178.227, 178.227)
+texture = ExtResource("1_6j7dm")

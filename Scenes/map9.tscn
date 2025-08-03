@@ -1,0 +1,244 @@
+[gd_scene load_steps=16 format=4 uid="uid://dev1ewkfaeyn"]
+
+[ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_y4ak7"]
+[ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_1g7l0"]
+[ext_resource type="PackedScene" uid="uid://dkkvkj2gihcae" path="res://Assets/sprites/Tilesets/labyrinth.tscn" id="3_5rtti"]
+[ext_resource type="Texture2D" uid="uid://cgmiy3ytteka" path="res://Art/labyrinth3.png" id="4_03v7x"]
+[ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="5_by7d0"]
+[ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_km5ak"]
+[ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="7_qvq8o"]
+[ext_resource type="Texture2D" uid="uid://bnc3pgb86ume7" path="res://Assets/sprites/moving-platforms.png" id="8_sg3le"]
+[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="9_dysgb"]
+[ext_resource type="PackedScene" uid="uid://c6p0e8ikw2d8q" path="res://Scenes/PlatformHorizontal.tscn" id="10_3rawe"]
+[ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="11_8bqd1"]
+[ext_resource type="PackedScene" path="res://Scenes/BoosterRight.tscn" id="12_drqx8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ev4r7"]
+distance = 216.0
+
+[sub_resource type="Gradient" id="Gradient_6yynu"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ebd1"]
+gradient = SubResource("Gradient_6yynu")
+width = 1024
+height = 389
+use_hdr = true
+fill_from = Vector2(0, 0.338105)
+
+[node name="level4" type="Node2D"]
+script = ExtResource("1_y4ak7")
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_1g7l0")]
+position = Vector2(108, -545)
+tile_map_data = PackedByteArray("AAAOAPr/AwACAAAAAAAUAPr/AwACAAAAAABLAPr/AwACAAAAAABQAPr/AwACAAAAAAA=")
+
+[node name="Labyrinth" parent="." instance=ExtResource("3_5rtti")]
+position = Vector2(0, -529)
+tile_map_data = PackedByteArray("AAAFAOz/AwABAAIAAAAgAO//AwALAAEAAAAgAPL/AwALAAEAAAAhAO//AwALAAEAAAAhAPL/AwAQAAEAAAAiAO//AwALAAEAAAAiAPL/AwAQAAEAAAAjAO//AwALAAEAAAAjAPL/AwAQAAEAAAAhAOz/AwABAAYAAAAhAPP/AwAQAAEAAAAjAPT/AwAQAAEAAAAkAO//AwALAAEAAAAkAPL/AwAQAAEAAAAXAOr/AwAIAAcAAAAiAOT/AwALAAEAAAAjAOL/AwABAAYAAAApAO3/AwAIAAcAAAAYAPr/AwABAAYAAAAYAPv/AwABAAIAAAAoAPr/AwAIAAcAAAAcAPX/AwABAAIAAAAZAPX/AwABAAIAAAATAPX/AwABAAIAAAANAPX/AwABAAIAAAALAOz/AwABAAIAAAANAOz/AwABAAIAAAAbAPD/AwAIAAcAAAAcAPD/AwAIAAcAAAAdAPD/AwAIAAcAAAAVAPH/AwAGAAcAAAALAPv/AwAIAAcAAAAMAPv/AwAIAAcAAAANAPv/AwAIAAcAAAARAPz/AwAGAAcAAAAsAPD/AwAIAAcAAAApAPT/AwAIAAcAAABUAPv/AwABAAIAAAA0AOr/AwALAAEAAAA0AOf/AwALAAEAAAA0AOP/AwALAAEAAAA7AOP/AwAIAAcAAABAAOz/AwALAAEAAABAAOf/AwALAAEAAABAAOT/AwALAAEAAAA3APr/AwAIAAcAAAA4APr/AwAIAAcAAAA5APr/AwAIAAcAAABAAPj/AwAIAAcAAABBAPj/AwAIAAcAAABCAPj/AwAIAAcAAAAyAPr/AwAGAAcAAAA9APj/AwAGAAcAAABIAPr/AwAGAAcAAABLAPj/AwAIAAcAAABMAPj/AwAIAAcAAABNAPj/AwAIAAcAAAA5APn/AwABAAYAAABNAPn/AwAQAAEAAABRAPz/AwAQAAEAAABQAPz/AwAQAAEAAABYAPv/AwAQAAEAAABaAPb/AwALAAEAAABaAPD/AwALAAEAAABaAOz/AwALAAEAAABaAOf/AwALAAEAAABaAOP/AwALAAEAAABaAOD/AwALAAEAAAAnAN//AwAGAAcAAAAyANn/AwABAAIAAABaANv/AwALAAEAAABaANj/AwALAAEAAAAjANv/AwAGAAcAAAAqANf/AwAGAAcAAAAsAOb/AwAIAAcAAAAtAOb/AwAIAAcAAAAuAOb/AwAIAAcAAABFAOf/AwAGAAcAAABJAOr/AwAGAAcAAABNAPD/AwAGAAcAAAAwAPn/AwABAAIAAAAtAPj/AwABAAYAAAAzAPj/AwABAAYAAAA=")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-96, 0)
+motion_mirroring = Vector2(1700, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.864091, 0.88419, 0.997222, 1)
+position = Vector2(367, -683)
+scale = Vector2(1.33614, 1.49671)
+texture = ExtResource("4_03v7x")
+region_enabled = true
+region_rect = Rect2(8.00437, 0, 1298, 797)
+
+[node name="chest" parent="." instance=ExtResource("5_by7d0")]
+position = Vector2(1353, -628)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(80, -864)
+
+[node name="Area2D" parent="." instance=ExtResource("6_km5ak")]
+position = Vector2(0, 33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(137, 77)
+shape = SubResource("WorldBoundaryShape2D_ev4r7")
+
+[node name="V_Platform" parent="." instance=ExtResource("7_qvq8o")]
+position = Vector2(510, -615)
+
+[node name="Timer" type="Timer" parent="V_Platform"]
+
+[node name="Moving-platforms" type="Sprite2D" parent="V_Platform"]
+z_index = -1
+position = Vector2(35, 0)
+texture = ExtResource("8_sg3le")
+region_enabled = true
+region_rect = Rect2(77.6024, 41.7254, 56.0832, 12.4266)
+
+[node name="V_Platform2" parent="." instance=ExtResource("7_qvq8o")]
+position = Vector2(69, -720)
+
+[node name="Timer" type="Timer" parent="V_Platform2"]
+
+[node name="Moving-platforms" type="Sprite2D" parent="V_Platform2"]
+z_index = -1
+position = Vector2(34, -1)
+texture = ExtResource("8_sg3le")
+region_enabled = true
+region_rect = Rect2(9.35034, 41.9753, 57.043, 12.2848)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+z_index = -15
+position = Vector2(395, -124)
+rotation = -0.517864
+scale = Vector2(0.20808, 4.37029)
+color = Color(0.913292, 0.4817, 0.950642, 1)
+energy = 1.12
+texture = SubResource("GradientTexture2D_8ebd1")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+z_index = -15
+position = Vector2(631, -640)
+rotation = -0.517864
+scale = Vector2(0.129533, 3.01404)
+color = Color(0.913292, 0.4817, 0.950642, 1)
+energy = 1.12
+texture = SubResource("GradientTexture2D_8ebd1")
+
+[node name="Lamp Post" parent="." instance=ExtResource("9_dysgb")]
+position = Vector2(115, -839)
+
+[node name="Lamp Post2" parent="." instance=ExtResource("9_dysgb")]
+position = Vector2(837, -634)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -506.0
+offset_top = 340.0
+offset_right = -466.0
+offset_bottom = 380.0
+scale = Vector2(86.4284, -10.8466)
+color = Color(0.623529, 0.619608, 0.698039, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -600.0
+offset_top = -1271.0
+offset_right = -560.0
+offset_bottom = -1231.0
+scale = Vector2(86.4284, -10.8466)
+color = Color(0.862745, 0.882353, 0.94902, 1)
+
+[node name="LabyrinthHPlatform2" parent="." instance=ExtResource("10_3rawe")]
+position = Vector2(155, -760)
+
+[node name="Timer" type="Timer" parent="LabyrinthHPlatform2"]
+
+[node name="Moving-platforms" type="Sprite2D" parent="LabyrinthHPlatform2"]
+z_index = 1
+position = Vector2(34, -1)
+texture = ExtResource("8_sg3le")
+region_enabled = true
+region_rect = Rect2(9.35034, 41.9753, 57.043, 12.2848)
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="Spike" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(527, -849)
+
+[node name="Spike2" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(572, -849)
+
+[node name="Spike3" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(389, -721)
+
+[node name="Spike4" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(421, -721)
+
+[node name="Spike5" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(454, -721)
+
+[node name="Spike6" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(487, -721)
+
+[node name="Spike7" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(325, -721)
+
+[node name="Spike8" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(357, -721)
+
+[node name="Spike9" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(260, -721)
+
+[node name="Spike10" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(293, -721)
+
+[node name="Spike11" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(196, -721)
+
+[node name="Spike12" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(228, -721)
+
+[node name="Spike13" parent="Spikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(164, -721)
+
+[node name="VerticalSpikes" type="Node" parent="."]
+
+[node name="Spike" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(818, -1015)
+rotation = 4.71239
+
+[node name="Spike2" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(818, -983)
+rotation = 4.71239
+
+[node name="Spike3" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(818, -951)
+rotation = 4.71239
+
+[node name="Spike4" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(818, -919)
+rotation = 4.71239
+
+[node name="Spike5" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(818, -886)
+rotation = 4.71239
+
+[node name="Spike6" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(818, -852)
+rotation = 4.71239
+
+[node name="Spike7" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(1009, -930)
+rotation = 4.71239
+
+[node name="Spike8" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(1009, -898)
+rotation = 4.71239
+
+[node name="Spike9" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(1009, -866)
+rotation = 4.71239
+
+[node name="Spike10" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(1009, -833)
+rotation = 4.71239
+
+[node name="Spike11" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(1009, -799)
+rotation = 4.71239
+
+[node name="Spike12" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(1009, -963)
+rotation = 4.71239
+
+[node name="Spike13" parent="VerticalSpikes" instance=ExtResource("11_8bqd1")]
+position = Vector2(1009, -996)
+rotation = 4.71239
+
+[node name="Booster" parent="." instance=ExtResource("12_drqx8")]
+position = Vector2(794, -1170)
+
+[connection signal="timeout" from="V_Platform/Timer" to="V_Platform" method="_on_timer_timeout"]
+[connection signal="timeout" from="V_Platform2/Timer" to="V_Platform2" method="_on_timer_timeout"]
+[connection signal="timeout" from="LabyrinthHPlatform2/Timer" to="LabyrinthHPlatform2" method="_on_timer_timeout"]

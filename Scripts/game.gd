@@ -42,7 +42,7 @@ func _on_level_finished():
 	emit_signal("cards")
 
 func _on_deck_selected() -> void:
-	var level_amount = 6
+	var level_amount = 9
 	
 	hud.time += 5
 	
@@ -57,8 +57,13 @@ func _on_deck_selected() -> void:
 			load_level("res://Scenes/map5.tscn")
 		6:
 			load_level("res://Scenes/map6.tscn")
-	
-			
+		7:
+			load_level("res://Scenes/map7.tscn")
+		8:
+			load_level("res://Scenes/map8.tscn")	
+		9:
+			load_level("res://Scenes/map9.tscn")	
+
 	if level > level_amount:
 		level = 1
 		load_level("res://Scenes/map1.tscn")
