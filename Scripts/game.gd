@@ -48,7 +48,7 @@ func _on_level_finished():
 func _on_deck_selected() -> void:
 	var level_amount = 9
 
-	if Global.score == 25:
+	if Global.score == 24:
 		get_tree().change_scene_to_file("res://Scenes/Win_Screen.tscn")
 
 	
