@@ -4,7 +4,10 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$TotalScore.text = "Total Score: %d" % Global.score 
+	if (Global.score == 25):
+		$TotalScore.text = "Win Score: %d" % Global.score 
+	else:
+		$TotalScore.text = "Total Score: %d" % Global.score 
 	pass # Replace with function body.
 
 

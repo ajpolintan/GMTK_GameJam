@@ -47,10 +47,12 @@ func _on_level_finished():
 
 func _on_deck_selected() -> void:
 	var level_amount = 9
-	if level >= 7:
-		hud.time += 15
-	else: 
-		hud.time += 10
+
+	if Global.score == 25:
+		get_tree().change_scene_to_file("res://Scenes/Win_Screen.tscn")
+
+	
+	hud.time += 10
 	
 	match level:
 		2:
