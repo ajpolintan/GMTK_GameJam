@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxis33dmhbikt"]
+
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_2v7ti"]
+[ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_1np4e"]
+[ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="3_dpj7o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60ypa"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.729412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp275"]
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.768627)
+
+[node name="Win Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2v7ti")
+
+[node name="TotalScore" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -64.0
+offset_right = 505.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_1np4e")
+theme_override_font_sizes/font_size = 26
+text = "Your Score: "
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -85
+layout_mode = 0
+offset_left = 361.0
+offset_top = 272.0
+offset_right = 401.0
+offset_bottom = 312.0
+scale = Vector2(9.22371, 1.64)
+color = Color(0, 0, 0, 0.494118)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -334.0
+offset_top = -182.0
+offset_right = 365.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_1np4e")
+theme_override_font_sizes/font_size = 81
+text = "You Win!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 139.0
+offset_right = 179.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 45
+
+[node name="Try Again" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1np4e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_60ypa")
+text = "Play Again?"
+
+[node name="Exit To Menu" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1np4e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qp275")
+text = "Exit to Menu"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Forest" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(605.237, 328.5)
+scale = Vector2(0.955952, 0.858517)
+texture = ExtResource("3_dpj7o")
+
+[connection signal="pressed" from="HBoxContainer/Try Again" to="." method="_on_try_again_pressed"]
+[connection signal="pressed" from="HBoxContainer/Exit To Menu" to="." method="_on_exit_to_menu_pressed"]
