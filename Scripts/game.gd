@@ -47,8 +47,10 @@ func _on_level_finished():
 
 func _on_deck_selected() -> void:
 	var level_amount = 9
-	
-	hud.time += 5
+	if level >= 7:
+		hud.time += 15
+	else: 
+		hud.time +- 10
 	
 	match level:
 		2:

@@ -6,7 +6,6 @@ func _ready():
 
 
 func _on_game_forest() -> void:
-	print("forest")
 	limit_top = -440
 	limit_bottom = 50
 	
