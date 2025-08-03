@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c6p0e8ikw2d8q" path="res://Scenes/PlatformHorizontal.tscn" id="11_8cj3l"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vjev"]
-distance = 216.0
+distance = 573.0
 
 [sub_resource type="Gradient" id="Gradient_6yynu"]
 
@@ -60,7 +60,7 @@ position = Vector2(80, -864)
 position = Vector2(0, 33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(137, 77)
+position = Vector2(147, 0)
 shape = SubResource("WorldBoundaryShape2D_6vjev")
 
 [node name="V_Platform" parent="." instance=ExtResource("7_yd7g3")]
