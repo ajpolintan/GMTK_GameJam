@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://df6s0h1slui5i"]
+[gd_scene load_steps=6 format=3 uid="uid://df6s0h1slui5i"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_cm8h1"]
 [ext_resource type="PackedScene" uid="uid://i7fysnw7rdmf" path="res://Scenes/hud.tscn" id="1_h1bvg"]
 [ext_resource type="PackedScene" uid="uid://ccpekc7ka85so" path="res://Scenes/Player.tscn" id="1_k4au0"]
 [ext_resource type="PackedScene" uid="uid://b0x4gv752d4nf" path="res://Scenes/deck.tscn" id="3_del31"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="5_apuxr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_cm8h1")
@@ -31,8 +32,14 @@ position = Vector2(0, -8)
 zoom = Vector2(3, 3)
 limit_bottom = 48
 position_smoothing_enabled = true
+script = ExtResource("5_apuxr")
 
+[connection signal="cards" from="." to="Deck/Player/Camera2D" method="_on_game_cards"]
+[connection signal="clouds" from="." to="." method="_on_clouds"]
+[connection signal="clouds" from="." to="Deck/Player/Camera2D" method="_on_game_clouds"]
+[connection signal="forest" from="." to="Deck/Player/Camera2D" method="_on_game_forest"]
 [connection signal="go" from="." to="Deck/Player/Camera2D" method="_on_game_go"]
+[connection signal="lab" from="." to="Deck/Player/Camera2D" method="_on_game_lab"]
 [connection signal="stop" from="." to="." method="_on_stop"]
 [connection signal="timeUp" from="CanvasLayer/HUD" to="." method="_on_hud_time_up"]
 [connection signal="selected" from="Deck" to="." method="_on_deck_selected"]

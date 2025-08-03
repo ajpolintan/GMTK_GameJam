@@ -8,14 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="6_vvo0i"]
 [ext_resource type="Texture2D" uid="uid://d2ktawmivnohy" path="res://Art/clouds4.png" id="7_iv1hh"]
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="8_cnug0"]
-[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="9_4pkcr"]
+[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="9_4pkcr"]
 [ext_resource type="PackedScene" uid="uid://dem5fj41bow0v" path="res://Scenes/chest.tscn" id="10_lg8df"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="11_3kggg"]
 [ext_resource type="Script" path="res://Scripts/verticalPlatform.gd" id="12_3nfir"]
 [ext_resource type="Texture2D" uid="uid://dnvmk6vfglrgq" path="res://Assets/sprites/world_gmtk_tileset-Sheet-Sheet.png" id="13_i5jhn"]
 [ext_resource type="Script" path="res://Scripts/platformVerticalReverse.gd" id="14_gww67"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="15_w53ur"]
-[ext_resource type="PackedScene" path="res://Scenes/BoosterRight.tscn" id="16_2ii22"]
+[ext_resource type="PackedScene" uid="uid://dach0e37245sw" path="res://Scenes/BoosterRight.tscn" id="16_2ii22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xc32f"]
 texture = ExtResource("4_m8kah")

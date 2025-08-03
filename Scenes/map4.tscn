@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="7_32ccq"]
 [ext_resource type="PackedScene" uid="uid://c6p0e8ikw2d8q" path="res://Scenes/PlatformHorizontal.tscn" id="8_j1sdr"]
 [ext_resource type="Texture2D" uid="uid://bnc3pgb86ume7" path="res://Assets/sprites/moving-platforms.png" id="9_bx3qd"]
-[ext_resource type="PackedScene" uid="uid://t7f0n7hah3un" path="res://Scenes/BoosterRight.tscn" id="10_kygji"]
-[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="12_mpa1m"]
+[ext_resource type="PackedScene" uid="uid://dach0e37245sw" path="res://Scenes/BoosterRight.tscn" id="10_kygji"]
+[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="12_mpa1m"]
 [ext_resource type="Script" path="res://Scripts/verticalPlatform.gd" id="13_8p0c1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_816rf"]
@@ -79,7 +79,7 @@ height = 389
 use_hdr = true
 fill = 1
 
-[node name="level2" type="Node2D"]
+[node name="level3" type="Node2D"]
 script = ExtResource("1_ljrne")
 
 [node name="ColorRect" type="ColorRect" parent="."]
