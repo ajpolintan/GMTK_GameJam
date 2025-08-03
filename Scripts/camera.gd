@@ -1,12 +1,13 @@
 extends Camera2D
 
 func _ready():
-	limit_top = -1100
+	limit_top = -440
 	limit_bottom = 50
 
 
 func _on_game_forest() -> void:
-	limit_top = -1100
+	print("forest")
+	limit_top = -440
 	limit_bottom = 50
 	
 func _on_game_clouds() -> void:

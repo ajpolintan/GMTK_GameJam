@@ -86,7 +86,7 @@ script = ExtResource("1_ph5t5")
 
 [node name="Labyrinth" parent="." instance=ExtResource("2_cnkwh")]
 position = Vector2(1744, -27)
-tile_map_data = PackedByteArray("AACn/+X/AwAIAAcAAACk/+D/AwALAAEAAACp/9j/AwALAAEAAACq/8z/AwABAAIAAACd/8//AwALAAEAAACw/9P/AwABAAIAAACp/9X/AwABAAYAAACq/9n/AwABAAYAAACt/9T/AwAQAAEAAACv/9P/AwAQAAEAAACz/9P/AwAQAAEAAACp/9v/AwAQAAEAAACd/9L/AwAQAAEAAACe/8//AwABAAYAAACe/83/AwABAAYAAACz/9L/AwABAAYAAACy/9L/AwABAAYAAAC5/9D/AwAIAAcAAAC4/9D/AwAIAAcAAAC3/9D/AwAIAAcAAAAEALL/AwABAAIAAAD6/8P/AwABAAIAAADf/87/AwALAAEAAADn/8r/AwALAAEAAADS/9H/AwABAAIAAADY/83/AwAGAAcAAADt/8j/AwAGAAcAAAABALv/AwAGAAcAAAD7/7f/AwAGAAcAAAA=")
+tile_map_data = PackedByteArray("AACn/+X/AwAIAAcAAACk/+D/AwALAAEAAACp/9j/AwALAAEAAACq/8z/AwABAAIAAACd/8//AwALAAEAAACw/9P/AwABAAIAAACp/9X/AwABAAYAAACq/9n/AwABAAYAAACt/9T/AwAQAAEAAACv/9P/AwAQAAEAAACz/9P/AwAQAAEAAACp/9v/AwAQAAEAAACd/9L/AwAQAAEAAACe/8//AwABAAYAAACe/83/AwABAAYAAACz/9L/AwABAAYAAACy/9L/AwABAAYAAAC5/9D/AwAIAAcAAAC4/9D/AwAIAAcAAAC3/9D/AwAIAAcAAAAEALL/AwABAAIAAAD6/8P/AwABAAIAAADf/87/AwALAAEAAADn/8r/AwALAAEAAADS/9H/AwABAAIAAADY/83/AwAGAAcAAADt/8j/AwAGAAcAAAD6/7//AwAGAAcAAAD1/7z/AwAGAAcAAAD//7v/AwAGAAcAAADv/7n/AwAGAAcAAAD0/7b/AwAGAAcAAAD7/7X/AwAGAAcAAAD+/7P/AwAGAAcAAADN/8D/AwALAAEAAADS/7T/AwALAAEAAADb/63/AwABAAIAAADP/9D/AwABAAYAAADV/9D/AwABAAYAAADg/83/AwABAAYAAADg/9D/AwABAAYAAADo/8n/AwABAAYAAAD8/8L/AwABAAYAAAD7/8L/AwABAAYAAAAIAK//AwALAAEAAAAJAK3/AwABAAYAAAAJALH/AwABAAYAAADe/6z/AwABAAYAAADS/7P/AwABAAYAAADT/7X/AwABAAYAAADT/7L/AwABAAYAAADO/8P/AwABAAYAAADN/8P/AwAQAAEAAADS/7f/AwAQAAEAAADQ/9L/AwAQAAEAAADR/9H/AwAQAAEAAADV/9H/AwAQAAEAAADf/9H/AwAQAAEAAADn/8z/AwAQAAEAAAD4/8P/AwAQAAEAAAD6/8T/AwAQAAEAAAD9/8P/AwAQAAEAAAABALP/AwAQAAEAAAAIALL/AwAQAAEAAAADALL/AwAQAAEAAADZ/67/AwAQAAEAAADe/63/AwAQAAEAAAA=")
 
 [node name="TileMapLayer2" parent="." instance=ExtResource("3_f8fh4")]
 z_index = 30
@@ -153,6 +153,19 @@ script = ExtResource("12_3nfir")
 [node name="Timer" type="Timer" parent="Platforms/Platform"]
 
 [node name="Sprite2DPlat" type="Sprite2D" parent="Platforms/Platform"]
+position = Vector2(34, -0.999994)
+scale = Vector2(1.08065, 1.4)
+texture = ExtResource("13_i5jhn")
+region_enabled = true
+region_rect = Rect2(66.2029, 61.5325, 62.2829, 10.5648)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("11_3kggg")]
+position = Vector2(1490, -985)
+script = ExtResource("12_3nfir")
+
+[node name="Timer" type="Timer" parent="Platforms/Platform5"]
+
+[node name="Sprite2DPlat" type="Sprite2D" parent="Platforms/Platform5"]
 position = Vector2(34, -0.999994)
 scale = Vector2(1.08065, 1.4)
 texture = ExtResource("13_i5jhn")
@@ -266,7 +279,11 @@ position = Vector2(-103, -360)
 [node name="Booster2" parent="." instance=ExtResource("16_2ii22")]
 position = Vector2(364, -876)
 
+[node name="Area2D2" parent="." instance=ExtResource("16_2ii22")]
+position = Vector2(1123, -1372)
+
 [connection signal="timeout" from="Platforms/Platform/Timer" to="Platforms/Platform" method="_on_timer_timeout"]
+[connection signal="timeout" from="Platforms/Platform5/Timer" to="Platforms/Platform5" method="_on_timer_timeout"]
 [connection signal="timeout" from="Platforms/Platform2/Timer" to="Platforms/Platform2" method="_on_timer_timeout"]
 [connection signal="timeout" from="Platforms/Platform3/Timer" to="Platforms/Platform3" method="_on_timer_timeout"]
 [connection signal="timeout" from="Platforms/Platform4/Timer" to="Platforms/Platform4" method="_on_timer_timeout"]
