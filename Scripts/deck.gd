@@ -80,7 +80,7 @@ func _on_cards() -> void:
 		
 
 func activate_ability(ability_name: String) -> void:
-	var icon_position_offset = 32
+	var icon_position_offset = 37
 	match ability_name:
 		"Jump":
 			player.doubleJumpMax += 1
