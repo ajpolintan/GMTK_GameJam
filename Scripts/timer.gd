@@ -1,6 +1,6 @@
 extends Control
 
-var time = 100
+var time = 30
 var level = 0
 var stopped = false 
 signal timeUp
