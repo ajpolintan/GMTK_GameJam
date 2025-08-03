@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_km5ak"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="7_qvq8o"]
 [ext_resource type="Texture2D" uid="uid://bnc3pgb86ume7" path="res://Assets/sprites/moving-platforms.png" id="8_sg3le"]
-[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="9_dysgb"]
+[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="9_dysgb"]
 [ext_resource type="PackedScene" uid="uid://c6p0e8ikw2d8q" path="res://Scenes/PlatformHorizontal.tscn" id="10_3rawe"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="11_8bqd1"]
-[ext_resource type="PackedScene" uid="uid://t7f0n7hah3un" path="res://Scenes/BoosterRight.tscn" id="12_drqx8"]
+[ext_resource type="PackedScene" uid="uid://dach0e37245sw" path="res://Scenes/BoosterRight.tscn" id="12_drqx8"]
 [ext_resource type="Texture2D" uid="uid://cskn5l27mhfcn" path="res://Assets/sprites/golden.png" id="13_5ebag"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ev4r7"]

@@ -9,6 +9,9 @@ var spikeWalk = false
 signal stop
 signal go
 signal cards
+signal forest
+signal clouds
+signal lab
 
 func _ready():
 	stop.connect(Callable(player, "_on_stop"))
@@ -17,7 +20,7 @@ func _ready():
 	go.connect(Callable(hud, "_on_go"))
 	cards.connect(Callable(deck, "_on_cards"))
 	
-	load_level("res://Scenes/map7.tscn")
+	load_level("res://Scenes/map1.tscn")
 
 func _on_hud_time_up() -> void:
 	player.death()
@@ -68,3 +71,10 @@ func _on_deck_selected() -> void:
 	if level > level_amount:
 		level = 7
 		load_level("res://Scenes/map7.tscn")
+		
+	if level % 3 == 1:
+		emit_signal("forest")
+	elif level % 3 == 2:
+		emit_signal("clouds")
+	else:
+		emit_signal("lab")
