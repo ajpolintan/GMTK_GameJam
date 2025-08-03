@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="4_6j1u1"]
 [ext_resource type="AudioStream" uid="uid://bn8axyh40xb6t" path="res://Assets/sounds/select_705174__digimistic__game-menu-select-sound-2.wav" id="4_cbj0u"]
 [ext_resource type="Texture2D" uid="uid://b4bkej1x4vp6t" path="res://Assets/dash-Sheet.png" id="6_ohn8c"]
-[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="7_yonh0"]
+[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="7_yonh0"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
