@@ -35,7 +35,7 @@ const GLIDEVELOCITY = 50
 const MAX_DOWN = 200
 
 #powerups
-var doubleJumpMax = 5
+var doubleJumpMax = 0
 var doubleJump = 0
 var speedMult = 1
 var jumpMult = 1
