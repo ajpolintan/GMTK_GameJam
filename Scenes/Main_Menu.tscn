@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://brmlum8gddr1k"]
+[gd_scene load_steps=11 format=4 uid="uid://brmlum8gddr1k"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ybsos"]
 [ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_fohpp"]
@@ -7,6 +7,15 @@
 [ext_resource type="AudioStream" uid="uid://bn8axyh40xb6t" path="res://Assets/sounds/select_705174__digimistic__game-menu-select-sound-2.wav" id="4_cbj0u"]
 [ext_resource type="Texture2D" uid="uid://b4bkej1x4vp6t" path="res://Assets/dash-Sheet.png" id="6_ohn8c"]
 [ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="7_yonh0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk6fq"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.768627)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkmvc"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.768627)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ual8f"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.768627)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -40,18 +49,21 @@ theme_override_constants/separation = 30
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_fohpp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nk6fq")
 text = "Start"
 
 [node name="Controls" type="Button" parent="Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_fohpp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nkmvc")
 text = "Controls"
 
 [node name="Quit" type="Button" parent="Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_fohpp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ual8f")
 text = "Quit"
 
 [node name="Title Screen" type="Label" parent="."]

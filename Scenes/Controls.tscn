@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bs4jb8rh5ajk5"]
+[gd_scene load_steps=10 format=4 uid="uid://bs4jb8rh5ajk5"]
 
 [ext_resource type="Script" path="res://Scenes/controls.gd" id="1_o0vp8"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_7jrn3"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b4bkej1x4vp6t" path="res://Assets/dash-Sheet.png" id="6_hlqp5"]
 [ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="7_qm8g3"]
 [ext_resource type="FontFile" uid="uid://rhfbsckxpx0e" path="res://Assets/fonts/PixelOperator8.ttf" id="8_5vbbm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n36v4"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.768627)
 
 [node name="Controls" type="Control"]
 layout_mode = 3
@@ -42,6 +45,7 @@ theme_override_constants/separation = 30
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("3_vtphv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n36v4")
 text = "Main Menu"
 
 [node name="Title Screen" type="Label" parent="."]
@@ -117,6 +121,6 @@ offset_top = -9.0
 offset_right = 28.0
 offset_bottom = 31.0
 scale = Vector2(12.72, 6.08)
-color = Color(0, 0, 0, 0.494118)
+color = Color(0.0627451, 0.0627451, 0.0627451, 0.768627)
 
 [connection signal="pressed" from="Button Container/Start" to="." method="_on_start_pressed"]

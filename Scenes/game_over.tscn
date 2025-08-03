@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://w625ocdw1nue"]
+[gd_scene load_steps=6 format=3 uid="uid://w625ocdw1nue"]
 
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_jawtr"]
 [ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="1_kirp8"]
 [ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="3_gku21"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60ypa"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.729412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp275"]
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.768627)
 
 [node name="Game Over" type="Control"]
 layout_mode = 3
@@ -69,12 +75,23 @@ theme_override_constants/separation = 45
 [node name="Try Again" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kirp8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_60ypa")
 text = "Try Again?"
 
 [node name="Exit To Menu" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_kirp8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qp275")
 text = "Exit to Menu"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -85
+offset_left = 360.0
+offset_top = 232.0
+offset_right = 400.0
+offset_bottom = 272.0
+scale = Vector2(9.22371, 1.64)
+color = Color(0, 0, 0, 0.494118)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
