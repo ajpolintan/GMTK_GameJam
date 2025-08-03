@@ -2,6 +2,7 @@ extends Node2D
 @onready var player: CharacterBody2D = $Deck/Player
 @onready var deck: Control = $Deck
 @onready var hud: Control = $CanvasLayer/HUD
+@onready var camera_2d: Camera2D = $Deck/Player/Camera2D
 var curLevel: Node
 var level = 1
 var spikeWalk = false
@@ -16,7 +17,7 @@ func _ready():
 	go.connect(Callable(hud, "_on_go"))
 	cards.connect(Callable(deck, "_on_cards"))
 	
-	load_level("res://Scenes/map1.tscn")
+	load_level("res://Scenes/map7.tscn")
 
 func _on_hud_time_up() -> void:
 	player.death()
@@ -65,5 +66,5 @@ func _on_deck_selected() -> void:
 			load_level("res://Scenes/map9.tscn")	
 
 	if level > level_amount:
-		level = 1
-		load_level("res://Scenes/map1.tscn")
+		level = 7
+		load_level("res://Scenes/map7.tscn")
