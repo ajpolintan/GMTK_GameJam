@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://vn7gcom2kukq"]
+[gd_scene load_steps=16 format=4 uid="uid://bk672mhvkcld2"]
 
 [ext_resource type="Script" path="res://Scripts/map_2.gd" id="1_p208o"]
 [ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_yvyop"]
@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bju0npedgs80n" path="res://Scenes/killzone.tscn" id="6_wm26w"]
 [ext_resource type="PackedScene" uid="uid://dm4l7dxxxfvfv" path="res://Scenes/platformVertical.tscn" id="7_mla0e"]
 [ext_resource type="Texture2D" uid="uid://bnc3pgb86ume7" path="res://Assets/sprites/moving-platforms.png" id="8_1y5xi"]
-[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="9_gevip"]
+[ext_resource type="PackedScene" path="res://Scenes/lamp_post.tscn" id="9_gevip"]
 [ext_resource type="PackedScene" uid="uid://c6p0e8ikw2d8q" path="res://Scenes/PlatformHorizontal.tscn" id="10_0ys7h"]
 [ext_resource type="PackedScene" uid="uid://bw5hcyh4txhlp" path="res://Scenes/spikes.tscn" id="10_suas1"]
-[ext_resource type="PackedScene" path="res://Scenes/BoosterRight.tscn" id="12_208rr"]
+[ext_resource type="PackedScene" uid="uid://dach0e37245sw" path="res://Scenes/BoosterRight.tscn" id="12_208rr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ev4r7"]
 distance = 216.0
