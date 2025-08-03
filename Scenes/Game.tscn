@@ -29,10 +29,10 @@ position = Vector2(-327, 90)
 [node name="Camera2D" type="Camera2D" parent="Deck/Player"]
 position = Vector2(0, -8)
 zoom = Vector2(3, 3)
-limit_top = -1180
 limit_bottom = 48
 position_smoothing_enabled = true
 
+[connection signal="go" from="." to="Deck/Player/Camera2D" method="_on_game_go"]
 [connection signal="stop" from="." to="." method="_on_stop"]
 [connection signal="timeUp" from="CanvasLayer/HUD" to="." method="_on_hud_time_up"]
 [connection signal="selected" from="Deck" to="." method="_on_deck_selected"]

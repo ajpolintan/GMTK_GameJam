@@ -426,7 +426,7 @@ func _physics_process(_delta: float) -> void:
 			elif direction < 0: animated_sprite.flip_h = true
 			if (velocity.x == 0):
 				animated_sprite.play("idle")
-			elif (abs(velocity.x) < SPEED):
+			elif (abs(velocity.x) <= SPEED):
 				animated_sprite.play("walk")
 			else:
 				animated_sprite.play("run")
