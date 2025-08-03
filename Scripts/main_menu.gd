@@ -19,6 +19,7 @@ func _on_start_pressed() -> void:
 func _on_options_pressed() -> void:
 	print("Settings pressed")
 	sfx_select.play()
+	get_tree().change_scene_to_file("res://Scenes/Controls.tscn")
 
 
 	pass # Replace with function body.

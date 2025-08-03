@@ -1,23 +1,24 @@
-[gd_scene load_steps=8 format=4 uid="uid://brmlum8gddr1k"]
+[gd_scene load_steps=9 format=4 uid="uid://bs4jb8rh5ajk5"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ybsos"]
-[ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="2_fohpp"]
-[ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_xgf1s"]
-[ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="4_6j1u1"]
-[ext_resource type="AudioStream" uid="uid://bn8axyh40xb6t" path="res://Assets/sounds/select_705174__digimistic__game-menu-select-sound-2.wav" id="4_cbj0u"]
-[ext_resource type="Texture2D" uid="uid://b4bkej1x4vp6t" path="res://Assets/dash-Sheet.png" id="6_ohn8c"]
-[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="7_yonh0"]
+[ext_resource type="Script" path="res://Scenes/controls.gd" id="1_o0vp8"]
+[ext_resource type="PackedScene" uid="uid://dd3dq6fyy7a64" path="res://Assets/sprites/Tilesets/woodmap.tscn" id="2_7jrn3"]
+[ext_resource type="FontFile" uid="uid://d2k1r2t7aq4en" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_vtphv"]
+[ext_resource type="AudioStream" uid="uid://bn8axyh40xb6t" path="res://Assets/sounds/select_705174__digimistic__game-menu-select-sound-2.wav" id="4_u35p5"]
+[ext_resource type="Texture2D" uid="uid://b1qshr8wonhwd" path="res://Art/clouds2.png" id="5_t2tta"]
+[ext_resource type="Texture2D" uid="uid://b4bkej1x4vp6t" path="res://Assets/dash-Sheet.png" id="6_hlqp5"]
+[ext_resource type="PackedScene" uid="uid://dopd4cxq125p1" path="res://Scenes/lamp_post.tscn" id="7_qm8g3"]
+[ext_resource type="FontFile" uid="uid://rhfbsckxpx0e" path="res://Assets/fonts/PixelOperator8.ttf" id="8_5vbbm"]
 
-[node name="MainMenu" type="Control"]
+[node name="Controls" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ybsos")
+script = ExtResource("1_o0vp8")
 
-[node name="TileMapLayer" parent="." instance=ExtResource("2_xgf1s")]
+[node name="TileMapLayer" parent="." instance=ExtResource("2_7jrn3")]
 position = Vector2(632.462, -314.876)
 tile_map_data = PackedByteArray("AADx/zkABQACAAEAAADy/zkABQACAAEAAADz/zkABQACAAEAAAD0/zkABQACAAEAAAD1/zkABQACAAEAAAD2/zkABQACAAEAAAD3/zkABQACAAEAAAD4/zkABQACAAEAAAD5/zkABQACAAEAAAD6/zkABQACAAEAAAD7/zkABQACAAEAAAD8/zkABQACAAEAAAD9/zkABQACAAEAAAD+/zkABQACAAEAAAD//zkABQACAAEAAAAAADkABQACAAEAAAABADkABQACAAEAAAACADkABQACAAEAAAADADkABQACAAEAAAAEADkABQACAAEAAAAFADkABQACAAEAAAAGADkABQACAAEAAAAHADkABQACAAEAAAABADgABQACAAEAAAAAADgABQACAAEAAAD//zgABQACAAEAAAD+/zgABQACAAEAAAD9/zgABQACAAEAAAD8/zgABQACAAEAAAD7/zgABQACAAEAAAD6/zgABQACAAEAAAD5/zgABQACAAEAAAD4/zgABQACAAEAAADx/zgABQACAAEAAADy/zgABQACAAEAAADz/zgABQACAAEAAAD0/zgABQACAAEAAAD1/zgABQACAAEAAAD2/zgABQACAAEAAAD3/zgABQACAAEAAAACADgABQACAAEAAAADADgABQACAAEAAAAEADgABQACAAEAAAAFADgABQACAAEAAAAGADgABQACAAEAAAAHADgABQACAAEAAAAIADgABQACAAEAAAAJADgABQACAAEAAAAKADgABQACAAEAAADw/zcABQABAAAAAADw/zgABQABAAEAAADw/zkABQABAAEAAADw/zoABQABAAEAAADw/zsABQABAAEAAADx/zoABQACAAEAAADy/zoABQACAAEAAADz/zoABQACAAEAAAD0/zoABQACAAEAAAD1/zoABQACAAEAAAD2/zoABQACAAEAAAD3/zoABQACAAEAAAD4/zoABQACAAEAAAD5/zoABQACAAEAAAD6/zoABQACAAEAAAD7/zoABQACAAEAAAD8/zoABQACAAEAAAD9/zoABQACAAEAAAD+/zoABQACAAEAAAD//zoABQACAAEAAAAAADoABQACAAEAAAABADoABQACAAEAAAACADoABQACAAEAAAADADoABQACAAEAAAAIADkABQACAAEAAAAJADkABQACAAEAAADx/zsABQACAAEAAADy/zsABQACAAEAAADz/zsABQACAAEAAAD0/zsABQACAAEAAAD1/zsABQACAAEAAAD2/zsABQACAAEAAAD3/zsABQACAAEAAAD4/zsABQACAAEAAAD5/zsABQACAAEAAAD6/zsABQACAAEAAAD7/zsABQACAAEAAAD8/zsABQACAAEAAAD9/zsABQACAAEAAAD+/zsABQACAAEAAAD//zsABQACAAEAAAAAADsABQACAAEAAAABADsABQACAAEAAAACADsABQACAAEAAAADADsABQACAAEAAAAEADsABQACAAEAAAAFADsABQACAAEAAAAGADsABQACAAEAAAAHADsABQACAAEAAAAGADoABQACAAEAAAAFADoABQACAAEAAAAEADoABQACAAEAAAAHADoABQACAAEAAAAIADoABQACAAEAAAAJADoABQACAAEAAAAKADoABQACAAEAAAAKADsABQACAAEAAAAJADsABQACAAEAAAAIADsABQACAAEAAAALADcABQADAAAAAAAKADkABQACAAEAAAALADgABQADAAEAAAALADkABQADAAEAAAALADoABQADAAEAAAALADsABQADAAEAAADx/zcABQACAAAAAADy/zcABQACAAAAAADz/zcABQACAAAAAAD0/zcABQACAAAAAAD1/zcABQACAAAAAAD2/zcABQACAAAAAAD3/zcABQACAAAAAAD4/zcABQACAAAAAAD5/zcABQACAAAAAAD6/zcABQACAAAAAAD7/zcABQACAAAAAAD8/zcABQACAAAAAAD9/zcABQACAAAAAAD+/zcABQACAAAAAAD//zcABQACAAAAAAAAADcABQACAAAAAAABADcABQACAAAAAAACADcABQACAAAAAAADADcABQACAAAAAAAEADcABQACAAAAAAAFADcABQACAAAAAAAGADcABQACAAAAAAAHADcABQACAAAAAAAIADcABQACAAAAAAAJADcABQACAAAAAAAKADcABQACAAAAAADi/zYABAAQAAMAAADc/zQABAAQAAMAAADp/zQABAAQAAMAAADs/zgABAAQAAMAAAAQADcABAAQAAMAAAAaADMABAAQAAMAAADw/zYAAwACAAAAAAD8/zYAAwACAAAAAAAFADYAAwACAAAAAADy/zYAAwAAAAEAAAD6/zYAAwAAAAEAAAADADYAAwAAAAEAAAAKADYAAwAAAAEAAAAPADYAAwAAAAEAAADp/zMAAwAAAAEAAADh/zUAAwAAAAEAAADc/zMAAwAAAAEAAADt/zcAAwAAAAEAAAAbADIAAwAAAAEAAAD+/zYAAwAEAAEAAAD//zYAAwAFAAEAAAAAADYAAwAGAAEAAAAIADYAAwAJAAEAAAD2/zYAAwAJAAEAAADw/zwABQABAAEAAADx/zwABQACAAEAAADy/zwABQACAAEAAADz/zwABQACAAEAAAD0/zwABQACAAEAAAD1/zwABQACAAEAAAD2/zwABQACAAEAAAD3/zwABQACAAEAAAD4/zwABQACAAEAAAD5/zwABQACAAEAAAD6/zwABQACAAEAAAD7/zwABQACAAEAAAD8/zwABQACAAEAAAD9/zwABQACAAEAAAD+/zwABQACAAEAAAD//zwABQACAAEAAAAAADwABQACAAEAAAABADwABQACAAEAAAACADwABQACAAEAAAADADwABQACAAEAAAAEADwABQACAAEAAAAFADwABQACAAEAAAAGADwABQACAAEAAAAHADwABQACAAEAAAAIADwABQACAAEAAAAJADwABQACAAEAAAAKADwABQACAAEAAAALADwABQADAAEAAAA=")
 
@@ -28,31 +29,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -113.0
-offset_top = -113.0
-offset_right = 142.0
-offset_bottom = 114.0
+offset_left = 160.0
+offset_top = -125.0
+offset_right = 415.0
+offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.03396, 1.07532)
 theme_override_constants/separation = 30
 
 [node name="Start" type="Button" parent="Button Container"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_fohpp")
-text = "Start"
-
-[node name="Controls" type="Button" parent="Button Container"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_fohpp")
-text = "Controls"
-
-[node name="Quit" type="Button" parent="Button Container"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_fohpp")
-text = "Quit"
+theme_override_fonts/font = ExtResource("3_vtphv")
+text = "Main Menu"
 
 [node name="Title Screen" type="Label" parent="."]
 layout_mode = 1
@@ -67,12 +57,12 @@ offset_right = 586.0
 offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_fohpp")
+theme_override_fonts/font = ExtResource("3_vtphv")
 theme_override_font_sizes/font_size = 61
 text = "LOOPER"
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_cbj0u")
+stream = ExtResource("4_u35p5")
 volume_db = -20.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -82,7 +72,7 @@ layer = -1
 z_index = -80
 position = Vector2(190, 205)
 scale = Vector2(1.48837, 1.21411)
-texture = ExtResource("4_6j1u1")
+texture = ExtResource("5_t2tta")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Sprite2D"]
 offset_right = 40.0
@@ -94,13 +84,39 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(472, 530)
 rotation = -0.136373
 scale = Vector2(0.920479, 0.920479)
-texture = ExtResource("6_ohn8c")
+texture = ExtResource("6_hlqp5")
 region_enabled = true
 region_rect = Rect2(235.654, 0, 67.6501, 32)
 
-[node name="Lamp Post" parent="." instance=ExtResource("7_yonh0")]
+[node name="Lamp Post" parent="." instance=ExtResource("7_qm8g3")]
 position = Vector2(472, 580)
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 209.0
+offset_right = 418.0
+offset_bottom = 388.0
+theme_override_fonts/font = ExtResource("8_5vbbm")
+text = "Up - Up Key
+Down - Down Key
+Left - Left Key
+Right - Right Key
+
+Run - Ctrl / Left Click
+Jump - Space
+Dash - Shift
+Glide - Hold Space
+"
+
+[node name="ColorRect" type="ColorRect" parent="Label"]
+z_index = -85
+layout_mode = 0
+offset_left = -12.0
+offset_top = -9.0
+offset_right = 28.0
+offset_bottom = 31.0
+scale = Vector2(12.72, 6.08)
+color = Color(0, 0, 0, 0.494118)
+
 [connection signal="pressed" from="Button Container/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Button Container/Controls" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Button Container/Quit" to="." method="_on_quit_pressed"]
